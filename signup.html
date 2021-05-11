@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- signup page/reloads after a prompt if improper data entry/redirects to signup.php to insert data in db-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+    <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+	<script>
+	function datacheck(){
+		var arr=document.getElementById("roll").value;
+		var rolltype=Number(arr);
+		var rolllen=arr.length;
+		if(document.getElementById("name").value==""||document.getElementById("user").value==""){
+			window.location.href="signup.html";
+			window.alert("Do NOT leave any field blank.");
+		}
+		else if(document.getElementById("pwd").value!=document.getElementById("pwdc").value){
+			window.location.href="signup.html";
+			window.alert("Confirmation password does NOT match.\nPlease Re-enter your credentials.");
+		}
+		else if(rolltype!=arr){
+			window.location.href="signup.html";
+			window.alert("Register number should contain ONLY numbers\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
+		}
+		else if(rolllen!=8){
+			window.location.href="signup.html";
+			window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
+		}
+	}
+	function goback(){
+		window.location.href="login.html";
+		window.alert("Get youself signed up to create your account.");
+	}
+	</script>
+  </head>
+  <body>
+
+      <form action="signup.php" class="signform" method="POST">
+        <h1>Sign Up</h1>
+
+        <div class="txtb">
+          <input type="text" id="name" name="name" placeholder="Name"/>
+        </div>
+
+        <div class="txtb">
+          <input type="text" id="roll" name="roll" placeholder="Register Number"/>
+        </div>
+
+        <div class="txtb">
+          <input type="text" id="user" name="user" placeholder="Username"/>
+        </div>
+
+        <div class="txtb">
+          <input type="password" id="pwd" name="pwd" placeholder="Password"/>
+        </div>
+
+        <div class="txtb">
+          <input type="password" id="pwdc" name="pwdc" placeholder="Confirm Password"/>
+        </div>
+
+		<input type="submit" class="logbtn1" onclick=goback() value="Cancel" >
+        <input type="submit" class="logbtn2" onclick=datacheck() value="Done" >
+	<!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
+      </form>
+  </body>
+</html>
