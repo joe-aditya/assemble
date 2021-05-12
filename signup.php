@@ -8,6 +8,7 @@ $pwd=$_POST["pwd"];
 
 $sql="INSERT INTO try1table ( name, roll, user, pwd) VALUES ('$name','$roll','$user','$pwd')";
 //SQL- Change the query above after creating the database n user table
+// And change the form datatype in signup.html to match the fields in table
 
 if(mysqli_query($con, $sql)){
 	echo "Records inserted successfully. ";

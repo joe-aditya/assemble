@@ -9,10 +9,11 @@ $result=mysqli_query($con, $query);
 $count=mysqli_num_rows($result);
 
 if($count>0){
-	header("Location:home.html");
-}//redirects to home page if login credentials are authenticated
+	header("Location:dashboard.html");
+}//redirects to dashboard.html page if login credentials are authenticated
 // BRO - this should go to dashboard of user with uname=luname/$uname
-//dashboard page is named as " .html"
+//localhost/assemble/dashboard.html pota it shldnt go to any page
+//sessions smthng use pannanum which idk so later clarify how it works
 else{
 	header("Location:invalidlogin.html");
 }//redirects to login page after error msg
