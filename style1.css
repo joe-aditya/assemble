@@ -74,6 +74,15 @@ body{
   height: 40px;
 }
 
+.txtb textarea{
+  font-size: 17px;
+  color: #333;
+  border-style: groove;
+  outline: none;
+  background: none;
+  width: 100%;
+}
+
 .txtb p{
   font-size: 20px;
   color: #333;
@@ -164,5 +173,36 @@ body{
 }
 
 .logbtn2:hover{
+  background-position: right;
+}
+
+.setHead{
+  height: 80px;
+  margin-bottom: 100px;
+  padding: 15px 50px 10px 50px;
+  background-color: #0D0D0D;
+}
+
+.setform{
+  padding: 50px 30px 30px 30px;
+}
+
+.outbtn{
+  display: inline-block;
+  width: 90px;
+  height: 50px;
+  border: none;
+  background: linear-gradient(120deg,#3498db,#03c04a,#3498db);
+  background-size: 200%;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+  font-size: 20px;
+  border-radius: 10px;
+  float: right;
+}
+
+.outbtn:hover{
   background-position: right;
 }

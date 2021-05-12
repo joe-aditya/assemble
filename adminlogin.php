@@ -1,5 +1,5 @@
 <?php
-#checks login credentials/redirects accordingly
+#checks admin login credentials/redirects accordingly
 include 'config.php';
 
 $a_uname=$_POST["a_uname"];//username from adminlogin.html

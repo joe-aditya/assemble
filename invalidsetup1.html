@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--prompts invalid signup msg | redirects to login page-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Redirect</title>
+  <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="style1.css">
+  <script>
+    function pageRedirect() {
+      window.location.replace("setup_profile_1.html");
+    }
+    setTimeout("pageRedirect()", 2000);
+  </script>
+</head>
+
+<body>
+  <form class="logfor">
+    <h2>We are facing problem setting you up</h2><br>
+    <h1>Try Later</h1>
+    <img src="img1/shrug.png" width="120px" height="120px" /><br><br>
+    <div class="txtb">
+      <p>You are being redirected.</p>
+    </div>
+  </form>
+</body>
+
+</html>
