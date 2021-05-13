@@ -8,11 +8,8 @@
 
 body{
   min-height: 100vh;
-  background-image: url("img1/code.gif");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-image: linear-gradient(180deg,#BE0032,#ED7117);
 }
-
 
 .scroll{
 	margin:4px,
