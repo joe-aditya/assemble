@@ -9,8 +9,8 @@ $pwd=$_POST["pwd"];
 $sql="INSERT INTO try1table ( name, roll, user, pwd) VALUES ('$name','$roll','$user','$pwd')";
 //SQL- Change the query above after creating the database n user table
 // And change the form datatype in setup_profile_1.html to match the fields in table
-
-if( 1 || mysqli_query($con, $sql)){ //FLAG - always true
+$sql2=1;//query to check if profile page setup is done
+if( 1 || mysqli_query($con, $sql) || mysqli_query($con, $sql2)){ //FLAG - always true
 	echo "Records inserted successfully. ";
 	header("Location:setup_profile_2.html");
 }

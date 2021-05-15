@@ -8,8 +8,8 @@ $query="SELECT * FROM assemble WHERE uname='$a_uname' AND pwd='$a_pwd'";
 $result=mysqli_query($con, $query);
 $count=mysqli_num_rows($result);
 
-if($count>0){
-	header("Location:adminpage.html");
+if(1||$count>0){//FLAG
+	header("Location:../layerAdmin/adminpage.html");
 }//redirects to adminpage.html page if login credentials are authenticated
 // BRO - this should go to dashboard of user with uname=luname/$uname
 // and this page shouldn't be accessed using its url

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title></title>
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+	  background-color:black;
+      margin-bottom: 0px;
+      background-size: auto;
+      background-repeat: no-repeat;
+	  height:30px;
+    }
+
+    .jumbotron h1 {
+      text-align:center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+
+
+    .bs-example {
+      margin:0px;
+	  position: sticky;
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+    }
+
+	.card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+	#sidebar{
+    background-color:#34495e;
+    width:250px;
+    float:left;
+    height:900px;
+}
+#sidebar-right{
+    background-color:#333;
+    width:400px;
+    float:right;
+    height:900px;
+
+	}
+#sidebar-right h1{
+    color:ivory;
+}
+
+
+#sidebar-right a{
+    text-decoration: none;
+
+}
+#sidebar-right a li{
+    overflow: hidden;
+    color:ivory;
+    padding-bottom:5px;
+    padding-top: 50px;
+}
+#sidebar-right li:hover{
+    color:#16a085;
+}
+#sidebar h1{
+    color:ivory;
+}
+#sidebar a{
+    text-decoration: none;
+
+}
+#sidebar a li{
+
+    overflow: hidden;
+    color:ivory;
+    padding-bottom:3px;
+    padding-top: 5px;
+}
+#sidebar li:hover{
+    color:#16a085;
+}
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 0px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 10px;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a {
+      color: white;
+    }
+    .glow {
+      font-size: 30px;
+      color:white;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+  </style>
+</head>
+
+<body>
+ <div class="jumbotron">
+    <h1 class= "display-6 glow">TEAM MANAGMENET SYSTEM</h1>
+  </div>
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+        <div class="navbar-nav; style:bottom">
+
+					 <a href="#"  class="btn btn-default" >update</a>
+					  <a href="#"  class="btn btn-default" >update</a>
+					   <a href="#"  class="btn btn-default" >update</a>
+					   <a href="#"  class="btn btn-default" >update</a>
+					   <a href="#"  class="btn btn-default" >update</a>
+					   <a href="#"  class="btn btn-default" >update</a>
+					</div>
+				 	</div>
+
+        <div class="navbar-nav">
+
+          <a href="../layer1/logout.html" class="btn btn-default">Log out</a>
+        </div>
+
+      </div>
+    </nav>
+	</div>
+
+
+
+
+  <div class="container" id="sidebar" >
+    <div class="row" >
+        <h1>HELLO</h1>
+            <ul>
+			<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="student.png"  style="width:100%">
+					</div>
+
+				</div>
+
+
+
+
+                <a href="#"><li>ADD TEAM</li></a>
+                <a href="#"><li>UPDATE TEAM</li>
+                </a>
+                <a href="#">
+                <li> TEAM MEMBER</li>
+                </a>
+                <a href="#">
+                <li>UPDATE NOTIFICATION</li>
+                </a>
+
+
+            </ul>
+
+    </div>
+        </div>
+		</div>
+
+		  <div class="container" id="sidebar-right" >
+    <div class="row" >
+
+        <h1>TEAM MEMBERS</h1>
+
+            <ul>
+                <a href="#">
+				<li>ADD TEAM</li>
+				<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group-">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group-">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="d-flex justify-content-center  login_container">
+					 <input type="submit" class="btn btn-info" value="update">
+
+				   </div><br>
+				   <br>
+
+
+
+                </a>
+                <a href="#">
+                <li>ADD TEAM</li>
+				<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group-">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group-">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="input-group">
+							<div class="input-group">
+								<span class="input-group"></span>
+							</div>
+							<input type="text"  class="form-control input_pass" value="" placeholder="">
+						</div>
+						<div class="d-flex justify-content-center  login_container">
+					 <input type="submit" class="btn btn-info" value="update">
+
+				   </div>
+                </a>
+            </ul>
+        </div>
+		</div>
+  <div class ="a">
+  <br><br>
+<div class="grid-container">
+    <div class="grid-item">
+      <div class="card">
+	  <div class="container">
+	<div class="row">
+	<div class="col-sm-12">
+			<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+
+					</div>
+				</div><br>
+				<h4>TEAMS</h4>
+				<div class="d-flex justify-content-center form_container">
+					<form>
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group"></span>
+							</div>
+
+
+							<input type="text" name="" class="form-control input_user" value="" placeholder="TEAMS">
+						</div>
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group"></span>
+							</div>
+							<input type="password"  class="form-control input_pass" value="" placeholder="PASSWORD">
+						</div><br>
+
+
+					</form>
+					</div>
+					</div>
+						</div>
+					</div>
+						</div>
+					</div></div>
+
+ <div class="grid-container">
+<div class="grid-item">
+      <div class="card">
+	  <div class="container">
+	<div class="row">
+	<div class="col-sm-12">
+			<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+
+					</div>
+				</div><br>
+				<h4>TEAM MEMBERS</h4>
+				<div class="d-flex justify-content-center form_container">
+					<form>
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group"></span>
+							</div>
+
+
+							<input type="text" name="" class="form-control input_user" value="" placeholder="MEMBER ID">
+						</div>
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group"></span>
+							</div>
+							<input type="password"  class="form-control input_pass" value="" placeholder="PASSWORD">
+						</div><br>
+
+					</form>
+					</div>
+					</div>
+						</div>
+					</div>
+						</div>
+						</div>
+					</div>
+
+
+					</body>
+					</html>

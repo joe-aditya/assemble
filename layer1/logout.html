@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Log out msg | redirects to login page-->
+<!--Log out msg | redirects to login page | closes the session for the current user-->
 <html>
 
 <head>
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style1.css">
   <script>
     function pageRedirect() {
-      window.location.replace("home/home.html");
+      window.location.replace("../home/home.html");
     }
     setTimeout("pageRedirect()", 3000);
   </script>
