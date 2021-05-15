@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--prompts invalid signup msg | redirects to login page-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Redirect</title>
+  <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="error.css">
+  <script>
+    function pageRedirect() {
+      window.location.replace("dashboard.html");
+    }
+    setTimeout("pageRedirect()", 2000);
+  </script>
+</head>
+
+<body>
+  <div class="headerrr">
+    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+  </div>
+  <form class="logfor">
+    <h2>Changes could NOT be saved</h2><br>
+    <h1>Try Later</h1>
+    <img src="img1/shrug.png" width="120px" height="120px" /><br><br>
+    <div class="txtb">
+      <p>You are being redirected to Dashboard in a few seconds.</p>
+    </div>
+  </form>
+</body>
+
+</html>

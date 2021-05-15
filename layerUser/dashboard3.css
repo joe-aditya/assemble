@@ -1,0 +1,148 @@
+.jumbotron {
+  margin-top: 0px;
+background-color:black;
+  margin-bottom: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.jumbotron h1 {
+  text-align:center;
+}
+
+.alert {
+  margin: 0px;
+}
+
+.bs-example {
+  margin:0px;
+  position: sticky;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+#sidebar{
+background-color:#34495e;
+width:250px;
+float:left;
+height:900px;
+}
+
+#sidebar-right{
+background-color:#333;
+width:400px;
+float:right;
+height:900px;
+
+}
+
+#sidebar-right h1{
+color:ivory;
+}
+
+
+#sidebar-right a{
+text-decoration: none;
+
+}
+
+#sidebar-right a li{
+overflow: hidden;
+color:ivory;
+padding-bottom:5px;
+padding-top: 50px;
+}
+
+#sidebar-right li:hover{
+color:#16a085;
+}
+
+#sidebar h1{
+color:ivory;
+}
+
+#sidebar a{
+text-decoration: none;
+
+}
+
+#sidebar a li{
+
+overflow: hidden;
+color:ivory;
+padding-bottom:3px;
+padding-top: 5px;
+}
+
+#sidebar li:hover{
+color:#16a085;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 0px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a {
+  color: white;
+}
+
+.glow {
+  text-decoration: none;
+  font-family: montserrat;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+}
