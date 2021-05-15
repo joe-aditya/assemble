@@ -12,7 +12,7 @@ $sql=1;//	"INSERT INTO try1table ( name, roll, user, pwd) VALUES ('$name','$roll
 
 if(mysqli_query($con, $sql)){
 	echo "Records inserted successfully. ";
-	header("Location:/layer2/dashboard.html");
+	header("Location:/layerUser/dashboard.html");
 	//BRO- on proper setups, it should open the dashboard of respective user tat is received from
 	//setup_profile_1.php
 }
