@@ -1,30 +1,76 @@
-<?php
-#insert signup data in db/redirects accordingly
-include 'config.php';
-$name=$_POST["name"];
-$roll=$_POST["roll"];
-$user=$_POST["user"];
-$pwd=$_POST["pwd"];
+<!DOCTYPE html>
+<!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
+<html>
 
-$sql=1;//	"INSERT INTO try1table ( name, roll, user, pwd) VALUES ('$name','$roll','$user','$pwd')";
-//SQL- Change the query above after creating the database n user table
-// And change the form datatype in setup_profile_1.html to match the fields in table
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+  <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="style1.css">
+  <script>
+    function datacheck() {
+      var arr = document.getElementById("roll").value;
+      var rolltype = Number(arr);
+      var rolllen = arr.length;
+      if (document.getElementById("name").value == "" || document.getElementById("user").value == "") {
+        window.location.href = "signup.html";
+        window.alert("Do NOT leave any field blank.");
+      } else if (document.getElementById("pwd").value != document.getElementById("pwdc").value) {
+        window.location.href = "signup.html";
+        window.alert("Confirmation password does NOT match.\nPlease Re-enter your credentials.");
+      } else if (rolltype != arr) {
+        window.location.href = "signup.html";
+        window.alert("Register number should contain ONLY numbers\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
+      } else if (rolllen != 8) {
+        window.location.href = "signup.html";
+        window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
+      }
+    }
 
-if(mysqli_query($con, $sql)){
-	echo "Records inserted successfully. ";
-	header("Location:/layerUser/dashboard.html");
-	//BRO- on proper setups, it should open the dashboard of respective user tat is received from
-	//setup_profile_1.php
-}
-else{
-	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:invalidsetup2.html");
-}//redirects to setup_profile_2.html page if credentials arent inserte
-// BRO - this should go to dashboard of user with uname=luname/$uname
-//localhost/assemble/setup_profile_1.html pota it shldnt go to any page
-//sessions smthng use pannanum which idk so later clarify how it works
+  </script>
+</head>
 
+<body>
 
-mysqli_close($con);
+  <div class="setHead">
+    <a href="logout.html"><input type="button" class="outbtn" value="Logout"></a>
+    <!--BRO - should logout the proper user -luname got from login.html/$uname as used in login.php-->
+  </div>
+  <div>
+    <form action="setup_profile_2.php" class="setform signform" method="POST">
+      <h1>The important part - your skills!</h1>
 
-?>
+      <div class="txtb">Interest: <!-- CSS - work on apprearance-->
+        <select name="interest" id="interest" required>
+          <option value="Coding">Programming</option>
+          <option value="Music">Music</option>
+          <option value="Sports">Dance</option>
+          <option value="Sports">Sports</option>
+          <option value="Arts">Artwork</option>
+          <option value="Arts">Cooking</option>
+          <option value="Filming">Filming</option>
+        </select>
+      </div>
+
+      <div class="txtb">Skills:<br>
+        <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field" >
+        </textarea><!-- CSS - placeholder text isnt visible by default-->
+      </div>
+
+      <div class="txtb">Experience:
+        <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!" >
+        </textarea>
+      </div>
+
+      <div class="txtb">Project links/description:
+        <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!" >
+        </textarea>
+      </div>
+
+      <input type="submit" class="logbtn" onclick=datacheck() value="Submit ">
+      <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
+    </form>
+  </div>
+</body>
+
+</html>

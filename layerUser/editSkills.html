@@ -27,7 +27,7 @@
       }
     }
     function goBack() {
-      window.location.href = "dashboard.html";
+      window.location.href = "dashboard.php";
       //window.alert("Get youself signed up to create your account.");
     }
   </script>
@@ -39,11 +39,14 @@
   </div>
 
   <div>
-    <form action="setup_profile_2.php" class="setform signform" method="POST">
-      <h1>The important part - your skills!</h1>
+    <form action="setup_profile_2.php" class="setform editform" method="POST">
+      <h1>My skills</h1>
 
       <div class="txtb">Interest: <!-- CSS - work on apprearance-->
-        <select name="cars" id="cars" required>
+        <select name="interest" id="interest" required>
+          <option value="<prvsly selected option>" selected disabled hidden>
+          Prvsly selected option
+          </option>
           <option value="Coding">Programming</option>
           <option value="Music">Music</option>
           <option value="Sports">Dance</option>
@@ -55,20 +58,22 @@
       </div>
 
       <div class="txtb">Skills:<br>
-        <textarea maxlength=50 id="ubio" name="ubio" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field" >
+        <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field" >
         </textarea><!-- CSS - placeholder text isnt visible by default-->
       </div>
 
       <div class="txtb">Experience:
-        <input type="text" id="uorg" name="uorg" placeholder="Tell us about your niche!" />
+        <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!" >
+        </textarea>
       </div>
 
       <div class="txtb">Project links/description:
-        <input type="text" id="usm" name="usm" placeholder="Help others find your works!" />
+        <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!" >
+        </textarea>
       </div>
 
       <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
-      <input type="button" class="logbtn2" onclick=editSkills() value="Save">
+      <input type="button" class="logbtn2" onclick=editSkills() value="Save Changes">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
     </form>
   </div>

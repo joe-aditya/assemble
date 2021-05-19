@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <title>Sign Up</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
       var arr = document.getElementById("roll").value;
@@ -26,34 +26,45 @@
         window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
       }
     }
-
+    function goBack() {
+      window.location.href = "dashboard.php";
+      //window.alert("Get youself signed up to create your account.");
+    }
   </script>
 </head>
 
 <body>
-
-  <div class="setHead">
-    <a href="logout.html"><input type="button" class="outbtn" value="Logout"></a>
-    <!--BRO - should logout the proper user -luname got from login.html/$uname as used in login.php-->
+  <div class="headerrr">
+    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
   </div>
-  <div>
-    <form action="setup_profile_1.php" class="setform signform" method="POST">
-      <h1>Lets setup your profile!</h1>
 
-      <div class="txtb">Organisation Name:
-        <input type="text" id="uorg" name="uorg" placeholder="School/College/University/Workplace" />
+  <div>
+    <form action="setup_profile_1.php" class="setform editform" method="POST">
+      <h1>Create a Team</h1>
+    <div class="scroll">
+      <div class="txtb">Team Name:
+        <input type="text" id="team_name" name="team_name" placeholder="Give a name to your team" />
       </div>
 
-      <div class="txtb">Bio:<br>
-        <textarea maxlength=50 id="ubio" name="ubio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!" >
+      <div class="txtb">Purpose:<br>
+        <textarea maxlength=50 id="purpose" name="purpose" rows="2" cols="10" wrap="soft" placeholder="Reason to create this team" >
         </textarea><!-- CSS - placeholder text isnt visible by default-->
       </div>
 
-      <div class="txtb">Social-media links:
-        <input type="text" id="usm" name="usm" placeholder="Help others find you on other platforms!" />
+      <div class="txtb">Skillset needed:
+        <textarea maxlength=50 id="skills_needed" name="skills_needed" rows="4" cols="10" wrap="soft"  placeholder="What skillsets are you looking for!" >
+        </textarea>
+      </div>
+      <div class="txtb">Criteria:
+        <input type="text" id="criteria" name="criteria" placeholder="Mention the experience level you are looking for" />
+      </div>
+      <div class="txtb">Number of members needed:
+        <input type="number" id="members_needed" name="members_needed" min="1" max="999" value="1">
+      </div>
       </div>
 
-      <input type="submit" class="logbtn" onclick=datacheck() value="Next">
+      <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
+      <input type="button" class="logbtn2" onclick=dataCheck() value="Create">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
     </form>
   </div>

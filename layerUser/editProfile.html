@@ -27,7 +27,7 @@
       }
     }
     function goBack() {
-      window.location.href = "dashboard.html";
+      window.location.href = "dashboard.php";
       //window.alert("Get youself signed up to create your account.");
     }
   </script>
@@ -39,22 +39,57 @@
   </div>
 
   <div>
-    <form action="setup_profile_1.php" class="setform signform" method="POST">
-      <h1>Lets setup your profile!</h1>
+    <form action="setup_profile_1.php" class="setform editform" method="POST">
+      <h1>My profile</h1>
+<div class="scroll">
 
-      <div class="txtb">Organisation Name:
-        <input type="text" id="uorg" name="uorg" placeholder="School/College/University/Workplace" />
-      </div>
+    <div class="txtb">Username:
+      <input type="text" id="uname" name="uname" placeholder="Username" />
+    </div>
 
-      <div class="txtb">Bio:<br>
-        <textarea maxlength=50 id="ubio" name="ubio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!" >
-        </textarea><!-- CSS - placeholder text isnt visible by default-->
-      </div>
+    <div class="txtb">Bio:<br>
+      <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!" >
+      </textarea><!-- CSS - placeholder text isnt visible by default-->
+    </div>
 
-      <div class="txtb">Social-media links:
-        <input type="text" id="usm" name="usm" placeholder="Help others find you on other platforms!" />
-      </div>
+    <div class="txtb">Organisation Name:
+      <input type="text" id="org_name" name="org_name" placeholder="School/College/University/Workplace" />
+    </div>
 
+<h2>Contact info</h2>
+    <div class="txtb">Social-media links:
+      <input type="text" id="sm_link" name="sm_link" placeholder="Help others find you on other platforms!" />
+    </div>
+
+    <div class="txtb">Mail-ID
+      <input type="email" id="mail" name="mail" placeholder="mailID@mail.com" />
+    </div>
+
+    <div class="txtb">Phone number:
+      <input type="text" id="phno" name="phno" placeholder="Phone number" />
+    </div>
+
+<h2>Personal info</h2>
+    <div class="txtb">Name:
+      <input type="text" id="name" name="name" placeholder="Name" />
+    </div>
+
+    <div class="txtb">Date of Birth
+      <input type="date" id="dob" name="dob" placeholder="dd-mm-yyyy" />
+    </div>
+    <!-- BRO CSS - if I change type="date", my format is 12/May/2021... DB la epdi store aagum
+    or better I leave it as text input? And max date shld be todday's date -->
+
+    <p style="display:inline; position:relative; float:left; color:black; padding: 0px 5px 0px 5px;">
+      Gender:
+    <div style="color:#333;">
+      <input type="radio" name="sex" value="M"> Male
+      <input type="radio" name="sex" value="F"> Female
+      <!-- BRO - do we need id="sex" here? -->
+    </div>
+    </p>
+<br><br>
+</div>
       <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
       <input type="button" class="logbtn2" onclick=editProfile() value="Save">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->

@@ -1,3 +1,13 @@
+<?php
+/*
+session_start();
+if(!isset($_SESSION['uname'])){
+echo "<script>window.location.href='login.php';</script>";//BRO
+}else{
+  $uname=$_SESSION['uname'];
+*/
+?>
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -58,7 +68,7 @@
         <a href="editSkills.html">
           <li>EDIT SKILLS</li>
         </a>
-        <a href="#">
+        <a href="createTeam.html">
           <li>CREATE A TEAM</li>
         </a>
         <a href="#">
@@ -76,12 +86,11 @@
 
   <div class="container" id="sidebar-right">
     <div class="row">
+      <div class="cardd-r">
+        <h2>TEAM DETAILS</h2>
 
-      <h1>TEAM DETAILS</h1>
 
-      <ul>
-        <a href="#">
-          <li>ADD TEAM</li>
+          <h5>ADD TEAM</h5>
           <div class="input-group">
             <div class="input-group">
               <span class="input-group"></span>
@@ -95,59 +104,81 @@
             <input type="text" class="form-control input_pass" value="" placeholder="">
           </div>
           <div class="d-flex justify-content-center  login_container">
-            <input type="submit" class="logbtn1" value="JOIN">
+            <input type="submit" class="logbtn1" value="SEND REQUEST">
 
           </div>
-        </a>
-      </ul>
     </div>
   </div>
-  <div class="a">
+</div>
+
     <br><br>
 
     <div class="grid-container" >
       <div class="grid-item" >
         <div class="card" style="padding: 60px 60px 60px 60px;">
-          <div class="container">
+          <div class=" cardd container">
             <div class="row">
               <div class="col-sm-12">
                 <div class="d-flex justify-content-center">
                   <div class="brand_logo_container">
 
                   </div>
-                </div><br>
-                <h4>TEAM</h4>
+                </div>
+
+              <h3 style="display:inline">TEAM:</h3> <h4 style="display:inline">Team_Name from DB</h4>
+
                 <div class="d-flex justify-content-center form_container">
                   <form>
+<br>
                     <div class="input-group">
                       <div class="input-group-append">
-                        <span class="input-group"></span>
+                        <span class="input-group-text">Motive:</span>
                       </div>
-
-                      Team Name:
-                      <p class="form-control input_user" ></p>
+                      <p class="form-control " >Purpose from DB<br>sdafghj</p>
                     </div>
+
                     <div class="input-group">
                       <div class="input-group-append">
-                        <span class="input-group"></span>
+                        <span class="input-group-text">Looking for:</span>
                       </div>
-                      Motive:
-                      <p class="form-control " ></p>
+                      <p class="form-control " >Skills_needed from DB</p>
                     </div>
-                    <form>
-                      <br>
-                      <br>
 
+                  </form>
                 </div>
+
+                  <h3 style="display:inline">CREATOR:</h3> <h4 style="display:inline">creator_name from DB</h4>
+
+                  <div class="input-group">
+                    <div class="input-group-append">
+                      <span class="input-group-text">skill-set:</span>
+                    </div>
+                    <p class="form-control " >skills from DB</p>
+                  </div>
+
+                  <div class="input-group">
+                    <div class="input-group-append">
+                      <span class="input-group-text">Contact:</span>
+                    </div>
+                    <p class="form-control " >skills from ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss </p>
+                  </div>
               </div>
             </div>
-            <input type="button" class="logbtn1" onclick=prvs() value="Prvs">
-            <input type="button" class="logbtn2" onclick=next() value="Next">
-          </div>
 
+          </div>
+          <div class="row d-flex justify-content-center">
+          <input type="button" class="logbtn1" onclick=prvs() value="Prvs">
+          <input type="button" class="logbtn2" onclick=next() value="Next">
+        </div>
         </div>
       </div>
-
+    </div>
 </body>
 
 </html>
+
+<?php
+/*
+}
+*/
+?>
