@@ -2,10 +2,16 @@
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
 <!-- if this setup is done, redirect to setup_profile_2.html -->
+
 <head>
   <meta charset="utf-8">
   <title>Sign Up</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
@@ -26,75 +32,94 @@
         window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
       }
     }
+
     function goBack() {
       window.location.href = "dashboard.php";
       //window.alert("Get youself signed up to create your account.");
     }
   </script>
 </head>
+<div class="headerrr">
+  <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+</div>
 
-<body>
-  <div class="headerrr">
-    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
-  </div>
+<div class="bs-example">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+      <div class="navbar-nav; style:bottom">
+        <a href="#profileInfo"><input type="button" class="btn btn-info" value="Profile Info"></a>
+        <a href="#contactInfo"><input type="button" class="btn btn-info" value="Contact Info"></a>
+        <a href="#personalInfo"><input type="button" class="btn btn-info" value="Personal Info"></a>
 
-  <div>
-    <form action="setup_profile_1.php" class="setform editform" method="POST">
-      <h1>My profile</h1>
-<div class="scroll">
-
-    <div class="txtb">Username:
-      <input type="text" id="uname" name="uname" placeholder="Username" />
+      </div>
     </div>
 
-    <div class="txtb">Bio:<br>
-      <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!" >
+    <div class="navbar-nav">
+      <a href="../layerAuthentication/logout.html"><input type="button" class="outbtn" value="Logout"></a>
+    </div>
+  </nav>
+</div>
+
+<div>
+  <form action="setup_profile_1.php" style="padding:15px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <h1>My profile</h1>
+
+    <div class="scroll">
+      <div id="profileInfo" class="txtb">Username:
+        <input type="text" id="uname" name="uname" placeholder="Username" />
+      </div>
+
+      <div class="txtb">Bio:<br>
+        <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!">
       </textarea><!-- CSS - placeholder text isnt visible by default-->
-    </div>
+      </div>
 
-    <div class="txtb">Organisation Name:
-      <input type="text" id="org_name" name="org_name" placeholder="School/College/University/Workplace" />
-    </div>
+      <div class="txtb">Organisation Name:
+        <input type="text" id="org_name" name="org_name" placeholder="School/College/University/Workplace" />
+      </div>
+      <br id="contactInfo">
+      <h2>Contact info</h2>
+      <div class="txtb">Social-media links:
+        <input type="text" id="sm_link" name="sm_link" placeholder="Help others find you on other platforms!" />
+      </div>
 
-<h2>Contact info</h2>
-    <div class="txtb">Social-media links:
-      <input type="text" id="sm_link" name="sm_link" placeholder="Help others find you on other platforms!" />
-    </div>
+      <div class="txtb">Mail-ID
+        <input type="email" id="mail" name="mail" placeholder="mailID@mail.com" />
+      </div>
 
-    <div class="txtb">Mail-ID
-      <input type="email" id="mail" name="mail" placeholder="mailID@mail.com" />
-    </div>
+      <div class="txtb">Phone number:
+        <input type="text" id="phno" name="phno" placeholder="Phone number" />
+      </div>
+      <br>
+      <h2 id="personalInfo">Personal info</h2>
+      <div class="txtb">Name:
+        <input type="text" id="name" name="name" placeholder="Name" />
+      </div>
 
-    <div class="txtb">Phone number:
-      <input type="text" id="phno" name="phno" placeholder="Phone number" />
-    </div>
-
-<h2>Personal info</h2>
-    <div class="txtb">Name:
-      <input type="text" id="name" name="name" placeholder="Name" />
-    </div>
-
-    <div class="txtb">Date of Birth
-      <input type="date" id="dob" name="dob" placeholder="dd-mm-yyyy" />
-    </div>
-    <!-- BRO CSS - if I change type="date", my format is 12/May/2021... DB la epdi store aagum
+      <div class="txtb">Date of Birth
+        <input type="date" id="dob" name="dob" placeholder="dd-mm-yyyy" />
+      </div>
+      <!-- BRO CSS - if I change type="date", my format is 12/May/2021... DB la epdi store aagum
     or better I leave it as text input? And max date shld be todday's date -->
 
-    <p style="display:inline; position:relative; float:left; color:black; padding: 0px 5px 0px 5px;">
-      Gender:
-    <div style="color:#333;">
-      <input type="radio" name="sex" value="M"> Male
-      <input type="radio" name="sex" value="F"> Female
-      <!-- BRO - do we need id="sex" here? -->
+      <p style="display:inline; position:relative; float:left; color:black; padding: 0px 5px 0px 5px;">
+        Gender:
+      <div style="color:#333;">
+        <input type="radio" name="sex" value="M"> Male
+        <input type="radio" name="sex" value="F"> Female
+        <!-- BRO - do we need id="sex" here? -->
+      </div>
+      </p>
+      <br><br>
     </div>
-    </p>
-<br><br>
+    <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
+    <input type="button" class="logbtn2" onclick=editProfile() value="Save">
+    <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
+  </form>
 </div>
-      <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
-      <input type="button" class="logbtn2" onclick=editProfile() value="Save">
-      <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
-    </form>
-  </div>
 </body>
 
 </html>

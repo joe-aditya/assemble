@@ -1,0 +1,160 @@
+<!--
+<?php
+/*
+session_start();
+if(!isset($_SESSION['uname'])){
+echo "<script>window.location.href='login.php';</script>";//BRO
+}else{
+  $uname=$_SESSION['uname'];
+*/
+?>
+-->
+<!DOCTYPE html>
+<!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+  <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="dashboard.css">
+
+  <script>
+    function viewMyTeam() {
+      window.location.href = "viewMyTeam.html";
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <div class="headerrr">
+    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+  </div>
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+        <div class="navbar-nav; style:bottom">
+          <!--
+          <input type="button" class="btn btn-info" value="All Teams">
+          <input type="button" class="btn btn-info" value="Music">
+          <input type="button" class="btn btn-info" value="Programming">
+          <input type="button" class="btn btn-info" value="Sports">
+          <input type="button" class="btn btn-info" value="Filmaking">
+          <input type="button" class="btn btn-info" value="Artwork">
+          <input type="button" class="btn btn-info" value="Global">
+          -->
+        </div>
+      </div>
+
+      <div class="navbar-nav">
+        <a href="../layerAuthentication/logout.html"><input type="button" class="outbtn" value="Logout"></a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container" id="sidebar">
+    <div class="row">
+      <h1>HELLO</h1>
+      <ul>
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="img2/avatar.png" height="150px" width="150px">
+          </div>
+
+        </div>
+        <a href="editProfile.html">
+          <li>EDIT PROFILE</li>
+        </a>
+        <a href="editSkills.html">
+          <li>EDIT SKILLS</li>
+        </a>
+        <a href="createTeam.html">
+          <li>CREATE A TEAM</li>
+        </a>
+        <a href="dashboard.php">
+          <li>DASHBOARD</li>
+        </a>
+        <a href="myRequests.html">
+          <li>MY REQUESTS</li>
+        </a>
+        <a href="teamsJoined.html">
+          <li>TEAMS JOINED</li>
+        </a>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <div class="card" style="background-color: inherit; padding: 33px 60px 37px 60px;">
+        <div class=" cardd container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+
+                </div>
+              </div>
+
+              <h2 style="display:inline"><img src="../home/logoooo.png" height="50px" width="50px">SSEMBLED | <a href="myTeams.html">My Teams</a> </h2>
+              <hr>
+
+              <div class="txtscroll" style="height:381px;">
+
+                <div class="container-fluid p-0" id="enrolledcourses">
+                  <div class="container">
+                    <div class="row">
+
+                      <div class="col-md-3 myteambox">
+                        <form>
+                          <h5>
+                            <center>Team_Name</center>
+                          </h5>
+                          <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
+                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                          </p>
+                              <input type="button" id="view_my_team" class="myteam_btn" onclick=viewMyTeam() value="View Team">
+                        </form>
+                      </div>
+
+                      <div class="col-md-3 myteambox">
+                        <form>
+                          <h5>
+                            <center>Team_Name</center>
+                          </h5>
+                          <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
+                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                          </p>
+                          <i class="fas fa-eye" style="font-size:30px;"></i>
+                        </form>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+                <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+              </div>
+            </div>
+            <br>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+</body>
+
+</html>

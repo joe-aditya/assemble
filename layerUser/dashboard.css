@@ -86,6 +86,81 @@ padding-top: 5px;
 color:#16a085;
 }
 
+.requestbox{
+    border:1px solid grey;
+    height:160px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.request_unsend_btn{
+  border-style:none;
+  text-align:center;
+  padding:1px 3px;
+  background-color: inherit;
+
+}
+
+.request_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
+.joinedbox{
+    border:1px solid grey;
+    height:163px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.joined_btn{
+  border:2px solid #2e856e;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#f1f1f1;
+  border-radius: 10px;
+}
+
+.joined_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
+.myteambox{
+    border:1px solid grey;
+    height:163px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.myteam_btn{
+  border:2px solid #2e856e;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#f1f1f1;
+  border-radius: 10px;
+}
+
+.myteam_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
 .scroll{
 	margin:4px,
 	4px;padding:4px;
@@ -233,7 +308,7 @@ text-align:left;
 
 .editform h1{
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .logbtn1{
@@ -317,7 +392,7 @@ text-align:left;
   border-radius: 20px;
   padding-bottom: 20px;
   padding-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .cardd-r{

@@ -71,13 +71,13 @@ echo "<script>window.location.href='login.php';</script>";//BRO
         <a href="createTeam.html">
           <li>CREATE A TEAM</li>
         </a>
-        <a href="#">
+      <a href="myTeams.html">
           <li>MY TEAMS</li>
         </a>
-        <a href="#">
+        <a href="myRequests.html">
           <li>MY REQUESTS</li>
         </a>
-        <a href="#">
+        <a href="teamsJoined.html">
           <li>TEAMS JOINED</li>
         </a>
       </ul>
@@ -136,7 +136,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
     <div class="grid-container" >
       <div class="grid-item" >
-        <div class="card" style="padding: 40px 60px 37px 60px;">
+        <div class="card" style="background-color: inherit; padding: 33px 60px 37px 60px;">
           <div class=" cardd container">
             <div class="row">
               <div class="col-sm-12">
@@ -189,12 +189,13 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                   </div>
               </div>
             </div>
-
+            <br>
+            <div class="row d-flex justify-content-center">
+            <input type="button" class="logbtn1" onclick=prvs() value="Prvs">
+            <input type="button" class="logbtn2" onclick=next() value="Next">
           </div>
-          <div class="row d-flex justify-content-center">
-          <input type="button" class="logbtn1" onclick=prvs() value="Prvs">
-          <input type="button" class="logbtn2" onclick=next() value="Next">
-        </div>
+          </div>
+
         </div>
       </div>
     </div>

@@ -6,6 +6,11 @@
   <meta charset="utf-8">
   <title>Sign Up</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
@@ -26,6 +31,7 @@
         window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
       }
     }
+
     function goBack() {
       window.location.href = "dashboard.php";
       //window.alert("Get youself signed up to create your account.");
@@ -38,14 +44,35 @@
     <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
   </div>
 
-  <div>
-    <form action="setup_profile_2.php" class="setform editform" method="POST">
-      <h1>My skills</h1>
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
-      <div class="txtb">Interest: <!-- CSS - work on apprearance-->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+        <div class="navbar-nav; style:bottom">
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="navbar-nav">
+        <a href="../layerAuthentication/logout.html">
+          <input type="button" class="outbtn" value="Logout" >
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <div>
+    <form action="setup_profile_2.php" style="padding:15px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <h1>My skills</h1>
+
+<div class="scroll">
+      <div class="txtb">Interest:
+        <!-- CSS - work on apprearance-->
         <select name="interest" id="interest" required>
           <option value="<prvsly selected option>" selected disabled hidden>
-          Prvsly selected option
+            Prvsly selected option
           </option>
           <option value="Coding">Programming</option>
           <option value="Music">Music</option>
@@ -57,21 +84,21 @@
         </select>
       </div>
 
-      <div class="txtb">Skills:<br>
-        <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field" >
+      <div class="txtb" style="padding: 0px 0px 0px 0px;">Skills:<br>
+        <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field">
         </textarea><!-- CSS - placeholder text isnt visible by default-->
       </div>
 
-      <div class="txtb">Experience:
-        <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!" >
+      <div class="txtb" style="padding: 0px 0px 0px 0px;">Experience:
+        <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!">
         </textarea>
       </div>
 
-      <div class="txtb">Project links/description:
-        <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!" >
+      <div class="txtb" style="padding: 0px 0px 0px 0px;">Project links/description:
+        <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!">
         </textarea>
       </div>
-
+</div>
       <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
       <input type="button" class="logbtn2" onclick=editSkills() value="Save Changes">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
