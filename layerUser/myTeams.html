@@ -19,7 +19,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 <body>
 
   <div class="headerrr">
-    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+    <p class="header_textt glow">ASSEMBLE</p>
   </div>
 
   <div class="bs-example">
@@ -66,32 +66,36 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
   <div class="container" id="sidebar">
     <div class="row">
-      <h1>HELLO</h1>
-      <ul>
-        <div class="d-flex justify-content-center">
-          <div class="brand_logo_container">
-            <img src="img2/avatar.png" height="150px" width="150px">
-          </div>
 
+      <ul>
+        <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
+          <div class="brand_logo_container">
+            <img src="img2/avatar.png">
+          </div>
         </div>
-        <a href="editProfile.html">
-          <li>EDIT PROFILE</li>
-        </a>
-        <a href="editSkills.html">
-          <li>EDIT SKILLS</li>
-        </a>
-        <a href="createTeam.html">
-          <li>CREATE A TEAM</li>
-        </a>
+
+        <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
+          @m_m_m_m_m_m_m_m_m_m_
+        </p>
+
         <a href="dashboard.php">
-          <li>DASHBOARD</li>
-        </a>
-        <a href="myRequests.html">
-          <li>MY REQUESTS</li>
-        </a>
-        <a href="teamsJoined.html">
-          <li>TEAMS JOINED</li>
-        </a>
+            <li><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></li>
+          </a>
+          <a href="createTeam.html">
+            <li><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></li>
+          </a>
+          <a href="teamsJoined.html">
+            <li><i class="fas fa-project-diagram" style="font-size:25px;"> Teams Joined</i></li>
+          </a>
+          <a href="myRequests.html">
+            <li><i class="fas fa-envelope" style="font-size:25px;"> Sent Requests</i></li>
+          </a>
+          <a href="editSkills.html">
+            <li><i class="fas fa-edit" style="font-size:25px;"> Update Skills</i></li>
+          </a>
+          <a href="editProfile.html">
+            <li><i class="fas fa-user-cog" style="font-size:25px;"> My Profile</i></li>
+          </a>
       </ul>
     </div>
   </div>
@@ -108,10 +112,10 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 </div>
               </div>
 
-              <h2 style="display:inline">My Teams | <a href="assembled.html"><img src="../home/logoooo.png" height="50px" width="50px">SSEMBLED</a> </h2>
-              <hr>
+              <h2 style="display:inline; padding-left: 13px;">My Teams | <a href="assembled.html"><img src="../home/logoooo.png" height="50px" width="50px">SSEMBLED</a> </h2>
+              <hr style="margin-top:5px;">
 
-              <div class="txtscroll" style="height:381px;">
+              <div class="txtscroll" style="height:390px;">
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">

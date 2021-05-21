@@ -9,9 +9,11 @@
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
@@ -63,63 +65,66 @@
   </nav>
 </div>
 
-<div>
-  <form action="setup_profile_1.php" style="padding:15px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
-    <h1>My profile</h1>
 
-    <div class="scroll">
-      <div id="profileInfo" class="txtb">Username:
-        <input type="text" id="uname" name="uname" placeholder="Username" />
-      </div>
-
-      <div class="txtb">Bio:<br>
-        <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!">
-      </textarea><!-- CSS - placeholder text isnt visible by default-->
+<div class="container" id="sidebar">
+  <div class="row">
+    <ul>
+      <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
+        <div class="brand_logo_container">
+          <img src="img2/avatar.png">
+        </div>
       </div>
 
-      <div class="txtb">Organisation Name:
-        <input type="text" id="org_name" name="org_name" placeholder="School/College/University/Workplace" />
-      </div>
-      <br id="contactInfo">
-      <h2>Contact info</h2>
-      <div class="txtb">Social-media links:
-        <input type="text" id="sm_link" name="sm_link" placeholder="Help others find you on other platforms!" />
-      </div>
-
-      <div class="txtb">Mail-ID
-        <input type="email" id="mail" name="mail" placeholder="mailID@mail.com" />
-      </div>
-
-      <div class="txtb">Phone number:
-        <input type="text" id="phno" name="phno" placeholder="Phone number" />
-      </div>
-      <br>
-      <h2 id="personalInfo">Personal info</h2>
-      <div class="txtb">Name:
-        <input type="text" id="name" name="name" placeholder="Name" />
-      </div>
-
-      <div class="txtb">Date of Birth
-        <input type="date" id="dob" name="dob" placeholder="dd-mm-yyyy" />
-      </div>
-      <!-- BRO CSS - if I change type="date", my format is 12/May/2021... DB la epdi store aagum
-    or better I leave it as text input? And max date shld be todday's date -->
-
-      <p style="display:inline; position:relative; float:left; color:black; padding: 0px 5px 0px 5px;">
-        Gender:
-      <div style="color:#333;">
-        <input type="radio" name="sex" value="M"> Male
-        <input type="radio" name="sex" value="F"> Female
-        <!-- BRO - do we need id="sex" here? -->
-      </div>
+      <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
+        @m_m_m_m_m_m_m_m_m_m_
       </p>
-      <br><br>
-    </div>
-    <input type="button" class="logbtn1" onclick=goBack() value="Cancel">
-    <input type="button" class="logbtn2" onclick=editProfile() value="Save">
-    <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
-  </form>
+      <br>
+      <a href="dashboard.php">
+        <li><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></li>
+      </a>
+    </ul>
+  </div>
 </div>
+
+<div class="grid-container">
+  <div class="grid-item">
+    <div class="card" style="background-color: inherit; padding: 33px 60px 37px 60px;">
+      <div class=" cardd container">
+        <div class="row">
+          <div class="col-sm-12">
+
+
+            <h2 style="display:inline; padding-left: 13px;">My Profile</h2>
+            <hr>
+
+            <div class="txtscroll" style="height:393px;">
+
+              <div class="container-fluid p-0" id="enrolledcourses">
+                <div class="container">
+                  <div class="row">
+
+                    <p>CHANGE PIC</p>
+                    <form action="">
+                      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="color: white;">
+                      <input type="submit" value="Change">
+                    </form>
+
+
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+            </div>
+          </div>
+          <br>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
 </body>
 
 </html>

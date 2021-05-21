@@ -1,8 +1,6 @@
-<?php
-session_start();
-if(isset($_SESSION['uname'])){
-    echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
-}else{
+<?php /*
+
+*/
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +29,8 @@ if(isset($_SESSION['uname'])){
                  $('#error').html(result);
              })
          }
-     }
+     }*/
 
-  /*  function empty() {
-      if (document.getElementById("luname").value == "" || document.getElementById("lpwd").value == "") {
-        window.location.href = "login.php";
-        //window.alert("Enter BOTH Username and Password.");//TS
-        //TS- send above msg to invalidlogin.html instead of alert
-      }
-    } */
   </script>
 </head>
 
@@ -51,15 +42,12 @@ if(isset($_SESSION['uname'])){
       <div class="txtb">
         <input type="text" id="luname" name="luname" placeholder="Username" />
       </div>
-      <!-- username is sent to login.php as luname for authentication-->
 
       <div class="txtb">
         <input type="password" id="lpwd" name="lpwd" placeholder="Password" />
       </div>
-      <!--password is sent to login.php as lpwd for authentication-->
 
       <input type="button" class="logbtn" onclick=verifyLogin() value="Login">
-      <!--Checks if the uname & pwd fiels are empty before submiting-->
 
       <div class="bottom-text">
         <div class="halo">
@@ -76,7 +64,3 @@ if(isset($_SESSION['uname'])){
 </body>
 
 </html>
-
-<?php
-}
-?>

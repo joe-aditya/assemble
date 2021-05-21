@@ -19,7 +19,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 <body>
 
   <div class="headerrr">
-    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+    <p class="header_textt glow">ASSEMBLE</p>
   </div>
 
   <div class="bs-example">
@@ -64,31 +64,35 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
   <div class="container" id="sidebar">
     <div class="row">
-      <h1>HELLO</h1>
       <ul>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png" height="150px" width="150px">
+            <img src="img2/avatar.png">
           </div>
-
         </div>
-        <a href="editProfile.html">
-          <li>EDIT PROFILE</li>
+
+        <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
+          @m_m_m_m_m_m_m_m_m_m_
+        </p>
+
+        <a href="myTeams.html">
+          <li><i class="fas fa-users" style="font-size:25px;"> My Teams</i></li>
         </a>
-        <a href="editSkills.html">
-          <li>EDIT SKILLS</li>
-        </a>
+
         <a href="createTeam.html">
-          <li>CREATE A TEAM</li>
-        </a>
-      <a href="myTeams.html">
-          <li>MY TEAMS</li>
-        </a>
-        <a href="myRequests.html">
-          <li>MY REQUESTS</li>
+          <li><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></li>
         </a>
         <a href="dashboard.php">
-          <li>DASHBOARD</li>
+          <li><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></li>
+        </a>
+        <a href="myRequests.html">
+          <li><i class="fas fa-envelope" style="font-size:25px;"> Sent Requests</i></li>
+        </a>
+        <a href="editSkills.html">
+          <li><i class="fas fa-edit" style="font-size:25px;"> Update Skills</i></li>
+        </a>
+        <a href="editProfile.html">
+          <li><i class="fas fa-user-cog" style="font-size:25px;"> My Profile</i></li>
         </a>
       </ul>
     </div>
@@ -106,7 +110,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 </div>
               </div>
 
-              <h2 style="display:inline">Teams Joined</h2>
+              <h2 style="display:inline; padding-left: 13px;">Teams Joined</h2>
               <hr>
 
               <div class="txtscroll" style="height:393px;">
@@ -121,9 +125,9 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                             <center>Team_Name</center>
                           </h5>
                           <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            62px for 2 lines n anything more will be scrollable sssssss
                           </p>
-                              <input type="button" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
+                          <input type="button" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
                         </form>
                       </div>
 
@@ -133,7 +137,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                             <center>Team_Name</center>
                           </h5>
                           <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssss sssssssssssssssssssssssss
                           </p>
                           <i class="fas fa-eye" style="font-size:30px;"></i>
                         </form>

@@ -33,8 +33,43 @@ width:250px;
 float:left;
 height: 900px;
 max-height:575px;
+text-align: left;
+padding-left: 30px;
 }
 
+#sidebar h2{
+color:ivory;
+padding-left: 9px;
+}
+
+#sidebar a{
+text-decoration: none;
+}
+
+#sidebar a li{
+overflow: hidden;
+width: 200px;
+color:ivory;
+padding-bottom:3px;
+padding-top:8px;
+border-width: 2px;
+border-style: none;
+border-radius: 13px;
+transform: scaleX(1.05) scaleY(1.05);
+}
+
+#sidebar a li:hover{
+color:#16a085;
+border-style: groove;
+transform: scaleX(1.05) scaleY(1.05);
+text-align: center;
+}
+
+#sidebar img{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
 #sidebar-right{
 background-color:#333;
 width:400px;
@@ -65,25 +100,11 @@ padding-top: 50px;
 color:#16a085;
 }
 
-#sidebar h1{
-color:ivory;
-}
-
-#sidebar a{
-text-decoration: none;
-
-}
-
-#sidebar a li{
-
-overflow: hidden;
-color:ivory;
-padding-bottom:3px;
-padding-top: 5px;
-}
-
-#sidebar li:hover{
-color:#16a085;
+.uname_box{
+  text-align:center;
+  padding:1px 3px;
+  color: white;
+  background-color:inherit;
 }
 
 .requestbox{
@@ -419,10 +440,38 @@ text-align:left;
 
 @-webkit-keyframes glow {
       from {
-        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #03ac13, 0 0 60px #03ac13, 0 0 70px #03ac13;
       }
 
       to {
-        text-shadow: 0 0 20px #00ff00, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #3498db, 0 0 40px #3498db, 0 0 50px #3498db, 0 0 60px #3498db, 0 0 70px #3498db, 0 0 80px #3498db;
       }
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 10px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
