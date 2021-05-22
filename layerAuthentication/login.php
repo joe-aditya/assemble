@@ -11,8 +11,10 @@
   <meta charset="utf-8">
   <title>Login</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="../layerUser/dashboard.css">
+
   <script>
      function verifyLogin(){
          if(!($('#luname').val() && $('#lpwd').val())){
@@ -35,8 +37,11 @@
 </head>
 
 <body>
+  <div class="headerrr">
+    <p class="header_textt glow">ASSEMBLE</p>
+  </div>
   <div>
-    <form class="logform"><!-- action="auth.php" class="logform" method="POST">-->
+    <form class="logform" style="margin-top:40px;"><!-- action="auth.php" class="logform" method="POST">-->
       <h1>Login</h1>
 
       <div class="txtb">

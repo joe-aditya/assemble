@@ -46,7 +46,7 @@ body{
   height: 580px;
   padding: 90px 40px 30px;
   border-radius: 20px;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
@@ -55,6 +55,23 @@ body{
 .logform h1{
   text-align: center;
   margin-bottom: 60px;
+}
+
+.signform{
+  width: 720px;
+  background: #f1f1f1;
+  height: 580px;
+  padding: 65px 40px;
+  border-radius: 20px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.signform h1{
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .txtb{
@@ -117,23 +134,6 @@ body{
   margin-top: 40px;
   text-align: center;
   font-size: 15px;
-}
-
-.signform{
-  width: 720px;
-  background: #f1f1f1;
-  height: 580px;
-  padding: 65px 40px;
-  border-radius: 20px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.signform h1{
-  text-align: center;
-  margin-bottom: 15px;
 }
 
 .logbtn1{

@@ -7,12 +7,15 @@
 }
 
 .test{
-  background-color: #000000;
+  background-color: #333333;
+
 }
+
 body{
   min-height: 100vh;
   background-image: linear-gradient(150deg,#3498db,#03ac13);
 }
+
 
 .headerrr{
   height: 80px;
@@ -26,6 +29,7 @@ body{
     font-size: 12;
     text-align:center;
 }
+
 
 #sidebar{
 background-color:#34495e;
@@ -70,6 +74,14 @@ text-align: center;
     height: 150px;
     width: 150px;
 }
+
+.uname_box{
+  text-align:center;
+  padding:1px 3px;
+  color: white;
+  background-color:inherit;
+}
+
 #sidebar-right{
 background-color:#333;
 width:400px;
@@ -100,62 +112,6 @@ padding-top: 50px;
 color:#16a085;
 }
 
-.uname_box{
-  text-align:center;
-  padding:1px 3px;
-  color: white;
-  background-color:inherit;
-}
-
-.requestbox{
-    border:1px solid grey;
-    height:160px;
-    margin:30px 45px 0 45px;
-    text-align:center;
-    padding:7px;
-    background-color:#A9DDD1;
-    border-radius: 10px;
-}
-
-.request_unsend_btn{
-  border-style:none;
-  text-align:center;
-  padding:1px 3px;
-  background-color: inherit;
-
-}
-
-.request_purpose{
-  border:1px solid white;
-  text-align:center;
-  padding:1px 3px;
-  background-color:#A9EED1;
-}
-
-.joinedbox{
-    border:1px solid grey;
-    height:163px;
-    margin:30px 45px 0 45px;
-    text-align:center;
-    padding:7px;
-    background-color:#A9DDD1;
-    border-radius: 10px;
-}
-
-.joined_btn{
-  border:2px solid #2e856e;
-  text-align:center;
-  padding:1px 3px;
-  background-color:#f1f1f1;
-  border-radius: 10px;
-}
-
-.joined_purpose{
-  border:1px solid white;
-  text-align:center;
-  padding:1px 3px;
-  background-color:#A9EED1;
-}
 
 .myteambox{
     border:1px solid grey;
@@ -182,6 +138,59 @@ color:#16a085;
   background-color:#A9EED1;
 }
 
+
+.joinedbox{
+    border:1px solid grey;
+    height:163px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.joined_btn{
+  border:2px solid #2e856e;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#f1f1f1;
+  border-radius: 10px;
+}
+
+.joined_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
+
+.requestbox{
+    border:1px solid grey;
+    height:160px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.request_unsend_btn{
+  border-style:none;
+  text-align:center;
+  padding:1px 3px;
+  background-color: inherit;
+
+}
+
+.request_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
+
 .scroll{
 	margin:4px,
 	4px;padding:4px;
@@ -199,6 +208,7 @@ overflow-y: auto;
 text-align:left;
 }
 
+/*
 .halo img:hover {
   box-shadow: 0 0 13px 1px rgba(0, 140, 186, 0.5);
   border-radius: 50px;
@@ -233,6 +243,7 @@ text-align:left;
   text-align: center;
   margin-bottom: 60px;
 }
+*/
 
 .txtb{
   border-bottom: 2px solid #adadad;
@@ -408,6 +419,7 @@ text-align:left;
       word-wrap: break-word;
 }
 
+
 .cardd{
   background-color: #f1f1f1;
   border-radius: 20px;
@@ -426,6 +438,7 @@ text-align:left;
   margin-left: 20px;
   margin-top: 50px;
 }
+
 
 .glow {
   text-decoration: none;
@@ -448,6 +461,7 @@ text-align:left;
       }
 }
 
+
 .alert {
   padding: 20px;
   background-color: #f44336;
@@ -460,6 +474,7 @@ text-align:left;
 .alert.success {background-color: #04AA6D;}
 .alert.info {background-color: #2196F3;}
 .alert.warning {background-color: #ff9800;}
+
 
 .closebtn {
   margin-left: 15px;
