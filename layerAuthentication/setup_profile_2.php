@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['uname'])){
+      echo "NOT VIEWABLE";
+  }else{
+  include 'config.php';
+    $uname=$_SESSION['uname'];
+?>
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -71,7 +80,7 @@
       </div>
 
       <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-        @m_m_m_m_m_m_m_m_m_m_
+        @<?php echo $uname;?>
       </p>
       <br>
     </ul>
@@ -80,7 +89,7 @@
 
 <div>
 
-      <form action="setup_profile_2.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+      <form action="auth_setup_profile_2.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
           <h1>The important part - your skills!</h1>
         <div class="scroll">
 
@@ -98,17 +107,17 @@
           </div>
 
           <div class="txtb">Skills:<br>
-            <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field" >
+            <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="hard" placeholder="Your expertise in the field" >
             </textarea><!-- CSS - placeholder text isnt visible by default-->
           </div>
 
           <div class="txtb">Experience:
-            <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!" >
+            <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="hard" placeholder="Tell us about your niche!" >
             </textarea>
           </div>
 
           <div class="txtb">Project links/description:
-            <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!" >
+            <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="hard" placeholder="Help others find your works!" >
             </textarea>
           </div>
 </div>
@@ -164,3 +173,7 @@
 </body>
 
 </html>
+
+<?php
+}
+?>

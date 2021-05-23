@@ -1,6 +1,9 @@
-<?php /*
+<?php
+session_start();
+if(isset($_SESSION['uname'])){
+echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
+}else{
 
-*/
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,6 @@
          if(!($('#luname').val() && $('#lpwd').val())){
               $('#error').html('Please Enter Username and Password');
          }else{
-           console.log("ulla varudhu");
              var uname = $('#luname').val();
              var pwd = $('#lpwd').val();
 
@@ -57,12 +59,12 @@
 
       <div class="bottom-text">
         <div class="halo">
-          <a href="../home/home.html">
+          <a href="../home/home.php">
             <img border="0" alt="home" src="img1/hm.png" width="48" height="48">
           </a>
         </div>
         <br><br>
-        New here? <a href="signup.html">Create an account</a>
+        New here? <a href="signup_page.php">Create an account</a>
       </div>
 
     </form>
@@ -70,3 +72,7 @@
 </body>
 
 </html>
+
+<?php
+}
+ ?>

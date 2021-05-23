@@ -1,56 +1,32 @@
-<?php/*
+<?php
 #insert signup data in db/redirects accordingly
 include 'config.php';
-$name=$_POST["name"];
-$roll=$_POST["roll"];
-$user=$_POST["user"];
-$pwd=$_POST["pwd"];
+session_start();
+$uname=$_SESSION['uname'];
+$userid=$_SESSION['userid'];
 
-$sql=1;//	"INSERT INTO try1table ( name, roll, user, pwd) VALUES ('$name','$roll','$user','$pwd')";
-//SQL- Change the query above after creating the database n user table
-// And change the form datatype in setup_profile_1.html to match the fields in table
+if(isset($_POST['works'])){
+$works=$con->real_escape_string($_POST["works"]);
+$experience=$con->real_escape_string($_POST["experience"]);
+$skills=$con->real_escape_string($_POST["skills"]);
+$interest=$con->real_escape_string($_POST["interest"]);
 
-if(mysqli_query($con, $sql)){
+$qry = $con->prepare("INSERT INTO user (works, experience, skills, interest, userid)
+						VALUES (?,?,?,?) ;");
+$qry->bind_param("ssss",$works, $experience, $skills, $interest, $userid);
+
+
+if($qry->execute()){
 	echo "Records inserted successfully. ";
-	header("Location:/layerUser/dashboard.html");
-	//BRO- on proper setups, it should open the dashboard of respective user tat is received from
-	//setup_profile_1.php
+	header("Location:dashboard.php");
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);
 	header("Location:invalidsetup2.html");
-}//redirects to setup_profile_2.html page if credentials arent inserte
-// BRO - this should go to dashboard of user with uname=luname/$uname
-//localhost/assemble/setup_profile_1.html pota it shldnt go to any page
-//sessions smthng use pannanum which idk so later clarify how it works
-
+}
 
 mysqli_close($con);
-*/
-?>
-<?php
-session_start();
-if(isset($_POST['uname'])) {
-    include 'config.php';
-    $uname = $_POST['uname'];
-    $pwd = $con->real_escape_string( $_POST['pwd']);
-
-    $query = 'SELECT * FROM user WHERE uname='.$uname;
-    if ($result = $con->query($query)) {
-        $row = $result->fetch_assoc();
-        if ($pwd == $row['pwd']) {
-            $_SESSION['userid'] = $row['userid'];
-            $_SESSION['uname'] = $row['uname'];
-            echo "<script>
-                    alert('Hello ".$row['name'] .", logged in Successfully.');
-                    window.location.href='check.php';
-                </script>";
-        } else {
-            echo 'Incorrect Password';
-        }
-    } else {
-        echo $con->error;
-    }
 }else{
-    echo "NOT VIEWABLE";
+echo "NOT VIEWABLE";
 }
+?>

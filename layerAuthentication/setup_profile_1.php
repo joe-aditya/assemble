@@ -1,3 +1,29 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['uname'])){
+      echo "NOT VIEWABLE";
+  }else{
+  include 'config.php';
+  $uname=$_SESSION['uname'];
+
+  $query="SELECT bio FROM user WHERE uname='" . $uname ."' AND bio IS NOT NULL;";
+
+  $result=mysqli_query($con, $query);
+  $count=mysqli_num_rows($result);
+  $row=$result->fetch_row();
+
+  if($row){
+  	echo "<script>
+            alert('$query');
+            alert('setup 1 is done');
+            window.location.href='setup_profile_2.php';
+          </script>";
+  }
+else{
+  echo "shit";
+}
+  ?>
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -71,7 +97,7 @@
       </div>
 
       <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-        @m_m_m_m_m_m_m_m_m_m_
+        @<?php echo $uname;?>
       </p>
       <br>
     </ul>
@@ -80,7 +106,7 @@
 
 <div>
 
-  <form action="setup_profile_1.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+  <form action="auth_setup_profile_1.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
     <h1>Lets setup your profile!</h1>
 
     <div class="txtb">Organisation Name:
@@ -88,7 +114,7 @@
     </div>
 
     <div class="txtb">Bio:<br>
-      <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="soft" placeholder="Tell others about yourself!" >
+      <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="hard" placeholder="Tell others about yourself!" >
       </textarea><!-- CSS - placeholder text isnt visible by default-->
     </div>
 
@@ -148,3 +174,7 @@
 </body>
 
 </html>
+
+<?php
+}
+?>
