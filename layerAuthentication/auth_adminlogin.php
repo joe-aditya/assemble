@@ -1,24 +1,29 @@
-<?php
-#checks admin login credentials/redirects accordingly
-include 'config.php';
+	<?php
 
-$a_uname=$_POST["a_uname"];//username from adminlogin.html
-$a_pwd=$_POST["a_pwd"];//password from adminlogin.html
-$query="SELECT * FROM assemble WHERE uname='$a_uname' AND pwd='$a_pwd'";
-$result=mysqli_query($con, $query);
-$count=mysqli_num_rows($result);
+	session_start();
+	if(isset($_POST['a_name'])) {
+	    include 'config.php';
+	    $a_name = $_POST['a_name'];
+	    $a_pwd = $con->real_escape_string( $_POST['a_pwd']);
 
-if(1||$count>0){//FLAG
-	header("Location:../layerAdmin/adminpage.html");
-}//redirects to adminpage.html page if login credentials are authenticated
-// BRO - this should go to dashboard of user with uname=luname/$uname
-// and this page shouldn't be accessed using its url
-//localhost/assemble/adminpage.html nu pota page ku poga koodadhu
-else{
-	//alert("Invalis credential"); //BRO - but error coming
-	header("Location:adminlogin.html");
-}//redirects to login page after error msg
+	    $query = 'SELECT * FROM admin WHERE admin_name="'.$a_name .'";';
+	    if ($result = $con->query($query)) {
+	        $row = $result->fetch_assoc();
+	        if ($a_pwd == $row['admin_pwd']) {
+	            $_SESSION['a_name'] = $row['admin_name'];
+	            $_SESSION['a_pwd'] = $row['admin_pwd'];
+	            echo "<script>
+	                    window.location.href='../layerAdmin/adminpage.php';
+	                </script>";
 
-mysqli_close($con);
-
-?>
+	        } else {
+	          echo "<script>
+	                  alert('Incorrect Password');
+	              </script>";
+	        }
+	    } else {
+	        echo $con->error;
+	    }
+	}else{
+	    echo "NOT VIEWABLE";
+	}

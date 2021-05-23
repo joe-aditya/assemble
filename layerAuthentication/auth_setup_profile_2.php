@@ -11,14 +11,14 @@ $experience=$con->real_escape_string($_POST["experience"]);
 $skills=$con->real_escape_string($_POST["skills"]);
 $interest=$con->real_escape_string($_POST["interest"]);
 
-$qry = $con->prepare("INSERT INTO user (works, experience, skills, interest, userid)
-						VALUES (?,?,?,?) ;");
-$qry->bind_param("ssss",$works, $experience, $skills, $interest, $userid);
+$qry = $con->prepare("INSERT INTO skill (works, experience, skills, interest, userid)
+						VALUES (?,?,?,?,?) ;");
+$qry->bind_param("ssssi",$works, $experience, $skills, $interest, $userid);
 
 
 if($qry->execute()){
 	echo "Records inserted successfully. ";
-	header("Location:dashboard.php");
+	header("Location:../layerUser/dashboard.php");
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);

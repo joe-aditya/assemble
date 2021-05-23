@@ -121,7 +121,7 @@
             </textarea>
           </div>
 </div>
-        <input type="button" class="logbtn" onclick=dataCheck() value="Submit">
+        <input type="submit" class="logbtn" onclick=dataCheck() value="Submit">
         <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
       </form>
 
