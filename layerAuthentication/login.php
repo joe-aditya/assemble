@@ -28,10 +28,10 @@
                  uname: uname,
                  pwd: pwd
              }, function (result){
-                 $('#error').html(result);
+                 $('#result').html(result);
              })
          }
-     }*/
+     }
 
   </script>
 </head>
@@ -40,6 +40,7 @@
   <div class="headerrr">
     <p class="header_textt glow">ASSEMBLE</p>
   </div>
+  <p id='result'></p>
   <div>
     <form class="logform" style="margin-top:40px;"><!-- action="auth.php" class="logform" method="POST">-->
       <h1>Login</h1>
@@ -52,7 +53,7 @@
         <input type="password" id="lpwd" name="lpwd" placeholder="Password" />
       </div>
 
-      <input type="button" class="logbtn" onclick=verifyLogin() value="Login">
+      <input type="button" class="logbtn" onclick='verifyLogin()' value="Login">
 
       <div class="bottom-text">
         <div class="halo">

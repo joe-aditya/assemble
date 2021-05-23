@@ -1,4 +1,5 @@
-<?php/*
+<?php
+/*
 #checks login credentials/redirects accordingly
 include 'config.php';
 
@@ -21,15 +22,14 @@ else{
 
 mysqli_close($con);
 */
-?>
-<?php
+
 session_start();
 if(isset($_POST['uname'])) {
     include 'config.php';
     $uname = $_POST['uname'];
     $pwd = $con->real_escape_string( $_POST['pwd']);
 
-    $query = 'SELECT * FROM user WHERE uname='.$uname;
+    $query = 'SELECT * FROM user WHERE uname="'.$uname .'";';
     if ($result = $con->query($query)) {
         $row = $result->fetch_assoc();
         if ($pwd == $row['pwd']) {

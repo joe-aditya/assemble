@@ -1,14 +1,13 @@
-<!--
+
 <?php
-/*
 session_start();
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
-*/
+
 ?>
--->
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -74,7 +73,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
         </div>
 
         <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-          @m_m_m_m_m_m_m_m_m_m_
+          @<?php echo $uname;?>
         </p>
 
         <a href="dashboard.php">
@@ -161,3 +160,5 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 </body>
 
 </html>
+<?php
+}
