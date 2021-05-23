@@ -11,17 +11,13 @@
   $result=mysqli_query($con, $query);
   $count=mysqli_num_rows($result);
   $row=$result->fetch_row();
-
-  if($row){
+    
+  if($count>0){
   	echo "<script>
-            alert('$query');
             alert('setup 1 is done');
             window.location.href='setup_profile_2.php';
           </script>";
   }
-else{
-  echo "shit";
-}
   ?>
 
 <!DOCTYPE html>
