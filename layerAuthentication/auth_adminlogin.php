@@ -9,7 +9,7 @@
 	    $query = 'SELECT * FROM admin WHERE admin_name="'.$a_name .'";';
 	    if ($result = $con->query($query)) {
 	        $row = $result->fetch_assoc();
-	        if ($a_pwd == $row['admin_pwd']) {
+	        if ($row && ($a_pwd == $row['admin_pwd'])) {
 	            $_SESSION['a_name'] = $row['admin_name'];
 	            $_SESSION['a_pwd'] = $row['admin_pwd'];
 	            echo "<script>

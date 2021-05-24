@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['uname'])){
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
+}else{
+  $uname=$_SESSION['uname'];
+
+?>
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -74,7 +84,7 @@
         </div>
 
         <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-          @m_m_m_m_m_m_m_m_m_m_
+          @<?php echo $uname;?>
         </p>
         <br>
         <a href="dashboard.php">
@@ -86,7 +96,7 @@
 
   <div>
 
-    <form action="setup_profile_1.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <form action="createTeam_add.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
       <h1>Create your Team</h1>
       <div class="scroll">
         <div class="txtb">Team Name:
@@ -101,7 +111,7 @@
         <div class="txtb">Skillset needed:
           <textarea maxlength=50 id="skills_needed" name="skills_needed" rows="4" cols="10" wrap="soft" placeholder="What skillsets are you looking for!">
         </textarea>
-        </div>
+      </div><!--BRO - Only 50 character is accepted in the form-->
         <div class="txtb">Criteria:
           <textarea maxlength=50 id="criteria" name="criteria" rows="4" cols="10" wrap="soft" placeholder="Mention the experience level you are looking for">
         </textarea>
@@ -111,7 +121,7 @@
         </div>
       </div>
 
-      <input type="button" class="logbtn" onclick=dataCheck() value="Create">
+      <input type="submit" class="logbtn" onclick=dataCheck() value="Create">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
     </form>
 
@@ -163,3 +173,7 @@
 </body>
 
 </html>
+
+<?php
+}
+ ?>

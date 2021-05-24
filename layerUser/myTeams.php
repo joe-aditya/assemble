@@ -1,11 +1,11 @@
-
 <?php
+include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='login.php';</script>";
 }else{
   $uname=$_SESSION['uname'];
-
+  $userid=$_SESSION['userid'];
 ?>
 
 <!DOCTYPE html>
@@ -45,15 +45,6 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
         <div class="navbar-nav; style:bottom">
-          <!--
-          <input type="button" class="btn btn-info" value="All Teams">
-          <input type="button" class="btn btn-info" value="Music">
-          <input type="button" class="btn btn-info" value="Programming">
-          <input type="button" class="btn btn-info" value="Sports">
-          <input type="button" class="btn btn-info" value="Filmaking">
-          <input type="button" class="btn btn-info" value="Artwork">
-          <input type="button" class="btn btn-info" value="Global">
-          -->
         </div>
       </div>
 
@@ -65,6 +56,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
   <div class="container" id="sidebar">
     <div class="row">
+
       <ul>
         <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
@@ -73,7 +65,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
         </div>
 
         <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-          @<?php echo $uname;?>
+          @<?php echo $uname; ?>
         </p>
 
         <a href="dashboard.php">
@@ -110,39 +102,38 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 </div>
               </div>
 
-              <h2 style="display:inline; padding-left: 13px;"><img src="../home/img/logoooo.png" height="50px" width="50px">SSEMBLED | <a href="myTeams.php">My Teams</a> </h2>
-              <hr>
+              <h2 style="display:inline; padding-left: 13px;">My Teams | <a href="assembled.php"><img src="../home/img/logoooo.png" height="50px" width="50px">SSEMBLED</a> </h2>
+              <hr style="margin-top:5px;">
 
-              <div class="txtscroll" style="height:381px;">
+              <div class="txtscroll" style="height:390px;">
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
                     <div class="row">
+<?php
+      $qry = "SELECT teamid, team_name, purpose FROM team WHERE creatorid = ?;";
+      $qry = $con->prepare($qry);
+      $qry->bind_param("i", $userid);
+      $qry->execute();
+      $res = $qry->get_result();
 
+      while($row = $res->fetch_assoc()){
+?>
                       <div class="col-md-3 myteambox">
-                        <form>
+                        <form action="viewMyTeam.php" method="POST">
                           <h5>
-                            <center>Team_Name</center>
+                            <center><?php echo $row['team_name']; ?></center>
                           </h5>
                           <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            <?php echo $row['purpose']; ?>
                           </p>
-                              <input type="button" id="view_my_team" class="myteam_btn" onclick=viewMyTeam() value="View Team">
+                          <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
+                          <input type="submit" id="view_my_team" class="myteam_btn" onclick=viewMyTeam() value="Manage">
                         </form>
                       </div>
-
-                      <div class="col-md-3 myteambox">
-                        <form>
-                          <h5>
-                            <center>Team_Name</center>
-                          </h5>
-                          <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                          </p>
-                          <i class="fas fa-eye" style="font-size:30px;"></i>
-                        </form>
-                      </div>
-
+<?php
+        }
+?>
                     </div>
                   </div>
 
@@ -162,3 +153,4 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 </html>
 <?php
 }
+?>

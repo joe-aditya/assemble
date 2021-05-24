@@ -1,3 +1,24 @@
+<?php
+#insert signup data in db/redirects accordingly
+include '../layerAuthentication/config.php';
+session_start();
+if(!isset($_SESSION['uname'])){
+  echo "<script>window.location.href='../layerAuthentication/login.php';</script>";
+}else{
+
+$userid=$_SESSION['userid'];
+$uname=$_SESSION['uname'];
+
+$qry = "SELECT works, interest, skills, experience FROM skill WHERE userid = '".$userid."';";
+$res = mysqli_query($con, $qry);
+$row = $res->fetch_row();
+
+$works = $row[0];
+$interest = $row[1];
+$skills = $row[2];
+$experience = $row[3];
+?>
+
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -71,7 +92,7 @@
         </div>
 
         <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-          @m_m_m_m_m_m_m_m_m_m_
+          @<?php echo $uname;?>
         </p>
         <br>
         <a href="dashboard.php">
@@ -83,42 +104,39 @@
 
 
   <div>
-    <form action="setup_profile_2.php" style="padding:15px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <form action="editSkills_update.php" style="padding:15px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
       <h1>My skills</h1>
 
       <div class="scroll">
         <div class="txtb">Interest:
           <!-- CSS - work on apprearance-->
           <select name="interest" id="interest" required>
-            <option value="<prvsly selected option>" selected disabled hidden>
-              Prvsly selected option
+            <option value="<?php echo $interest; ?>" selected hidden>
+              <?php echo $interest; ?>
             </option>
-            <option value="Coding">Programming</option>
+            <option value="Programming">Programming</option>
             <option value="Music">Music</option>
-            <option value="Sports">Dance</option>
+            <option value="Dance">Dance</option>
             <option value="Sports">Sports</option>
-            <option value="Arts">Artwork</option>
-            <option value="Arts">Cooking</option>
+            <option value="Artwork">Artwork</option>
+            <option value="Cooking">Cooking</option>
             <option value="Filming">Filming</option>
           </select>
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Skills:<br>
-          <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field">
-        </textarea><!-- CSS - placeholder text isnt visible by default-->
+          <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field"><?php echo $skills; ?></textarea><!-- CSS - placeholder text isnt visible by default-->
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Experience:
-          <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!">
-        </textarea>
+          <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!"><?php echo $experience; ?></textarea>
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Project links/description:
-          <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!">
-        </textarea>
+          <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!"><?php echo $works; ?></textarea>
         </div>
       </div>
-      <input type="button" class="logbtn" onclick=editSkills() value="Save Changes">
+      <input type="submit" class="logbtn" onclick='editSkills()' value="Save Changes">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
     </form>
   </div>
@@ -168,3 +186,6 @@
 </body>
 
 </html>
+<?php
+}
+?>

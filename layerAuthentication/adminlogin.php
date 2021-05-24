@@ -29,8 +29,9 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
           $.post('auth_adminlogin.php', {
               a_name: a_name,
               a_pwd: a_pwd
-          }, function (result){
+          }, function (result, status){
               $('#result').html(result);
+              console.log(status);
           })
       }
   }
@@ -38,7 +39,8 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 </head>
 
 <body>
-    <p id='result'></p>//BRO-if removed, no alert from js func. n is wrong username, error at line 12 in auth.php
+    <p id='result'></p>
+<!--if removed, no alert from js func. -->
   <div>
     <form class="logform">
       <h1> Admin Login</h1>
@@ -46,13 +48,14 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
       <div class="txtb">
         <input type="text" id="a_name" name="a_name" placeholder="Admin-ID" />
       </div>
+
       <!-- username is sent to adminlogin.php as auname for authentication-->
 
       <div class="txtb">
         <input type="password" id="a_pwd" name="a_pwd" placeholder="Password" />
       </div>
       <!--password is sent to adminlogin.php as apwd for authentication-->
-
+    <p id='error'></p>
       <input type="button" class="logbtn" onclick='verifyLogin()' value="Login">
       <!--Checks if the uname & pwd fiels are empty before submiting-->
 

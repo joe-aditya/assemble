@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
 
@@ -69,11 +69,11 @@ echo "<script>window.location.href='login.php';</script>";//BRO
           @<?php echo $uname;?>
         </p>
 
-        <a href="myTeams.html">
+        <a href="myTeams.php">
           <li><i class="fas fa-users" style="font-size:25px;"> My Teams</i></li>
         </a>
 
-        <a href="createTeam.html">
+        <a href="createTeam.php">
           <li><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></li>
         </a>
         <a href="teamsJoined.html">
@@ -82,7 +82,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
         <a href="myRequests.html">
           <li><i class="fas fa-envelope" style="font-size:25px;"> Sent Requests</i></li>
         </a>
-        <a href="editSkills.html">
+        <a href="editSkills.php">
           <li><i class="fas fa-edit" style="font-size:25px;"> Update Skills</i></li>
         </a>
         <a href="editProfile.html">

@@ -11,7 +11,7 @@
   $result=mysqli_query($con, $query);
   $count=mysqli_num_rows($result);
   $row=$result->fetch_row();
-    
+
   if($count>0){
   	echo "<script>
             alert('setup 1 is done');
@@ -110,8 +110,7 @@
     </div>
 
     <div class="txtb">Bio:<br>
-      <textarea maxlength=50 id="bio" name="bio" rows="5" cols="10" wrap="hard" placeholder="Tell others about yourself!" >
-      </textarea><!-- CSS - placeholder text isnt visible by default-->
+      <textarea maxlength=100 id="bio" name="bio" rows="5" cols="10" wrap="hard" placeholder="Tell others about yourself!" ></textarea><!-- CSS - placeholder text isnt visible by default-->
     </div>
 
     <div class="txtb">Social-media links:

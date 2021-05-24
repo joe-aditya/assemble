@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['uname'])){
-echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
+echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
 }else{
 
 ?>
