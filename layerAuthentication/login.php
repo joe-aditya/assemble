@@ -54,7 +54,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
       <div class="txtb">
         <input type="password" id="lpwd" name="lpwd" placeholder="Password" />
       </div>
-
+  <p id='error'></p>
       <input type="button" class="logbtn" onclick='verifyLogin()' value="Login">
 
       <div class="bottom-text">
