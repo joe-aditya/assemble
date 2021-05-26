@@ -123,7 +123,7 @@ echo "<script>window.location.href='login.php';</script>";
       while($row = $res->fetch_assoc()){
 ?>
                       <div class="col-md-3 myteambox">
-                        <form action="viewMyTeam.php" method="POST">
+                        <form action="viewTeamDetails .php" method="POST">
                           <h5>
                             <center><?php echo $row['team_name']; ?></center>
                           </h5>

@@ -7,7 +7,19 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   $uname=$_SESSION['uname'];
   $dp=$_SESSION['dp'];
 
-  $qr = "SELECT * FROM ";
+  $teamid = 3;//$_POST["teamid"];
+  $qry = "SELECT * FROM team WHERE teamid = '".$teamid."';";
+  $res = mysqli_query($con, $qry);
+  $row = mysqli_fetch_assoc($res);
+  $creatorid = $row["creatorid"];
+
+  $qry1 = "SELECT * FROM user WHERE userid = $creatorid;";
+  $res1 = mysqli_query($con, $qry1);
+  $row1 = mysqli_fetch_assoc($res1);
+  
+  $qry2 = "SELECT * FROM skill WHERE userid = $creatorid;";
+  $res2 = mysqli_query($con, $qry2);
+  $row2 = mysqli_fetch_assoc($res2);
 ?>
 
 <!DOCTYPE html>
@@ -90,21 +102,23 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                         <div class="txtscroll">
 
                           <h4 style="display:inline">TEAM:</h4>
-                          <h4 style="display:inline">Team_Name</h4>
+                          <h4 style="display:inline"><?php echo $row['team_name']; ?></h4>
 
                           <div class="input-group">
                             <div class="input-group-append">
                               <span class="input-group-text">Purpose:</span>
                             </div>
-                            <p class="form-control txtscroll" style="height:62px;"> 62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd
-                              sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss </p>
+                            <p class="form-control txtscroll" style="height:62px; width:520px;">
+                                <?php echo $row['purpose']; ?>
+                            </p>
                           </div>
 
                           <div class="input-group">
                             <div class="input-group-append">
                               <span class="input-group-text">Looking for:</span>
                             </div>
-                            <p class="form-control txtscroll" style="height:86px;"> 86px for 2 lines n anything more will be scrollable skills from ssdd qqqqqqqqqqqqqqqqqqqqqqqqerfgvbhnjhgfdszxcvbnmjhgfdsasdfghjkmnbvcxzsxdcfghujikopoiuytrewertyuj
+                            <p class="form-control txtscroll" style="height:86px; width:500px;">
+                                <?php echo $row['skills_needed']; ?>
                             </p>
                           </div>
 
@@ -115,9 +129,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                         <h4 style="text-align:center;">ANNOUNCEMENTS:</h4>
                         <div class="input-group">
                           <p class="form-control txtscroll" style="display:inline; height:165px;">
-                            skills from sssssssssssssssssssssssssssss ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                <?php echo $row['announcement']; ?>
                           </p>
                         </div>
                       </div>
@@ -140,16 +152,16 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                       <div class="row">
 
                         <h5 style="display:inline">CREATOR:</h5>
-                        <h5 style="display:inline">creator_name</h5>
+                        <h5 style="display:inline">@<?php echo $row1["uname"]; ?></h5>
 
                         <div class="input-group">
                           <div class="input-group-append">
                             <span class="input-group-text">About:</span>
                           </div>
                           <p class="form-control txtscroll" style="display:inline; height:86px;">
-                            Bio: <br> skills from sssssssssssssssssssssssssssss ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                            <br>Skills:<br> dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            <br>Previous Works:<br> dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            Bio: <br> <?php echo $row1["bio"]; ?>
+                            <br>Skills:<br> <?php echo $row2["skills"]; ?>
+                            <br>Previous Works:<br> <?php echo $row2["works"]; ?>
                           </p>
                         </div>
 
@@ -157,7 +169,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                           <div class="input-group-append">
                             <span class="input-group-text">Contact:</span>
                           </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
+                          <p class="form-control txtscroll" style="height:62px;">Phone Number: <?php echo $row1["phno"]; ?> <br> Mail-ID: <?php echo $row1["mail"]; ?> </p>
                         </div>
 
                       </div>
@@ -165,35 +177,33 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                       <div class="row" style="margin-top: 10px;">
 
                         <h5 style="display:inline">MEMBERS:</h5>
+<?php
+      $i=1;
+      $qry3 = "SELECT userid FROM team_member
+              WHERE teamid = $teamid;";
+  	  $res3 = mysqli_query($con, $qry3);
 
+      while($row3 = $res3->fetch_assoc()){
+      	$userid = $row3["userid"];
+      	$qry4 = "SELECT * FROM user WHERE userid = $creatorid;";
+  		$res4 = mysqli_query($con, $qry4);
+  		$row4 = mysqli_fetch_assoc($res4);
+      
+?>
                         <div class="input-group">
                           <div class="input-group-append">
-                            <span class="input-group-text">Contact:</span>
+                            <span class="input-group-text">#<?php echo $i; ?></span>
                           </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
+                          <p class="form-control txtscroll" style="height:86px;">
+						  	Username: @<?php echo $row4["uname"]; ?> <br> 
+						  	Phone Number: <?php echo $row4["phno"]; ?> <br> 
+						  	Mail-ID: <?php echo $row4["mail"]; ?> 
+						  </p>
                         </div>
-
-                        <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text">Contact:</span>
-                          </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
-                        </div>
-
-                        <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text">Contact:</span>
-                          </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
-                        </div>
-
-                        <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text">Contact:</span>
-                          </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
-                        </div>
-
+<?php
+	  	$i++;
+	  }
+?>
                       </div>
 
                     </div>

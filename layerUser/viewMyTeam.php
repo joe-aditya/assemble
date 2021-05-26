@@ -10,7 +10,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 ?>
 -->
 <!DOCTYPE html>
-<!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
+<!-- profile setup 1 | only for first time Logiare filled-->
 <html>
 
 <head>
