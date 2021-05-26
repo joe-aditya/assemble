@@ -6,6 +6,7 @@ echo "<script>window.location.href='login.php';</script>";
 }else{
   $uname=$_SESSION['uname'];
   $userid=$_SESSION['userid'];
+  $dp=$_SESSION['dp'];
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ echo "<script>window.location.href='login.php';</script>";
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | My Teams</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +27,7 @@ echo "<script>window.location.href='login.php';</script>";
 
   <script>
     function viewMyTeam() {
-      window.location.href = "viewMyTeam.html";
+      window.location.href = "viewMyTeam.php";
     }
   </script>
 
@@ -60,7 +61,7 @@ echo "<script>window.location.href='login.php';</script>";
       <ul>
         <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png">
+            <img src="img2/<?php echo $dp; ?>">
           </div>
         </div>
 
@@ -74,16 +75,16 @@ echo "<script>window.location.href='login.php';</script>";
           <a href="createTeam.php">
             <li><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></li>
           </a>
-          <a href="teamsJoined.html">
+          <a href="teamsJoined.php">
             <li><i class="fas fa-project-diagram" style="font-size:25px;"> Teams Joined</i></li>
           </a>
-          <a href="myRequests.html">
+          <a href="myRequests.php">
             <li><i class="fas fa-envelope" style="font-size:25px;"> Sent Requests</i></li>
           </a>
           <a href="editSkills.php">
             <li><i class="fas fa-edit" style="font-size:25px;"> Update Skills</i></li>
           </a>
-          <a href="editProfile.html">
+          <a href="editProfile.php">
             <li><i class="fas fa-user-cog" style="font-size:25px;"> My Profile</i></li>
           </a>
       </ul>
@@ -111,7 +112,9 @@ echo "<script>window.location.href='login.php';</script>";
                   <div class="container">
                     <div class="row">
 <?php
-      $qry = "SELECT teamid, team_name, purpose FROM team WHERE creatorid = ?;";
+      $qry = "SELECT teamid, team_name, purpose FROM team
+              WHERE creatorid = ?
+              AND members_needed != members_in_team;";
       $qry = $con->prepare($qry);
       $qry->bind_param("i", $userid);
       $qry->execute();
@@ -128,7 +131,7 @@ echo "<script>window.location.href='login.php';</script>";
                             <?php echo $row['purpose']; ?>
                           </p>
                           <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
-                          <input type="submit" id="view_my_team" class="myteam_btn" onclick=viewMyTeam() value="Manage">
+                          <input type="submit" id="view_my_team" class="myteam_btn" value="Manage">
                         </form>
                       </div>
 <?php

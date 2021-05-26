@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['uname'])){
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
+}else{
+  $uname=$_SESSION['uname'];
+  $dp=$_SESSION['dp'];
+?>
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
 <html>
@@ -5,7 +14,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | My Profile</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -76,12 +85,12 @@
     <ul>
       <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
         <div class="brand_logo_container">
-          <img src="img2/avatar.png">
+          <img src="img2/<?php echo $dp; ?>">
         </div>
       </div>
 
       <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
-        @m_m_m_m_m_m_m_m_m_m_
+        @<?php echo $uname; ?>
       </p>
       <br>
       <a href="dashboard.php">
@@ -181,3 +190,6 @@
 </body>
 
 </html>
+<?php
+}
+?>

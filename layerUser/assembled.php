@@ -1,11 +1,11 @@
-
 <?php
+include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
-
+  $dp=$_SESSION['dp'];
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | Assembled Teams</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +26,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
   <script>
     function viewMyTeam() {
-      window.location.href = "viewMyTeam.html";
+      window.location.href = "viewMyTeam.php";
     }
   </script>
 
@@ -45,15 +45,6 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
         <div class="navbar-nav; style:bottom">
-          <!--
-          <input type="button" class="btn btn-info" value="All Teams">
-          <input type="button" class="btn btn-info" value="Music">
-          <input type="button" class="btn btn-info" value="Programming">
-          <input type="button" class="btn btn-info" value="Sports">
-          <input type="button" class="btn btn-info" value="Filmaking">
-          <input type="button" class="btn btn-info" value="Artwork">
-          <input type="button" class="btn btn-info" value="Global">
-          -->
         </div>
       </div>
 
@@ -68,7 +59,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       <ul>
         <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png">
+            <img src="img2/<?php echo $dp; ?>">
           </div>
         </div>
 
@@ -82,16 +73,16 @@ echo "<script>window.location.href='login.php';</script>";//BRO
           <a href="createTeam.php">
             <li><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></li>
           </a>
-          <a href="teamsJoined.html">
+          <a href="teamsJoined.php">
             <li><i class="fas fa-project-diagram" style="font-size:25px;"> Teams Joined</i></li>
           </a>
-          <a href="myRequests.html">
+          <a href="myRequests.php">
             <li><i class="fas fa-envelope" style="font-size:25px;"> Sent Requests</i></li>
           </a>
           <a href="editSkills.php">
             <li><i class="fas fa-edit" style="font-size:25px;"> Update Skills</i></li>
           </a>
-          <a href="editProfile.html">
+          <a href="editProfile.php">
             <li><i class="fas fa-user-cog" style="font-size:25px;"> My Profile</i></li>
           </a>
       </ul>
@@ -106,56 +97,52 @@ echo "<script>window.location.href='login.php';</script>";//BRO
             <div class="col-sm-12">
               <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
-
                 </div>
               </div>
-
               <h2 style="display:inline; padding-left: 13px;"><img src="../home/img/logoooo.png" height="50px" width="50px">SSEMBLED | <a href="myTeams.php">My Teams</a> </h2>
               <hr>
-
               <div class="txtscroll" style="height:381px;">
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
                     <div class="row">
+<?php
+      $qry = "SELECT teamid, team_name, purpose FROM team
+              WHERE creatorid = ?
+              AND members_needed = members_in_team;";
+      $qry = $con->prepare($qry);
+      $qry->bind_param("i", $userid);
+      $qry->execute();
+      $res = $qry->get_result();
+
+      while($row = $res->fetch_assoc()){
+?>
 
                       <div class="col-md-3 myteambox">
-                        <form>
+                        <form action="viewMyTeam.php" method="POST">
                           <h5>
-                            <center>Team_Name</center>
+                            <center><?php echo $row['team_name']; ?></center>
                           </h5>
                           <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            <?php echo $row['purpose']; ?>
                           </p>
-                              <input type="button" id="view_my_team" class="myteam_btn" onclick=viewMyTeam() value="View Team">
+                          <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
+                          <input type="submit" id="view_my_team" class="myteam_btn" value="View Team">
                         </form>
                       </div>
-
-                      <div class="col-md-3 myteambox">
-                        <form>
-                          <h5>
-                            <center>Team_Name</center>
-                          </h5>
-                          <p class="form-control txtscroll myteam_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                          </p>
-                          <i class="fas fa-eye" style="font-size:30px;"></i>
-                        </form>
-                      </div>
-
+<?php
+        }
+?>
                     </div>
                   </div>
-
                 </div>
-                <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+
               </div>
             </div>
             <br>
           </div>
-
         </div>
       </div>
-
     </div>
 </body>
 

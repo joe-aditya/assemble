@@ -4,21 +4,8 @@
       echo "NOT VIEWABLE";
   }else{
   include 'config.php';
-  $uname=$_SESSION['uname'];
-
-  $query="SELECT bio FROM user WHERE uname='" . $uname ."' AND bio IS NOT NULL;";
-
-  $result=mysqli_query($con, $query);
-  $count=mysqli_num_rows($result);
-  $row=$result->fetch_row();
-
-  if($count>0){
-  	echo "<script>
-            alert('Lets complete Profile Setup part(2/2)');
-            window.location.href='setup_profile_2.php';
-          </script>";
-  }
-  ?>
+    $uname=$_SESSION['uname'];
+?>
 
 <!DOCTYPE html>
 <!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
@@ -26,7 +13,7 @@
 <!-- if this setup is done, redirect to setup_profile_2.html -->
 <head>
   <meta charset="utf-8">
-  <title>Setup(1/2)</title>
+  <title>Setup(2/2)</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -86,26 +73,40 @@
 
 <div>
 
-  <form action="auth_setup_profile_1.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
-    <h1>Lets setup your profile!</h1>
+      <form action="auth_setup_profile_2.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+          <h1>The important part - your skills!</h1>
+        <div class="scroll">
 
-    <div class="txtb">Organisation Name:
-      <input type="text" id="org_name" name="org_name" placeholder="School/College/University/Workplace" />
-    </div>
 
-    <div class="txtb">Bio:<br>
-      <textarea maxlength=100 id="bio" name="bio" rows="5" cols="10" wrap="hard" placeholder="Tell others about yourself!" ></textarea><!-- CSS - placeholder text isnt visible by default-->
-    </div>
+          <div class="txtb">Interest: <!-- CSS - work on apprearance-->
+            <select name="interest" id="interest" required>
+              <option value="Coding">Programming</option>
+              <option value="Music">Music</option>
+              <option value="Sports">Dance</option>
+              <option value="Sports">Sports</option>
+              <option value="Arts">Artwork</option>
+              <option value="Arts">Cooking</option>
+              <option value="Filming">Filming</option>
+            </select>
+          </div>
 
-    <div class="txtb">Social-media links:
-      <input type="text" id="sm_link" name="sm_link" placeholder="Help others find you on other platforms!" />
-    </div>
+          <div class="txtb">Skills:<br>
+            <textarea maxlength=100 id="skills" name="skills" rows="3" cols="10" wrap="hard" placeholder="Your expertise in the field" ></textarea><!-- CSS - placeholder text isnt visible by default-->
+          </div>
 
-      <input type="submit" class="logbtn" onclick='datacheck()' value="Next">
-    <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
-  </form>
+          <div class="txtb">Experience:
+            <textarea maxlength=100 id="experience" name="experience" rows="3" cols="10" wrap="hard" placeholder="Tell us about your niche!" ></textarea>
+          </div>
 
+          <div class="txtb">Project links/description:
+            <textarea maxlength=100 id="works" name="works" rows="3" cols="10" wrap="hard" placeholder="Help others find your works!" ></textarea>
+          </div>
 </div>
+        <input type="submit" class="logbtn" onclick='dataCheck()' value="Submit">
+        <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
+      </form>
+
+    </div>
 
 
 <div class="container" id="sidebar-right" style="width:250px;">

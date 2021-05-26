@@ -5,7 +5,7 @@ if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
-
+  $dp=$_SESSION['dp'];
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | Create Team</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -79,7 +79,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       <ul>
         <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png">
+            <img src="img2/<?php echo $dp; ?>">
           </div>
         </div>
 
@@ -96,7 +96,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
   <div>
 
-    <form action="createTeam_add.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <form action="createTeam_insert.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
       <h1>Create your Team</h1>
       <div class="scroll">
         <div class="txtb">Team Name:

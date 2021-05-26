@@ -1,13 +1,11 @@
-
 <?php
 #insert signup data in db/redirects accordingly
-
 include 'config.php';
 session_start();
   $uname=$_SESSION['uname'];
 if(isset($_POST['bio'])){
 $org_name=$con->real_escape_string($_POST["org_name"]);
-$bio=$con->real_escape_string($_POST["bio"]);
+$bio=$_POST["bio"];
 $sm_link=$con->real_escape_string($_POST["sm_link"]);
 
 $qry = $con->prepare("UPDATE user SET
@@ -19,11 +17,15 @@ $qry->bind_param("sss",$org_name, $bio, $sm_link);
 
 if($qry->execute()){
 	echo "Records inserted successfully. ";
-	header("Location:setup_profile_2.php");
+  echo "<script>
+          window.location.href='setup_profile_2.php';
+        </script>";
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:invalidsetup1.html");
+  echo "<script>
+          window.location.href='invalidsetup1.html';
+        </script>";
 }
 
 mysqli_close($con);

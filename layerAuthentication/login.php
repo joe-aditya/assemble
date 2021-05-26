@@ -20,8 +20,10 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
 
   <script>
      function verifyLogin(){
+       $('#error').html("");
+       $('#result').html("");
          if(!($('#luname').val() && $('#lpwd').val())){
-              $('#error').html('Please Enter Username and Password');
+              $('#error').html('Please Enter BOTH Username & Password');
          }else{
              var uname = $('#luname').val();
              var pwd = $('#lpwd').val();
@@ -31,6 +33,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
                  pwd: pwd
              }, function (result){
                  $('#result').html(result);
+                 console.log(status);
              })
          }
      }
@@ -42,7 +45,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
   <div class="headerrr">
     <p class="header_textt glow">ASSEMBLE</p>
   </div>
-  <p id='result'></p>
+
   <div>
     <form class="logform" style="margin-top:40px;"><!-- action="auth.php" class="logform" method="POST">-->
       <h1>Login</h1>
@@ -54,8 +57,13 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
       <div class="txtb">
         <input type="password" id="lpwd" name="lpwd" placeholder="Password" />
       </div>
-  <p id='error'></p>
-      <input type="button" class="logbtn" onclick='verifyLogin()' value="Login">
+
+<div style="height:70px;">
+      <input style="padding: 20px;" type="button" class="logbtn" onclick='verifyLogin()' value="Login">
+
+      <p id='error' style="color:red;"></p>
+      <p id='result' style="color:red;"></p>
+</div>
 
       <div class="bottom-text">
         <div class="halo">
@@ -64,7 +72,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";
           </a>
         </div>
         <br><br>
-        New here? <a href="signup_page.php">Create an account</a>
+        New here? <a href="signup.php">Create an account</a>
       </div>
 
     </form>

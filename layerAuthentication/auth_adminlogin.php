@@ -16,11 +16,9 @@
 	                    window.location.href='../layerAdmin/adminpage.php';
 	                </script>";
 
-	        } else {
-	          echo "<script>
-	                  alert('Incorrect Password');
-	              </script>";
-	        }
+								} else {
+				          echo 'Incorrect Credential(s)';
+				        }
 	    } else {
 	        echo $con->error;
 	    }

@@ -6,7 +6,7 @@ if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
-
+  $dp=$_SESSION['dp'];
 ?>
 -->
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 <body>
 
   <div class="headerrr">
-    <p class="header_textt glow">SKILL BASED TEAM MANAGMENET SYSTEM</p>
+    <p class="header_textt glow">ASSEMBLE</p>
   </div>
 
   <div class="bs-example">
@@ -54,7 +54,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       <ul>
         <div class="d-flex justify-content-center">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png" height="150px" width="150px">
+            <img src="img2/<?php echo $dp; ?>" height="150px" width="150px">
           </div>
 
         </div>
@@ -181,3 +181,6 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 </body>
 
 </html>
+<?php
+}
+?>

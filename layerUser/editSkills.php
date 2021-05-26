@@ -8,6 +8,7 @@ if(!isset($_SESSION['uname'])){
 
 $userid=$_SESSION['userid'];
 $uname=$_SESSION['uname'];
+$dp=$_SESSION['dp'];
 
 $qry = "SELECT works, interest, skills, experience FROM skill WHERE userid = '".$userid."';";
 $res = mysqli_query($con, $qry);
@@ -25,7 +26,7 @@ $experience = $row[3];
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | Update Skills</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -87,7 +88,7 @@ $experience = $row[3];
       <ul>
         <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/avatar.png">
+            <img src="img2/<?php echo $dp; ?>">
           </div>
         </div>
 

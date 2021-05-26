@@ -13,14 +13,13 @@ if(isset($_POST['uname'])) {
         if ($row && ($pwd == $row['pwd']) ) {
             $_SESSION['userid'] = $row['userid'];
             $_SESSION['uname'] = $row['uname'];
+            $_SESSION['dp'] = $row['dp'];
             echo "<script>
                     window.location.href='check.php';
                 </script>";
 
         } else {
-          echo "<script>
-                  alert('Incorrect Password');
-              </script>";
+          echo 'Incorrect Credential(s)';
         }
     } else {
         echo $con->error;

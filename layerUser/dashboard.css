@@ -123,6 +123,10 @@ color:#16a085;
     border-radius: 10px;
 }
 
+.myteambox:hover{
+    transform: scale(1.13, 1.13);
+}
+
 .myteam_btn{
   border:2px solid #2e856e;
   text-align:center;
@@ -149,6 +153,10 @@ color:#16a085;
     border-radius: 10px;
 }
 
+.joinedbox:hover{
+    transform: scale(1.13, 1.13);
+}
+
 .joined_btn{
   border:2px solid #2e856e;
   text-align:center;
@@ -173,6 +181,10 @@ color:#16a085;
     padding:7px;
     background-color:#A9DDD1;
     border-radius: 10px;
+}
+
+.requestbox:hover{
+    transform: scale(1.13, 1.13);
 }
 
 .request_unsend_btn{
@@ -248,7 +260,7 @@ text-align:left;
 .txtb{
   border-bottom: 2px solid #adadad;
   position: relative;
-  margin: 30px 0;
+  margin: 30px 0px;
 }
 
 .txtb input{
@@ -303,7 +315,7 @@ text-align:left;
 }
 
 .bottom-text{
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
   font-size: 15px;
 }

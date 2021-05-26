@@ -64,7 +64,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	          </h3>
 	          <a href="../layerAuthentication/login.php" class="primary-btn text-uppercase">login</a><br><br><br><br><br><br>
 	          <h4>Dont have an account?
-							<a href="../layerAuthentication/signup_page.php" class="text-white text-uppercase">signup</a>
+							<a href="../layerAuthentication/signup.php" class="text-white text-uppercase">signup</a>
 						</h4>
 	        </div>
 	        <div class="col-lg-5 banner-right">

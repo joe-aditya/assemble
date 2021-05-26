@@ -12,17 +12,18 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title>Admin Login</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style2.css">
 
   <script>
   function verifyLogin(){
+    $('#error').html("");
+    $('#result').html("");
       if(!($('#a_name').val() && $('#a_pwd').val())){
-           $('#error').html('Please Enter Username and Password');
+           $('#error').html('Please Enter BOTH Username & Password');
       }else{
-
           var a_name = $('#a_name').val();
           var a_pwd = $('#a_pwd').val();
 
@@ -39,8 +40,6 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 </head>
 
 <body>
-    <p id='result'></p>
-<!--if removed, no alert from js func. -->
   <div>
     <form class="logform">
       <h1> Admin Login</h1>
@@ -49,15 +48,16 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
         <input type="text" id="a_name" name="a_name" placeholder="Admin-ID" />
       </div>
 
-      <!-- username is sent to adminlogin.php as auname for authentication-->
-
       <div class="txtb">
         <input type="password" id="a_pwd" name="a_pwd" placeholder="Password" />
       </div>
-      <!--password is sent to adminlogin.php as apwd for authentication-->
-    <p id='error'></p>
-      <input type="button" class="logbtn" onclick='verifyLogin()' value="Login">
-      <!--Checks if the uname & pwd fiels are empty before submiting-->
+
+      <div style="height:70px;;">
+            <input style="padding: 20px;" type="button" class="logbtn" onclick='verifyLogin()' value="Login">
+
+            <p id='error' style="color:red;"></p>
+            <p id='result' style="color:red;"></p>
+      </div>
 
       <div class="bottom-text">
         <div class="halo">
