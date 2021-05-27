@@ -1,6 +1,6 @@
 <?php
-include '../layerAuthentication/config.php';
 session_start();
+include '../layerAuthentication/config.php';
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{

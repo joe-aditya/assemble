@@ -26,22 +26,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
-      var arr = document.getElementById("roll").value;
-      var rolltype = Number(arr);
-      var rolllen = arr.length;
-      if (document.getElementById("name").value == "" || document.getElementById("user").value == "") {
-        window.location.href = "signup.html";
-        window.alert("Do NOT leave any field blank.");
-      } else if (document.getElementById("pwd").value != document.getElementById("pwdc").value) {
-        window.location.href = "signup.html";
-        window.alert("Confirmation password does NOT match.\nPlease Re-enter your credentials.");
-      } else if (rolltype != arr) {
-        window.location.href = "signup.html";
-        window.alert("Register number should contain ONLY numbers\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
-      } else if (rolllen != 8) {
-        window.location.href = "signup.html";
-        window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
-      }
+
     }
 
     function goBack() {
@@ -104,14 +89,14 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
         </div>
 
         <div class="txtb">Purpose:<br>
-          <textarea maxlength=50 id="purpose" name="purpose" rows="2" cols="10" wrap="soft" placeholder="Reason to create this team"></textarea><!-- CSS - placeholder text isnt visible by default-->
+          <textarea maxlength=100 id="purpose" name="purpose" rows="2" cols="10" wrap="soft" placeholder="Reason to create this team"></textarea><!-- CSS - placeholder text isnt visible by default-->
         </div>
 
         <div class="txtb">Skillset needed:
-          <textarea maxlength=50 id="skills_needed" name="skills_needed" rows="4" cols="10" wrap="soft" placeholder="What skillsets are you looking for!"></textarea>
+          <textarea maxlength=100 id="skills_needed" name="skills_needed" rows="4" cols="10" wrap="soft" placeholder="What skillsets are you looking for!"></textarea>
       </div><!--BRO - Only 50 character is accepted in the form-->
         <div class="txtb">Criteria:
-          <textarea maxlength=50 id="criteria" name="criteria" rows="4" cols="10" wrap="soft" placeholder="Mention the experience level you are looking for"></textarea>
+          <textarea maxlength=100 id="criteria" name="criteria" rows="4" cols="10" wrap="soft" placeholder="Mention the experience level you are looking for"></textarea>
         </div>
         <div class="txtb">Number of members needed:
           <input type="number" id="members_needed" name="members_needed" style="border-style: groove;" min="1" max="999" value="1">

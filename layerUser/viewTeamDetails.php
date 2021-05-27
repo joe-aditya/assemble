@@ -1,13 +1,13 @@
 <?php
-include '../layerAuthentication/config.php';
 session_start();
+include '../layerAuthentication/config.php';
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
   $dp=$_SESSION['dp'];
 
-  $teamid = $_POST["teamid"];
+  $teamid = 3;//$_POST["teamid"];
   $qry = "SELECT * FROM team WHERE teamid = $teamid;";
   $res = mysqli_query($con, $qry);
   $row = mysqli_fetch_assoc($res);
@@ -197,7 +197,10 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                           <div class="input-group-append">
                             <span class="input-group-text">Contact:</span>
                           </div>
-                          <p class="form-control txtscroll" style="height:62px;">Phone Number: <?php echo $row1["phno"]; ?> <br> Mail-ID: <?php echo $row1["mail"]; ?> </p>
+                          <p class="form-control txtscroll" style="height:62px;">
+                            Phone Number: <?php echo $row1["phno"]; ?>
+                            <br> Mail-ID: <?php echo $row1["mail"]; ?>
+                          </p>
                         </div>
 
                       </div>

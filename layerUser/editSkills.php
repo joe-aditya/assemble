@@ -105,7 +105,7 @@ $experience = $row[3];
             <option value="Sports">Sports</option>
             <option value="Artwork">Artwork</option>
             <option value="Cooking">Cooking</option>
-            <option value="Filming">Filming</option>
+            <option value="FilmMaking">FilmMaking</option>
           </select>
         </div>
 

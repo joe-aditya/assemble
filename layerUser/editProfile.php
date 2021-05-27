@@ -167,7 +167,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             $('#erCpwd').html('Please Enter your Current Password');
           }
         }
-        
+
         if((flag)&&(cpwd)&&(npwd)){
           pwd = npwd;
         }
@@ -189,6 +189,29 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
               })
             window.location.href = "editProfile.php";
         }
+      }
+
+      function uploadDP(){
+        var fd = new FormData();
+        var files = $('#dp')[0].files[0];
+
+        fd.append('file',files);
+        $.ajax({
+            url: 'api/upload_avatar.php',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function(response){
+            if(response!=0){
+                alert(response);
+                location.reload();
+            }else{
+                alert("Upload failed");
+            }
+            },
+        });
       }
 
     function goBack() {window.location.href = "dashboard.php";}
@@ -250,8 +273,8 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
                     <div class="flex-fill">
                       Update DP:
-                      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" style="color: black;">
-                      <input type="submit" value="Change DP ">
+                      <input type="file" id="dp" name="dp" accept="image/png, image/jpeg" style="color: black;">
+                      <input type="button" value="Change DP" onclick='uploadDP()'>
                     </div>
 <br>
 

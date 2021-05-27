@@ -86,7 +86,7 @@
               <option value="Sports">Sports</option>
               <option value="Arts">Artwork</option>
               <option value="Cooking">Cooking</option>
-              <option value="Filming">Filming</option>
+              <option value="FilmMaking">FilmMaking</option>
             </select>
           </div>
 
