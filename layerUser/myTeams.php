@@ -2,7 +2,7 @@
 include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";
 }else{
   $uname=$_SESSION['uname'];
   $userid=$_SESSION['userid'];
@@ -26,8 +26,8 @@ echo "<script>window.location.href='login.php';</script>";
   <link rel="stylesheet" href="dashboard.css">
 
   <script>
-    function viewMyTeam() {
-      window.location.href = "viewMyTeam.php";
+    function joinTeam() {
+      window.location.href = "dashboard.php";
     }
   </script>
 
@@ -112,18 +112,20 @@ echo "<script>window.location.href='login.php';</script>";
                   <div class="container">
                     <div class="row">
 <?php
-      $qry = "SELECT teamid, team_name, purpose FROM team
-              WHERE creatorid = ?
-              AND members_needed != members_in_team;";
-      $qry = $con->prepare($qry);
-      $qry->bind_param("i", $userid);
-      $qry->execute();
-      $res = $qry->get_result();
+  $qry = "SELECT teamid, team_name, purpose FROM team
+          WHERE creatorid = ?
+          AND members_needed != members_in_team;";
+  $qry = $con->prepare($qry);
+  $qry->bind_param("i", $userid);
+  $qry->execute();
+  $res = $qry->get_result();
+  $count = mysqli_num_rows($res);
 
+  if($count>0){
       while($row = $res->fetch_assoc()){
 ?>
                       <div class="col-md-3 myteambox">
-                        <form action="viewTeamDetails .php" method="POST">
+                        <form action="myTeams_manage.php" method="POST">
                           <h5>
                             <center><?php echo $row['team_name']; ?></center>
                           </h5>
@@ -134,9 +136,34 @@ echo "<script>window.location.href='login.php';</script>";
                           <input type="submit" id="view_my_team" class="myteam_btn" value="Manage">
                         </form>
                       </div>
-<?php
+  <?php
         }
-?>
+  }
+  else{
+  ?>
+                      <div class=" col-sm-12 nothing">
+                        <div class="row">
+                          <div class=" col-sm-6">
+                            <img src="../layerAuthentication/img1/sad.png">
+                            <p>Seems like you don't have any teams to manage
+                              <br>Create a team via
+                              <a href="createTeam.php"><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></a>
+                              <br>& then manage the Created Teams in this tab
+                              </p>
+                            </div>
+                            <div class=" col-sm-6">
+                              <img src="../layerAuthentication/img1/happy.png">
+                              <p>Or you might have assembled all your teams!
+                                <br>View your teams via
+                                <a href="assembled.php"><img src="../home/img/logoooo.png" height="35px" width="35px">SSEMBLED</a>
+                                <br>& manage your teams
+                                </p>
+                            </div>
+                          </div>
+                      </div>
+  <?php
+  }
+  ?>
                     </div>
                   </div>
 

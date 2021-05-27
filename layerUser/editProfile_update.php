@@ -1,31 +1,34 @@
 <?php
-#insert signup data in db/redirects accordingly
 include '../layerAuthentication/config.php';
 session_start();
-$uname=$_SESSION['uname'];
-$userid=$_SESSION['userid'];
+if(isset($_POST['name'])){
 
-if(isset($_POST['works'])){
-$works=$con->real_escape_string($_POST["works"]);
-$experience=$con->real_escape_string($_POST["experience"]);
-$skills=$con->real_escape_string($_POST["skills"]);
-$interest=$con->real_escape_string($_POST["interest"]);
+$bio=$_POST["bio"];
+$phno=$con->real_escape_string($_POST["phno"]);
+$mail=$con->real_escape_string($_POST["mail"]);
+$smlink=$con->real_escape_string($_POST["smlink"]);
+$name=$con->real_escape_string($_POST["name"]);
+$dob=$con->real_escape_string($_POST["dob"]);
+$orgname=$con->real_escape_string($_POST["orgname"]);
+$sex=$con->real_escape_string($_POST["sex"]);
+$pwd=$con->real_escape_string($_POST["pwd"]);
 
-$qry = $con->prepare("UPDATE skill SET
-        works = ?, experience = ?, skills = ?, interest = ?
-				WHERE userid = ? ;");
+$qry = "UPDATE user SET
+        bio=?, phno=?, mail=?, sm_link=?, name=?,
+        dob=DATE(?), org_name=?, sex=?, pwd=?
+				WHERE uname = '{$_SESSION['uname']}' ;";
 
-
-$qry->bind_param("sssss", $works, $experience, $skills, $interest, $userid);
+$qry = $con->prepare($qry);
+$qry->bind_param("sisssssss",$bio, $phno, $mail, $smlink, $name, $dob, $orgname, $sex, $pwd);
 
 
 if($qry->execute()){
-	echo "Skills updated successfully. ";
-	header("Location:../layerUser/editSkills.php");
+	echo "Profile updated successfully. ";
+	header("Location:../layerUser/editProfile.php");
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:invalidsetup2.html");
+	header("Location:../layerUser/editProfile.php");
 }
 
 mysqli_close($con);

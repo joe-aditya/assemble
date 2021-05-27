@@ -2,13 +2,13 @@
 include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
   $dp=$_SESSION['dp'];
 
-  $teamid = 3;//$_POST["teamid"];
-  $qry = "SELECT * FROM team WHERE teamid = '".$teamid."';";
+  $teamid = $_POST["teamid"];
+  $qry = "SELECT * FROM team WHERE teamid = $teamid;";
   $res = mysqli_query($con, $qry);
   $row = mysqli_fetch_assoc($res);
   $creatorid = $row["creatorid"];
@@ -16,7 +16,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   $qry1 = "SELECT * FROM user WHERE userid = $creatorid;";
   $res1 = mysqli_query($con, $qry1);
   $row1 = mysqli_fetch_assoc($res1);
-  
+
   $qry2 = "SELECT * FROM skill WHERE userid = $creatorid;";
   $res2 = mysqli_query($con, $qry2);
   $row2 = mysqli_fetch_assoc($res2);
@@ -38,6 +38,19 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="dashboard.css">
+
+<script>
+  function leaveTeam(){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('viewTeamDetails_leaveTeam.php', {
+        teamid: teamid,
+    }, function (result){
+        $('').html(result);
+        console.log(status);
+    })
+  }
+</script>
+
 </head>
 
 <body>
@@ -79,6 +92,21 @@ echo "<script>window.location.href='login.php';</script>";//BRO
         <a href="teamsJoined.php">
           <li><i class="fas fa-arrow-left" style="font-size:25px;"> Back</i></li>
         </a>
+        <br>
+
+        <button onclick='document.getElementById("leaveOption").style.display= "block";' class="leave">
+          <i class="fas fa-running" style="font-size:25px;"> Leave Team</i>
+        </button>
+
+        <div id="leaveOption" style="display:none;">
+        <button onclick='document.getElementById("leaveOption").style.display= "none";' class="halfl">
+          <i class="fas fa" style="font-size:25px;"> Cancel</i>
+        </button>
+        <button onclick='leaveTeam()' class="halfl">
+          <i class="fas fa" style="font-size:25px;"> Leave</i>
+        </button>
+      </div>
+
       </ul>
     </div>
   </div>
@@ -180,24 +208,24 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 <?php
       $i=1;
       $qry3 = "SELECT userid FROM team_member
-              WHERE teamid = $teamid;";
+              WHERE teamid = $teamid
+              AND status = 1";
   	  $res3 = mysqli_query($con, $qry3);
 
       while($row3 = $res3->fetch_assoc()){
       	$userid = $row3["userid"];
       	$qry4 = "SELECT * FROM user WHERE userid = $creatorid;";
-  		$res4 = mysqli_query($con, $qry4);
-  		$row4 = mysqli_fetch_assoc($res4);
-      
+  		  $res4 = mysqli_query($con, $qry4);
+  		  $row4 = mysqli_fetch_assoc($res4);
 ?>
                         <div class="input-group">
                           <div class="input-group-append">
                             <span class="input-group-text">#<?php echo $i; ?></span>
                           </div>
                           <p class="form-control txtscroll" style="height:86px;">
-						  	Username: @<?php echo $row4["uname"]; ?> <br> 
-						  	Phone Number: <?php echo $row4["phno"]; ?> <br> 
-						  	Mail-ID: <?php echo $row4["mail"]; ?> 
+						  	Username: @<?php echo $row4["uname"]; ?> <br>
+						  	Phone Number: <?php echo $row4["phno"]; ?> <br>
+						  	Mail-ID: <?php echo $row4["mail"]; ?>
 						  </p>
                         </div>
 <?php

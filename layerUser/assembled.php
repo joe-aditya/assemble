@@ -5,6 +5,7 @@ if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
+  $userid=$_SESSION['userid'];
   $dp=$_SESSION['dp'];
 ?>
 
@@ -100,8 +101,8 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 </div>
               </div>
               <h2 style="display:inline; padding-left: 13px;"><img src="../home/img/logoooo.png" height="50px" width="50px">SSEMBLED | <a href="myTeams.php">My Teams</a> </h2>
-              <hr>
-              <div class="txtscroll" style="height:381px;">
+              <hr style="margin-top:5px;">
+              <div class="txtscroll" style="height:390px;">
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
@@ -114,12 +115,13 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       $qry->bind_param("i", $userid);
       $qry->execute();
       $res = $qry->get_result();
+      $count = mysqli_num_rows($res);
 
-      while($row = $res->fetch_assoc()){
+      if($count>0){
+          while($row = $res->fetch_assoc()){
 ?>
-
                       <div class="col-md-3 myteambox">
-                        <form action="viewMyTeam.php" method="POST">
+                        <form action="myTeams_manage.php" method="POST">
                           <h5>
                             <center><?php echo $row['team_name']; ?></center>
                           </h5>
@@ -127,12 +129,24 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                             <?php echo $row['purpose']; ?>
                           </p>
                           <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
-                          <input type="submit" id="view_my_team" class="myteam_btn" value="View Team">
+                          <input type="submit" id="view_my_team" class="myteam_btn" value="Manage">
                         </form>
                       </div>
-<?php
+  <?php
         }
-?>
+  }
+  else{
+  ?>
+                      <div class=" col-sm-12 nothing">
+                        <img src="../layerAuthentication/img1/sad.png">
+                        <p>You don't have any ASSEMBLED teams yet
+                        <br>Manage your teams in
+                        <a href="myTeams.php"><i class="fas fa-users" style="font-size:25px;"> My Teams</i></a>
+                        tab to assemble your team</p>
+                      </div>
+  <?php
+  }
+  ?>
                     </div>
                   </div>
                 </div>

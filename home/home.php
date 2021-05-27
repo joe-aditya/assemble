@@ -201,8 +201,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	      <div class="row">
 	        <div class="active-course-carusel">
 	          <div class="single-course item">
-	            <img class="img-fluid" src="img/c1.jpg" alt="">
-	            <p class="sale-btn">For Sale</p>
+	            <!--<img class="img-fluid" src="img/c1.jpg" alt="">-->
 	            <div class="details">
 	              <a href="https://instagram.com/gokulnath__m?igshid=1usdaer40tjia">
 	                <h4>Gokulnath M <span class="price float-right">2019103522</span></h4>
@@ -213,8 +212,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	            </div>
 	          </div>
 	          <div class="single-course item">
-	            <img class="img-fluid" src="img/c2.jpg" alt="">
-	            <p class="sale-btn">For Sale</p>
+	            <!--<img class="img-fluid" src="img/c2.jpg" alt="">-->
 	            <div class="details">
 	              <a href="https://instagram.com/thiruchelvan_sibi?igshid=arthwxkv8gwl">
 	                <h4>Thiruchelvan T <span class="price float-right">2019103591</span></h4>
@@ -225,8 +223,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	            </div>
 	          </div>
 	          <div class="single-course item">
-	            <img class="img-fluid" src="img/c3.jpg" alt="">
-	            <p class="sale-btn">For Sale</p>
+	            <!--<img class="img-fluid" src="img/c3.jpg" alt="">-->
 	            <div class="details">
 	              <a href="https://instagram.com/ad.i.shan?igshid=wmyr7wm8jwiz">
 	                <h4>Jyotir Aditya Giri A<span class="price float-right">2019103531</span></h4>

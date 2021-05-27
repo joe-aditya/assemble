@@ -38,24 +38,8 @@ $experience = $row[3];
   <link rel="stylesheet" href="dashboard.css">
   <script>
     function datacheck() {
-      var arr = document.getElementById("roll").value;
-      var rolltype = Number(arr);
-      var rolllen = arr.length;
-      if (document.getElementById("name").value == "" || document.getElementById("user").value == "") {
-        window.location.href = "signup.html";
-        window.alert("Do NOT leave any field blank.");
-      } else if (document.getElementById("pwd").value != document.getElementById("pwdc").value) {
-        window.location.href = "signup.html";
-        window.alert("Confirmation password does NOT match.\nPlease Re-enter your credentials.");
-      } else if (rolltype != arr) {
-        window.location.href = "signup.html";
-        window.alert("Register number should contain ONLY numbers\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
-      } else if (rolllen != 8) {
-        window.location.href = "signup.html";
-        window.alert("Enter a valid Register Number.\nFormat: year of joining + dept. code + roll number\n(yycccrrr)");
-      }
-    }
 
+    }
   </script>
 </head>
 
@@ -126,15 +110,15 @@ $experience = $row[3];
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Skills:<br>
-          <textarea maxlength=50 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field"><?php echo $skills; ?></textarea><!-- CSS - placeholder text isnt visible by default-->
+          <textarea maxlength=100 id="skills" name="skills" rows="3" cols="10" wrap="soft" placeholder="Your expertise in the field"><?php echo $skills; ?></textarea><!-- CSS - placeholder text isnt visible by default-->
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Experience:
-          <textarea maxlength=50 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!"><?php echo $experience; ?></textarea>
+          <textarea maxlength=100 id="experience" name="experience" rows="3" cols="10" wrap="soft" placeholder="Tell us about your niche!"><?php echo $experience; ?></textarea>
         </div>
 
         <div class="txtb" style="padding: 0px 0px 0px 0px;">Project links/description:
-          <textarea maxlength=50 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!"><?php echo $works; ?></textarea>
+          <textarea maxlength=100 id="works" name="works" rows="3" cols="10" wrap="soft" placeholder="Help others find your works!"><?php echo $works; ?></textarea>
         </div>
       </div>
       <input type="submit" class="logbtn" onclick='editSkills()' value="Save Changes">

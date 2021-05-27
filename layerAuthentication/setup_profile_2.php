@@ -80,12 +80,12 @@
 
           <div class="txtb">Interest: <!-- CSS - work on apprearance-->
             <select name="interest" id="interest" required>
-              <option value="Coding">Programming</option>
+              <option value="Programming">Programming</option>
               <option value="Music">Music</option>
-              <option value="Sports">Dance</option>
+              <option value="Dance">Dance</option>
               <option value="Sports">Sports</option>
               <option value="Arts">Artwork</option>
-              <option value="Arts">Cooking</option>
+              <option value="Cooking">Cooking</option>
               <option value="Filming">Filming</option>
             </select>
           </div>

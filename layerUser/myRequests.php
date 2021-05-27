@@ -1,10 +1,11 @@
 <?php
-
+include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
+  $userid=$_SESSION['userid'];
   $dp=$_SESSION['dp'];
 ?>
 
@@ -23,6 +24,13 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="dashboard.css">
+
+    <script>
+      function myRequests_delete() {
+        window.location.href = "myRequests_delete.php";
+      }
+    </script>
+
 </head>
 
 <body>
@@ -110,51 +118,61 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
                     <div class="row">
+<?php
+      $qry = "SELECT teamid FROM team_request
+              WHERE userid = ?
+              AND status != 2;";
+      $qry = $con->prepare($qry);
+      $qry->bind_param("i", $userid);
+      $qry->execute();
+      $res = $qry->get_result();
+      $count = mysqli_num_rows($res);
 
-
+      if($count>0){
+          while($row = $res->fetch_assoc()){
+            $teamid = $row["teamid"];
+            $qry1 = "SELECT * FROM team WHERE teamid = $teamid;";
+            $res1 = mysqli_query($con, $qry1);
+            $row1 = mysqli_fetch_assoc($res1);
+?>
                       <div class="col-md-3 requestbox">
-                        <form>
+                        <form action="viewTeamDetails.php" method="POST">
                           <h5>
-                            <center>Team_Name</center>
+                            <center><?php echo $row1['team_name']; ?></center>
                           </h5>
                           <p class="form-control txtscroll request_purpose" style="height:52px; margin-bottom: 0px;">
-                            62px for 2 lines n anything more will be scrollable ssssssssssss sssssssssssssssssssssss ssssssssssssssssssssss
+                            Purpose: <?php echo $row1['purpose']; ?> <br>
+                            My request message: <br> <?php echo $row['request_msg']; ?>
                           </p>
                           <p style="margin-bottom: 8px;">Status:
-                            pending</p>
-                          <input type="button" id="unsend_request" class="joined_btn" onclick=unsendRequest() value="Unsend">
-                        </form>
-                      </div>
-
-
-                      <div class="col-md-3 requestbox">
-                        <form>
-                          <h5>
-                            <center>Team_Name</center>
-                          </h5>
-                          <p class="form-control txtscroll request_purpose" style="height:52px; margin-bottom: 0px;">
-                            62px for 2 lines n anything more will be scrollable ssssssssssssssssssss sssssssssssssssssssss
+<?php
+          if($row['status']==0){
+            echo " pending";
+          }
+          if($row['status']==1){
+            echo " rejected";
+          }
+?>
                           </p>
-                          <p style="margin-bottom: 8px;">Status:
-                            pending</p>
-                          <button id="unsend_request" class="request_unsend_btn"><img src="img2/delete.png" height="30px" width="30px"></button>
+                          <input type="hidden" name="teamid" value="<?php echo $row1['teamid']; ?>"/>
+                          <input type="submit" id="unsend_request" class="request_btn" onclick=myRequests_delete() value="Unsend">
                         </form>
                       </div>
-
-
-                      <div class="col-md-3 requestbox">
-                        <form>
-                          <h5>
-                            <center>Team_Name</center>
-                          </h5>
-                          <p class="form-control txtscroll request_purpose" style="height:52px; margin-bottom: 0px;">
-                            62px for 2 lines n anything </p>
-                          <p style="margin-bottom: 8px;">Status:
-                            pending</p>
-                          <button id="unsend_request" class="request_unsend_btn"><i class="fas fa-trash" style="font-size:25px;"></i></button>
-                        </form>
+  <?php
+        }
+  }
+  else{
+  ?>
+                      <div class=" col-sm-12 nothing">
+                        <img src="../layerAuthentication/img1/facepalm.png">
+                        <p>You have not sent any Join Requests yet
+                        <br>Send join request via
+                        <a href="dashboard.php"><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></a>
+                        & view your requests in this tab
                       </div>
-
+  <?php
+  }
+  ?>
                     </div>
                   </div>
 

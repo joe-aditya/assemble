@@ -1,10 +1,11 @@
 <?php
-
+include '../layerAuthentication/config.php';
 session_start();
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
+  $userid=$_SESSION['userid'];
   $dp=$_SESSION['dp'];
 ?>
 
@@ -117,31 +118,49 @@ echo "<script>window.location.href='login.php';</script>";//BRO
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
                     <div class="row">
+<?php
 
+$qry = "SELECT teamid FROM team_member
+        WHERE userid = $userid;";
+$res = mysqli_query($con, $qry);
+$count = mysqli_num_rows($res);
+
+if($count>0){
+  while($row = $res->fetch_assoc()){
+    $teamid = $row["teamid"];
+    $qry1 = "SELECT * FROM team
+             WHERE teamid = $teamid;";
+    $res1 = mysqli_query($con, $qry1);
+    $row1 = mysqli_fetch_assoc($res1);
+?>
                       <div class="col-md-3 joinedbox">
-                        <form>
+                        <form action="viewTeamDetails.php" method="POST">
                           <h5>
-                            <center>Team_Name</center>
+                            <center><?php echo $row1['team_name']; ?></center>
                           </h5>
                           <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssss
+                            <?php echo $row1['purpose']; ?>
                           </p>
-                          <input type="button" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
+                          <input type="hidden" name="teamid" value="<?php echo $row1['teamid']; ?>"/>
+                          <input type="submit" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
                         </form>
                       </div>
-
-                      <div class="col-md-3 joinedbox">
-                        <form>
-                          <h5>
-                            <center>Team_Name</center>
-                          </h5>
-                          <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                            62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssss sssssssssssssssssssssssss
-                          </p>
-                          <i class="fas fa-eye" style="font-size:30px;"></i>
-                        </form>
+<?php
+      }
+}
+else{
+?>
+                      <div class=" col-sm-12 nothing">
+                        <img src="../layerAuthentication/img1/shrug.png">
+                        <p>You are not a part of any team yet
+                        <br>Join a team via
+                        <a href="dashboard.php"><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></a>
+                        & view the Teams Joined in this tab
+                        </p>
                       </div>
-
+<?php
+}
+?>
                     </div>
                   </div>
 

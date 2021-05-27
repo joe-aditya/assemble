@@ -1,14 +1,14 @@
 <?php
-#insert signup data in db/redirects accordingly
+
 include '../layerAuthentication/config.php';
 session_start();
 $uname=$_SESSION['uname'];
 $userid=$_SESSION['userid'];
 
 if(isset($_POST['works'])){
-$works=$con->real_escape_string($_POST["works"]);
-$experience=$con->real_escape_string($_POST["experience"]);
-$skills=$con->real_escape_string($_POST["skills"]);
+$works=$_POST["works"];
+$experience=$_POST["experience"];
+$skills=$_POST["skills"];
 $interest=$con->real_escape_string($_POST["interest"]);
 
 $qry = $con->prepare("UPDATE skill SET
@@ -25,7 +25,7 @@ if($qry->execute()){
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:invalidsetup2.html");
+	header("Location:../layerUser/editSkills.php");
 }
 
 mysqli_close($con);
