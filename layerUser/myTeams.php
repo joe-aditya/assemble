@@ -133,7 +133,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                             <?php echo $row['purpose']; ?>
                           </p>
                           <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
-                          <input type="submit" id="view_my_team" class="myteam_btn" value="Manage">
+                          <input type="submit" class="myteam_btn" value="Manage">
                         </form>
                       </div>
   <?php

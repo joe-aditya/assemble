@@ -23,16 +23,11 @@ $qry->bind_param("iiis", $teamid, $userid, $status, $reqMsg);
 
 
 if($qry->execute()){
-	echo "REQUEST SENT
-  <script>
-          window.location.href='../layerUser/dashboard_view.php';
-        </script>";
+	echo "REQUEST SENT";
 }
 else{
 	echo "JOIN".mysqli_error($con);
-  echo "<script>
-          window.location.href='../layerUser/dashboard_view.php';
-        </script>";
+
 }
 
 mysqli_close($con);

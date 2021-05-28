@@ -36,16 +36,15 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
 <script>
-  function leaveTeam(){
-    var teamid = "<?php echo $teamid; ?>";
-    $.post('viewTeamDetails_leaveTeam.php', {
-        teamid: teamid
-    }, function (result){
-        $('').html(result);
-        console.log(status);
-    })
-    window.location.href='teamsJoined.php';
-  }
+  $(document).ready(function(){
+      $(function() {
+     $('#submit2').click(function(e) {
+          e.preventDefault();
+          $("#editPage").submit();
+      });
+
+  });
+  });
 </script>
 
 </head>
@@ -85,22 +84,15 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           @<?php echo $uname; ?>
         </p>
         <br>
-        <a href="teamsJoined.php">
+
+        <form action="myTeams_manage.php" method="POST" id="editPage">
+          <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
+        </form>
+
+        <a href="#" id="submit2">
           <li><i class="fas fa-arrow-left" style="font-size:25px;"> Back</i></li>
         </a>
-        <br>
 
-        <button onclick='document.getElementById("leaveOption").style.display= "block";' class="leave">
-          <i class="fas fa-running" style="font-size:25px;"> Leave Team</i>
-        </button>
-
-        <div id="leaveOption" style="display:none;">
-        <button onclick='document.getElementById("leaveOption").style.display= "none";' class="halfl">
-          <i class="fas fa" style="font-size:25px;"> Cancel</i>
-        </button>
-        <button onclick="leaveTeam()" class="halfl">
-          <i class="fas fa" style="font-size:25px;"> Leave</i>
-        </button>
       </div>
 
       </ul>

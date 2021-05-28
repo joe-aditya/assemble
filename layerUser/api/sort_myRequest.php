@@ -65,6 +65,9 @@ if(isset($_POST['domain'])){
   if($row['status']==1){
   echo " rejected";
   }
+  if($row['status']==3){
+  echo " removed from team";
+  }
   ?>
               </p>
               <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>

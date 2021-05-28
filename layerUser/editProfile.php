@@ -41,14 +41,13 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
   <style>
-  .m{
-      margin-top: 5px;
-    margin-bottom: 0px;
-  }
-
-  .h{
-    height:90px;
-  }
+    .m{
+        margin-top: 5px;
+      margin-bottom: 0px;
+    }
+    .h{
+      height:90px;
+    }
   </style>
 
   <script>
@@ -282,7 +281,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                     <div class="flex-fill">
                       <div class="m txtb" style="padding: 0px 0px 0px 0px;">
                         Bio:
-                        <textarea maxlength=100 id="bio" name="bio" rows="3" cols="10" wrap="soft" placeholder="Tell others about yourself!"><?php echo $bio; ?></textarea>
+                        <textarea maxlength=100 id="bio" name="bio" rows="3" cols="20" wrap="soft" placeholder="Tell others about yourself!"><?php echo $bio; ?></textarea>
                       </div>
                         <p id='erBio' style="color:red;"></p>
                     </div>

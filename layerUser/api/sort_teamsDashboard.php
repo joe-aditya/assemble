@@ -10,18 +10,21 @@ if(isset($_POST['domain'])){
     $qry = 'SELECT * FROM team
             WHERE creatorid != "'.$userid.'"
             AND domain = "'. $domain .'"
+            AND members_in_team < members_needed
             AND teamid NOT IN (SELECT teamid FROM team_request
             WHERE userid = "'.$userid.'");';
 
     if($domain=='All Teams'){
         $qry = 'SELECT * FROM team
                 WHERE creatorid != "'.$userid.'"
+                AND members_in_team < members_needed
                 AND teamid NOT IN (SELECT teamid FROM team_request
                 WHERE userid = "'.$userid.'");';
     }
     else if($domain=='Global'){
       $qry = 'SELECT * FROM team
               WHERE creatorid != "'.$userid.'"
+              AND members_in_team < members_needed
               AND domain NOT IN ("Music","Programming","Sports","FilmMaking","Artwork")
               AND teamid NOT IN (SELECT teamid FROM team_request
               WHERE userid = "'.$userid.'");';

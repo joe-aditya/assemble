@@ -20,14 +20,13 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
   <link rel="stylesheet" href="../layerUser/dashboard.css">
 
 <style>
-.m{
-    margin-top: 5px;
-  margin-bottom: 0px;
-}
-
-.h{
-  height:70px;
-}
+  .m{
+      margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  .h{
+    height:70px;
+  }
 </style>
 
   <script>

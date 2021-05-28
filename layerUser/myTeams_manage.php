@@ -1,32 +1,105 @@
-<!--
 <?php
-
 session_start();
+include '../layerAuthentication/config.php';
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
   $uname=$_SESSION['uname'];
   $dp=$_SESSION['dp'];
+  $teamid = $_POST["teamid"];
+
+  $res = mysqli_query($con, "SELECT * FROM team WHERE teamid = $teamid;");
+  $row = mysqli_fetch_assoc($res);
 ?>
--->
+
 <!DOCTYPE html>
-<!-- profile setup 1 | only for first time Logiare filled-->
+
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>Sign Up</title>
+  <title>@<?php echo $uname; ?> | Team Details</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="dashboard.css">
+
+<script>
+
+  $(document).ready(function(){
+      $(function() {
+         $('#submit2').click(function(e) {
+              e.preventDefault();
+              $("#editPage").submit();
+          });
+      });
+  });
+
+  function viewR(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/view_RequestUserProfile.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
+  function viewM(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/view_MemberUserProfile.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
+  function reject(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/rejectRequest.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalMsg').html(result);
+        console.log(status);
+    })
+  }
+
+  function accept(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/acceptRequest.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalMsg').html(result);
+        console.log(status);
+    })
+  }
+
+  function remove(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/removeMember.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalMsg').html(result);
+        console.log(status);
+    })
+  }
+
+</script>
+
 </head>
 
 <body>
-
   <div class="headerrr">
     <p class="header_textt glow">ASSEMBLE</p>
   </div>
@@ -50,134 +123,193 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
   <div class="container" id="sidebar">
     <div class="row">
-      <h1>HELLO</h1>
       <ul>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" style="padding:20px 0px 10px 0px;">
           <div class="brand_logo_container">
-            <img src="img2/<?php echo $dp; ?>" height="150px" width="150px">
+            <img src="img2/<?php echo $dp; ?>">
           </div>
-
         </div>
+
+        <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
+          @<?php echo $uname; ?>
+        </p>
+        <br>
         <a href="myTeams.php">
-          <li><br> BACK</li>
+          <li><i class="fas fa-arrow-left" style="font-size:25px;"> Back</i></li>
         </a>
+        <br>
+
+        <form action="myTeams_edit.php" method="POST" id="editPage">
+          <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
+        </form>
+
+        <a href="#" id="submit2">
+          <li><i class="fas fa-pen" style="font-size:25px;"> Edit Details</i></li>
+        </a>
+
+      </div>
+
       </ul>
     </div>
   </div>
 
-  <div class="container" id="sidebar-right">
-    <div class="row">
-      <div class="cardd-r">
-        <h2>TEAM DETAILS</h2>
-
-
-        <!--<h5>ADD TEAM</h5>-->
-        <div style="padding:0px 40px 10px 40px;">
-          <div class="input-group">
-            <div class="input-group">
-              <span class="input-group"></span>
-            </div>
-            <p>Vacancy: 3/8</p>
-          </div>
-
-          <div class="input-group">
-            <div class="input-group">
-              <span class="input-group">Criteria:</span>
-            </div>
-
-            <p class="form-control txtscroll" style="height:100px;">skills from sssssssssssssssssssssssssssss dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddd dddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddddddd
-              ddddddddddddddddddddddddd ssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssss </p>
-          </div>
-
-          <div class="input-group" style="padding:10px 0px 0px 0px;">
-            <div class="input-group">
-              <span class="input-group">Team members:</span>
-            </div>
-
-            <p class="form-control txtscroll" style="height:60px;">skills from sssssssssssssssssssssssssssss ddddddddddddddddddddddddddddddddddddddddddd ssssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssss </p>
-          </div>
-
-          <div class="input-group" style="padding:10px 0px 0px 0px;">
-            <div class="input-group">
-              <span class="input-group">My Request Message:</span>
-            </div>
-            <input type="text" class="form-control input_pass" value="" placeholder="Hey! I'd like to join your team.">
-          </div>
-
-        </div>
-
-        <div class="d-flex justify-content-center  login_container">
-          <input type="submit" class="logbtn1" value="JOIN">
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
 
   <div class="grid-container">
     <div class="grid-item">
-      <div class="card" style="padding: 40px 60px 37px 60px;">
-        <div class=" cardd container">
+      <div class="card" style="background-color: inherit; padding: 33px 60px 12px 60px;">
+        <div class="col-sm-12">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="d-flex justify-content-center">
-                <div class="brand_logo_container">
 
+            <div class="col-sm-6">
+              <div class=" cardd container">
+                <h5 style="text-align:center;"><?php echo $row['team_name']; ?></h5>
+                <h3 style="text-align:center;">JOIN REQUESTS</h3>
+                <hr style="margin-top:5px;">
+                <div class="txtscroll" style="height:373px;">
+                  <div class="container-fluid p-0" id="enrolledcourses">
+                    <div class="container">
+                      <div class="row">
+
+<?php
+$res1 = mysqli_query($con,"SELECT *
+                           FROM team_request R
+                           INNER JOIN user U
+                           ON R.userid = U.userid
+                           WHERE R.teamid = '".$teamid."'
+                           AND (R.status = 0 OR R.status = 3);");
+
+while($row1 = $res1->fetch_assoc()){
+?>
+                      <div class="row" style="margin-left:15px; margin-bottom:5px; padding:8px; border-radius:20px; background-color:#d8d8d8;">
+                        <div class="input-group">
+                          <div class="input-group-append">
+
+                              <a data-toggle="modal" data-target="#myModal" href="#">
+                                <img src="img2/<?php echo $row1['dp']; ?>" onclick="viewR('<?php echo $row1['uname']; ?>')" height="75px" width="75px" style="border-radius: 50%;">
+                              </a>
+                          </div>
+                          <p class="form-control py-1" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; height:43px; width:385px;  border-radius:15px; margin-left: 7px; margin-right: 7px; margin-top: 15px; font-size:21px;">
+              						  	@<?php echo $row1["uname"]; ?> <i class="fa fa-comment"></i>
+                              <span style="font-size:15px;"><?php echo $row1["request_msg"]; ?></span>
+                          </p>
+                        </div>
+                      </div>
+<?php
+}
+?>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <h3 style="display:inline">TEAM:</h3>
-              <h4 style="display:inline">Team_Name</h4>
-
-              <!--        <div class="d-flex justify-content-center form_container">
-                  <form> -->
-
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text">Purpose:</span>
-                </div>
-                <p class="form-control txtscroll" style="height:62px;"> 62px for 2 lines n anything more will be scrollable sssssssssssssssssssssssssssss dddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss </p>
-              </div>
-
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text">Looking for:</span>
-                </div>
-                <p class="form-control txtscroll" style="height:86px;"> 86px for 2 lines n anything more will be scrollable skills from ssdd qqqqqqqqqqqqqqqqqqqqqqqqerfgvbhnjhgfdszxcvbnmjhgfdsasdfghjkmnbvcxzsxdcfghujikopoiuytrewertyuj </p>
-              </div>
-              <!--          </form>
-        </div>  -->
-              <hr>
-
-              <h5 style="display:inline">CREATOR:</h5>
-              <h5 style="display:inline">creator_name</h5>
-
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text">About:</span>
-                </div>
-                <p class="form-control txtscroll" style="height:86px;">
-                  Bio: <br> skills from sssssssssssssssssssssssssssss ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                  <br>Skills:<br> dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                  <br>Previous Works:<br> dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                </p>
-              </div>
-
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text">Contact:</span>
-                </div>
-                <p class="form-control txtscroll" style="height:62px;">Phone Number: 9876543210 <br> Mail-ID: creator@mail.com </p>
               </div>
             </div>
-          </div>
 
+            <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+
+            <div class="col-sm-6">
+              <div class=" cardd container">
+                <h5 style="text-align:center;"><?php echo $row['team_name']; ?></h5>
+                <h3 style="text-align:center;">TEAM MEMBERS</h3>
+                <hr style="margin-top:5px;">
+                <div class="txtscroll" style="height:373px;">
+                  <div class="container-fluid p-0" id="enrolledcourses">
+                    <div class="container">
+                      <div class="row">
+
+<?php
+$res2 = mysqli_query($con,"SELECT *
+                           FROM user U
+                           INNER JOIN team_member M
+                           ON U.userid = M.userid
+                           WHERE M.teamid = '".$teamid."'
+                           AND M.status = 1;");
+
+while($row2 = $res2->fetch_assoc()){
+?>
+                        <div class="row" style="margin-left:15px; margin-bottom:5px; padding:8px; border-radius:20px; background-color:#d8d8d8;">
+                          <div class="input-group">
+                            <div class="input-group-append">
+
+                                <a data-toggle="modal" data-target="#myModal" href="#">
+                                  <img src="img2/<?php echo $row2['dp']; ?>" onclick="viewM('<?php echo $row2['uname']; ?>')" height="75px" width="75px" style="border-radius: 50%;">
+                                </a>
+                            </div>
+                            <p class="form-control py-1" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; height:43px; width:385px;  border-radius:15px; margin-left: 7px; margin-right: 7px; margin-top: 15px; font-size:21px;">
+                                @<?php echo $row2["uname"]; ?> <i class="fa fa-comment"></i>
+                                <span style="font-size:15px;"><?php echo $row2["bio"]; ?></span>
+                            </p>
+                          </div>
+                        </div>
+<?php
+}
+
+$res3 = mysqli_query($con,"SELECT *
+                           FROM user U
+                           INNER JOIN team_member M
+                           ON U.userid = M.userid
+                           WHERE M.teamid = '".$teamid."'
+                           AND M.status = 3;");
+
+while($row3 = $res3->fetch_assoc()){
+?>
+                      <div class="row" style="margin-left:15px; margin-bottom:5px; padding:8px; border-radius:20px; background-color:#d8d8d8;">
+                        <div class="input-group">
+                          <div class="input-group-append">
+
+                              <a data-toggle="modal" data-target="#myModal" href="#">
+                                <img src="img2/<?php echo $row3['dp']; ?>" height="75px" width="75px" style="border-radius: 50%;">
+                              </a>
+                          </div>
+                          <p class="form-control py-1" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; height:43px; width:385px;  border-radius:15px; margin-left: 7px; margin-right: 7px; margin-top: 15px; font-size:21px;">
+                              @<?php echo $row3["uname"]; ?> <i class="fa fa-exclamation-triangle"></i>
+                              <span style="font-size:15px; color:#F44336">Left The Team</span>
+                          </p>
+                        </div>
+</div>
+<?php
+}
+?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <br>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">User Profile</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="modalBody">
+
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>

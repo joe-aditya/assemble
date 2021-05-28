@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['uname'])){
 echo "<script>window.location.href='../layerAuthentication/login.php';</script>";//BRO
 }else{
+
   $uname=$_SESSION['uname'];
   $dp=$_SESSION['dp'];
 
@@ -49,9 +50,12 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           teamid: teamid,
           reqMsg: reqMsg
       }, function (result){
-          $('#erre').html(result);
-          console.log(status);
+          $('#joinbtn').val(result);
+          console.log(result);
+          $('#joinbtn').prop('disabled',true);
+
       })
+
     }
   </script>
 
@@ -188,7 +192,9 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
               <div class="input-group">
                 <div class="input-group-append">
-                  <span class="input-group-text" style="width:108px;">About:</span>
+                  <span class="input-group-text" style="width:108px;">
+                    <img src="img2/<?php echo $row1['dp']; ?>" height="80px" width="80px" style="border-radius: 50%;">
+                  </span>
                 </div>
                 <p class="form-control txtscroll" style="height:110px;">
                   Bio: <br> <?php echo $row1["bio"]; ?>
@@ -220,7 +226,5 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 </html>
 
 <?php
-
 }
-
 ?>

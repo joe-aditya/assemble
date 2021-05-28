@@ -11,6 +11,7 @@ if(isset($_POST['domain'])){
             INNER JOIN team T
             ON T.teamid = M.teamid
             WHERE M.userid = "'. $userid .'"
+            AND M.status = 1
             AND T.domain = "'. $domain .'";';
 
     if($domain=='All Teams'){
@@ -18,7 +19,8 @@ if(isset($_POST['domain'])){
               FROM team_member M
               INNER JOIN team T
               ON T.teamid = M.teamid
-              WHERE M.userid = "'. $userid .'"';
+              WHERE M.userid = "'. $userid .'"
+              AND M.status = 1';
     }
     else if($domain=='Global'){
       $qry = "SELECT T.teamid, T.team_name, T.purpose
@@ -26,6 +28,7 @@ if(isset($_POST['domain'])){
               INNER JOIN team T
               ON T.teamid = M.teamid
               WHERE M.userid = '". $userid ."'
+              AND M.status = 1
               AND T.domain NOT IN ('Music','Programming','Sports','Filmaking','Artwork')";
     }
 
@@ -49,12 +52,12 @@ if(isset($_POST['domain'])){
             <div class="col-md-3 joinedbox">
               <form action="viewTeamDetails.php" method="POST">
                 <h5>
-                  <center><?php echo $row1['team_name']; ?></center>
+                  <center><?php echo $row['team_name']; ?></center>
                 </h5>
                 <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                  <?php echo $row1['purpose']; ?>
+                  <?php echo $row['purpose']; ?>
                 </p>
-                <input type="hidden" name="teamid" value="<?php echo $row1['teamid']; ?>"/>
+                <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
                 <input type="submit" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
               </form>
             </div>
