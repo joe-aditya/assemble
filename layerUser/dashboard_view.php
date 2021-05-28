@@ -41,12 +41,15 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
   <script>
-    function leaveTeam(){
+    function sendRequest(){
       var teamid = "<?php echo $teamid; ?>";
-      $.post('viewTeamDetails_leaveTeam.php', {
-          teamid: teamid
+      var reqMsg = $('#request_msg').val();
+
+      $.post('api/myRequest_insert.php', {
+          teamid: teamid,
+          reqMsg: reqMsg
       }, function (result){
-          $('').html(result);
+          $('#erre').html(result);
           console.log(status);
       })
     }
@@ -115,7 +118,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
               <span class="input-group">Criteria:</span>
             </div>
 
-            <p class="form-control txtscroll" style="height:100px;">
+            <p class="form-control txtscroll" id="erre" style="height:100px;">
               <?php echo $row['criteria']; ?>
             </p>
           </div>
@@ -134,12 +137,12 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             <div class="input-group">
               <span class="input-group">Enter Request Message:</span>
             </div>
-            <input maxlength=50 type="text" class="form-control input_pass" value="" placeholder="Hey! I'd like to join your team.">
+            <input maxlength=100 type="text" id="request_msg" name="request_msg" class="form-control input_pass" placeholder="Hey! I'd like to join your team.">
           </div>
 
         </div>
         <div class="d-flex justify-content-center  login_container">
-          <input type="submit" class="logbtn1" value="JOIN">
+          <input type="button" id="joinbtn" class="logbtn1" onclick='sendRequest()' value="JOIN">
         </div>
       </div>
     </div>

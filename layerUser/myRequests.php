@@ -26,9 +26,21 @@ echo "<script>window.location.href='login.php';</script>";//BRO
   <link rel="stylesheet" href="dashboard.css">
 
     <script>
-      function myRequests_delete() {
-        window.location.href = "myRequests_delete.php";
-      }
+
+    function sort(domain){
+      $.post('api/sort_myRequest.php', {
+          domain: domain
+      }, function (result){
+          $('#requestboxes').html(result);
+          console.log(status);
+      })
+    }
+
+    $(document).ready(function(){
+      sort("All Requests");
+    })
+
+    function myRequests_delete() {window.location.href = "myRequests_delete.php";}
     </script>
 
 </head>
@@ -46,13 +58,13 @@ echo "<script>window.location.href='login.php';</script>";//BRO
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
         <div class="navbar-nav; style:bottom">
-          <input type="button" class="btn btn-info" value="All Requests">
-          <input type="button" class="btn btn-info" value="Music">
-          <input type="button" class="btn btn-info" value="Programming">
-          <input type="button" class="btn btn-info" value="Sports">
-          <input type="button" class="btn btn-info" value="Filmaking">
-          <input type="button" class="btn btn-info" value="Artwork">
-          <input type="button" class="btn btn-info" value="Global">
+          <input type="button" class="btn btn-info" value="All Requests" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Music" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Programming" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Sports" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="FilmMaking" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Artwork" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Global" onclick="sort(this.value)">
         </div>
       </div>
 
@@ -106,7 +118,6 @@ echo "<script>window.location.href='login.php';</script>";//BRO
             <div class="col-sm-12">
               <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
-
                 </div>
               </div>
 
@@ -117,72 +128,17 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
-                    <div class="row">
-<?php
-      $qry = "SELECT teamid FROM team_request
-              WHERE userid = ?
-              AND status != 2;";
-      $qry = $con->prepare($qry);
-      $qry->bind_param("i", $userid);
-      $qry->execute();
-      $res = $qry->get_result();
-      $count = mysqli_num_rows($res);
+                    <div class="row" id="requestboxes">
 
-      if($count>0){
-          while($row = $res->fetch_assoc()){
-            $teamid = $row["teamid"];
-            $qry1 = "SELECT * FROM team WHERE teamid = $teamid;";
-            $res1 = mysqli_query($con, $qry1);
-            $row1 = mysqli_fetch_assoc($res1);
-?>
-                      <div class="col-md-3 requestbox">
-                        <form action="viewTeamDetails.php" method="POST">
-                          <h5>
-                            <center><?php echo $row1['team_name']; ?></center>
-                          </h5>
-                          <p class="form-control txtscroll request_purpose" style="height:52px; margin-bottom: 0px;">
-                            Purpose: <?php echo $row1['purpose']; ?> <br>
-                            My request message: <br> <?php echo $row['request_msg']; ?>
-                          </p>
-                          <p style="margin-bottom: 8px;">Status:
-<?php
-          if($row['status']==0){
-            echo " pending";
-          }
-          if($row['status']==1){
-            echo " rejected";
-          }
-?>
-                          </p>
-                          <input type="hidden" name="teamid" value="<?php echo $row1['teamid']; ?>"/>
-                          <input type="submit" id="unsend_request" class="request_btn" onclick=myRequests_delete() value="Unsend">
-                        </form>
-                      </div>
-  <?php
-        }
-  }
-  else{
-  ?>
-                      <div class=" col-sm-12 nothing">
-                        <img src="../layerAuthentication/img1/facepalm.png">
-                        <p>You have not sent any Join Requests yet
-                        <br>Send join request via
-                        <a href="dashboard.php"><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></a>
-                        & view your requests in this tab
-                      </div>
-  <?php
-  }
-  ?>
                     </div>
                   </div>
-
                 </div>
-                <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+
               </div>
+
             </div>
             <br>
           </div>
-
         </div>
       </div>
     </div>

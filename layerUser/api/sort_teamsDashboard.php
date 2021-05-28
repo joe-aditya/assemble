@@ -6,18 +6,25 @@ if(isset($_POST['domain'])){
 
     $domain = $con->real_escape_string($_POST['domain']);
 
+
     $qry = 'SELECT * FROM team
             WHERE creatorid != "'.$userid.'"
-            AND domain = "'. $domain .'";';
+            AND domain = "'. $domain .'"
+            AND teamid NOT IN (SELECT teamid FROM team_request
+            WHERE userid = "'.$userid.'");';
 
     if($domain=='All Teams'){
         $qry = 'SELECT * FROM team
-                WHERE creatorid != "'.$userid.'" ';
+                WHERE creatorid != "'.$userid.'"
+                AND teamid NOT IN (SELECT teamid FROM team_request
+                WHERE userid = "'.$userid.'");';
     }
     else if($domain=='Global'){
       $qry = 'SELECT * FROM team
               WHERE creatorid != "'.$userid.'"
-              AND domain NOT IN ("Music","Programming","Sports","FilmMaking","Artwork")';
+              AND domain NOT IN ("Music","Programming","Sports","FilmMaking","Artwork")
+              AND teamid NOT IN (SELECT teamid FROM team_request
+              WHERE userid = "'.$userid.'");';
     }
 
     if($result = $con->query($qry)){

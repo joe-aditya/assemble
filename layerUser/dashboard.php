@@ -116,7 +116,6 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             <div class="col-sm-12">
               <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
-
                 </div>
               </div>
 
@@ -130,27 +129,19 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                     <div class="row" id="dashboxes">
 
 
-
-
                     </div>
                   </div>
-
                 </div>
-                <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+
               </div>
+
             </div>
             <br>
           </div>
-
         </div>
       </div>
     </div>
     </div>
-
-
-
-
-
 </body>
 
 </html>

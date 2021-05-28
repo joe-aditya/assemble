@@ -24,11 +24,11 @@ $qry->bind_param("sisssssss",$bio, $phno, $mail, $smlink, $name, $dob, $orgname,
 
 if($qry->execute()){
 	echo "Profile updated successfully. ";
-	header("Location:../layerUser/editProfile.php");
+	header("Location:editProfile.php");
 }
 else{
 	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:../layerUser/editProfile.php");
+	header("Location:editProfile.php");
 }
 
 mysqli_close($con);

@@ -26,9 +26,21 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
   <script>
-    function viewTeamDetails() {
-      window.location.href = "viewTeamDetails.php";
+
+    function sort(domain){
+      $.post('api/sort_teamsJoined.php', {
+          domain: domain
+      }, function (result){
+          $('#joinedboxes').html(result);
+          console.log(status);
+      })
     }
+
+    $(document).ready(function(){
+      sort("All Teams");
+    })
+
+    function viewTeamDetails() { window.location.href = "viewTeamDetails.php"; }
   </script>
 
 </head>
@@ -46,13 +58,13 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
         <div class="navbar-nav; style:bottom">
-          <input type="button" class="btn btn-info" value="All Teams">
-          <input type="button" class="btn btn-info" value="Music">
-          <input type="button" class="btn btn-info" value="Programming">
-          <input type="button" class="btn btn-info" value="Sports">
-          <input type="button" class="btn btn-info" value="Filmaking">
-          <input type="button" class="btn btn-info" value="Artwork">
-          <input type="button" class="btn btn-info" value="Global">
+          <input type="button" class="btn btn-info" value="All Teams" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Music" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Programming" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Sports" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="FilmMaking" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Artwork" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="Global" onclick="sort(this.value)">
         </div>
       </div>
 
@@ -117,60 +129,17 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
                 <div class="container-fluid p-0" id="enrolledcourses">
                   <div class="container">
-                    <div class="row">
-<?php
+                    <div class="row" id="joinedboxes">
 
-$qry = "SELECT teamid FROM team_member
-        WHERE userid = $userid;";
-$res = mysqli_query($con, $qry);
-$count = mysqli_num_rows($res);
-
-if($count>0){
-  while($row = $res->fetch_assoc()){
-    $teamid = $row["teamid"];
-    $qry1 = "SELECT * FROM team
-             WHERE teamid = $teamid;";
-    $res1 = mysqli_query($con, $qry1);
-    $row1 = mysqli_fetch_assoc($res1);
-?>
-                      <div class="col-md-3 joinedbox">
-                        <form action="viewTeamDetails.php" method="POST">
-                          <h5>
-                            <center><?php echo $row1['team_name']; ?></center>
-                          </h5>
-                          <p class="form-control txtscroll joined_purpose" style="height:80px; margin-bottom: 8px;">
-                            <?php echo $row1['purpose']; ?>
-                          </p>
-                          <input type="hidden" name="teamid" value="<?php echo $row1['teamid']; ?>"/>
-                          <input type="submit" id="view_team_details" class="joined_btn" onclick=viewTeamDetails() value="View Team">
-                        </form>
-                      </div>
-<?php
-      }
-}
-else{
-?>
-                      <div class=" col-sm-12 nothing">
-                        <img src="../layerAuthentication/img1/shrug.png">
-                        <p>You are not a part of any team yet
-                        <br>Join a team via
-                        <a href="dashboard.php"><i class="fas fa-house-user" style="font-size:25px;"> Dashboard</i></a>
-                        & view the Teams Joined in this tab
-                        </p>
-                      </div>
-<?php
-}
-?>
                     </div>
                   </div>
-
                 </div>
-                <!-- asdfghjklsdfghjklsdfghjm,.dfghjkcvbnm-->
+
               </div>
+
             </div>
             <br>
           </div>
-
         </div>
       </div>
     </div>

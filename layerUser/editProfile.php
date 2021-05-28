@@ -205,7 +205,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             cache: false,
             success: function(response){
             if(response!=0){
-                alert(response);
+                //alert(response);
                 location.reload();
             }else{
                 alert("Upload failed");

@@ -9,12 +9,12 @@ $teamid=$con->real_escape_string($_POST["teamid"]);
 
 
 $query = $con->prepare("DELETE FROM team_request
-				 WHERE uname = ?
+				 WHERE userid = ?
          AND teamid = ?;");
-$query->bind_param("si", $uname, $teamid);
+$query->bind_param("ii", $userid, $teamid);
 
 
-if($qry->execute()){
+if($query->execute()){
 	echo "Unsent the request successfully. ";
 	header("Location:myRequests.php");
 }
