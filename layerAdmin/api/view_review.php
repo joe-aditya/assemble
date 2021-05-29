@@ -6,6 +6,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 }else{
   $adminid=$_SESSION['admin_id'];
   $reportid = $_POST['reportid'];
+  $from = $_POST['from'];
 ?>
 
 <?php
@@ -49,26 +50,14 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       $('#myModal').modal('show');
   });
 
-  function dismiss(reportid){
-    $.post('dismiss.php', {
+  function undo(reportid){
+    $.post('undo.php', {
         reportid: reportid
     }, function (result){
         $('#actionTaken').html(result);
         console.log(status);
     })
   }
-
-  function warn(reportid){
-    $.post('warn.php', {
-        reportid: reportid
-    }, function (result){
-        $('#actionTaken').html(result);
-        console.log(status);
-    })
-  }
-
-
-
 
   </script>
 
@@ -124,7 +113,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   </p>
 
                           <div class="flex-fill">
-        <a href="../adminpage.php">
+        <a href="../<?php if($from==1){echo 'dismissedReports.php';}else{echo 'warnedReports.php';}?>">
           <li><i class="fas fa-arrow-left" style="font-size:24px;"> Back</i></li>
         </a>
       </div></div>
@@ -151,7 +140,14 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
                       <h3>Team Creator:</h3> <h4 style="margin-left:160px;">@<?php echo $row2['uname']; ?></h4><hr>
 
-                      <h3>Action Taken:</h3> <h4 style="margin-left:160px;" id="actionTaken">No Action Taken</h4><hr>
+                      <h3>Action Taken:</h3> <h4 style="margin-left:160px;" id="actionTaken">
+                      <?php if($row['status']==1){
+                              echo 'Report Dismissed';
+                            }
+                            else{
+                              echo 'Gave Warning';
+                            }
+                      ?></h4><hr>
 
               </div>
 
@@ -454,11 +450,8 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           <!-- Modal footer -->
           <div class="modal-footer">
             <p id="modalMsg" style="align:left; font-size:25px; color:blue;"></p>
-            <button type="button" class="btn btn-danger" onclick="dismiss('<?php echo $row["reportid"]; ?>')">
-              <i class="fas fa-trash" style="font-size:25px;"> Dismiss Report</i>
-            </button>
-            <button type="button" class="btn btn-success" onclick="warn('<?php echo $row["reportid"]; ?>')">
-              <i class="fas fa-skull-crossbones" style="font-size:25px;"> Give Warning</i>
+            <button type="button" class="btn btn-warning" onclick="undo('<?php echo $row["reportid"]; ?>')">
+              <i class="fas fa-trash" style="font-size:25px;"> Undo Review</i>
             </button>
             <button type="button" class="btn btn-info" data-dismiss="modal">
               <i class="fas fa-times-circle" style="font-size:25px;"> Close</i>

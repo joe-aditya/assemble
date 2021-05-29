@@ -18,15 +18,28 @@ if(isset($_POST['reportid'])){
                          WHERE teamid = "'.$row["reported_on"].'" ;');
     $row1 = $res1->fetch_assoc();
 
-    $qry2 = $con->query("UPDATE report SET status = 2 WHERE reportid = '".$reportid."';");
-    $qry3 = $con->query("UPDATE user SET warning = warning + 1 WHERE userid = '".$row1['creatorid']."' ;");
+    if($row['status']==1){
+        $qry2 = $con->query("UPDATE report SET status = 0 WHERE reportid = '".$reportid."';");
 
-    if(($qry2)&&($qry3)){
-      echo "Gave Warning.";
+        if($qry2){
+          echo 'Review Pending';
+        }
+        else{
+          echo "Couldn't take action.".mysqli_error($con);
+        }
     }
     else{
-      echo "Couldn't take action.".mysqli_error($con);
+        $qry3 = $con->query("UPDATE report SET status = 0 WHERE reportid = '".$reportid."';");
+        $qry4 = $con->query("UPDATE user SET warning = warning - 1 WHERE userid = '".$row1['creatorid']."' ;");
+
+        if(($qry3)&&($qry4)) {
+          echo "Review Pending.";
+        }
+        else{
+          echo "Couldn't take action.".mysqli_error($con);
+        }
     }
+
 
 mysqli_close($con);
 }

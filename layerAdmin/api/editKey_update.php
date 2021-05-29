@@ -1,5 +1,5 @@
 <?php
-include '../layerAuthentication/config.php';
+include '../../layerAuthentication/config.php';
 session_start();
 if(isset($_POST['pwd'])){
 

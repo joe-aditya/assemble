@@ -14,7 +14,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>ASSEMBLE | Admin</title>
+  <title>Admin | Dissmissed Reports</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -29,7 +29,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
     function reports(){
 
       var adminid = "<?php echo $adminid; ?>";
-      $.post('api/reports.php', {
+      $.post('api/reports_warned.php', {
           adminid: adminid
       }, function (result){
           $('#reportboxes').html(result);
@@ -81,16 +81,16 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
     ADMIN
   </p>
-                    <div class="flex-fill">
-        <a href="warnedReports.php">
-          <li><i class="fas fa-book-dead" style="font-size:23px;"> Warned reports</i></li>
-        </a>
-</div>
-                    <div class="flex-fill">
-        <a href="dismissedReports.php">
-          <li><i class="fas fa-trash" style="font-size:23px;"> Dismissed report</i></li>
+      <div class="flex-fill">
+        <a href="adminpage.php">
+          <li><i class="fas fa-home" style="font-size:23px;"> Dashboard</i></li>
         </a>
       </div>
+      <div class="flex-fill">
+<a href="dismissedReports.php">
+<li><i class="fas fa-trash" style="font-size:23px;"> Dismissed report</i></li>
+</a>
+</div>
                           <div class="flex-fill">
         <a href="myRequests.php">
           <li><i class="fas fa-envelope" style="font-size:23px;"> Suspended users</i></li>
@@ -116,7 +116,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                 </div>
               </div>
 
-              <h2 style="display:inline; padding-left: 13px;">Reports</h2>
+              <h2 style="display:inline; padding-left: 13px;">Warned Reports</h2>
               <hr>
 
               <div class="txtscroll" style="height:393px;">

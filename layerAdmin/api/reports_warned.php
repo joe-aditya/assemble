@@ -5,7 +5,7 @@ include '../../layerAuthentication/config.php';
 if(isset($_POST['adminid'])){
 
     $qry = 'SELECT * FROM report
-            WHERE status = 0 /*Not reviewed yet*/
+            WHERE status = 2 /*Warned*/
             ORDER BY reportid DESC;';
 
     if($result = $con->query($qry)){
@@ -14,7 +14,7 @@ if(isset($_POST['adminid'])){
 ?>
           <div class=" col-sm-12 nothing">
             <img src="../layerAuthentication/img1/happy.png">
-            <p>Currently No Reports to Review
+            <p>No Warning given for any Report yet
           </div>
 <?php
         }
@@ -31,7 +31,7 @@ if(isset($_POST['adminid'])){
 
 ?>
             <div class="col-md-5 reportbox">
-              <form action="api/review.php" method="POST">
+              <form action="api/view_review.php" method="POST">
                 <h5>
                   <center>@<?php echo $row1['uname']; ?> <i class="fas fa-arrow-right" style="font-size:22px;"></i> <?php echo $row2['team_name']; ?></center>
                 </h5>
@@ -40,7 +40,8 @@ if(isset($_POST['adminid'])){
                   Reason: <?php echo $row['reason']; ?>
                 </p>
                 <input type="hidden" name="reportid" value="<?php echo $row['reportid']; ?>"/>
-                <input type="submit" class="report_btn" value="Review">
+                <input type="hidden" name="from" value="2"/>
+                <input type="submit" class="report_btn" value="View">
               </form>
             </div>
 <?php
