@@ -29,7 +29,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
     function reports(){
 
       var adminid = "<?php echo $adminid; ?>";
-      $.post('reports.php', {
+      $.post('api/reports.php', {
           adminid: adminid
       }, function (result){
           $('#reportboxes').html(result);

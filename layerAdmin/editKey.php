@@ -93,7 +93,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 /*Valid Data to php by POST*/
         if(flag) {
-              $.post('editKey_update.php', {
+              $.post('api/editKey_update.php', {
                   pwd: pwd
               }, function (result){
                   $('#erCpwd').html(result);
