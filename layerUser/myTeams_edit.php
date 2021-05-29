@@ -41,67 +41,79 @@ $(document).ready(function(){
 });
 
   function updateTeamDetails(){
-    $('#erTeamName').html("");
-    $('#erPurpose').html("");
-    $('#erSkills').html("");
-    $('#erCriteria').html("");
+            $('#erTeamName').html("");
+            $('#erPurpose').html("");
+            $('#erSkills').html("");
+            $('#erCriteria').html("");
 
-    var flag = 1;
-    var team_name = $('#team_name').val();
-    var purpose = $('#purpose').val();
-    var skills_needed = $('#skills_needed').val();
-    var criteria = $('#criteria').val();
-    var members_needed = $('#members_needed').val();
-    var teamid = "<?php echo $teamid; ?>";
-    var announcement = $('#announcement').val();
+            var flag = 1;
+            var team_name = $('#team_name').val();
+            var purpose = $('#purpose').val();
+            var skills_needed = $('#skills_needed').val();
+            var criteria = $('#criteria').val();
+            var members_needed = $('#members_needed').val();
+            var teamid = "<?php echo $teamid; ?>";
+            var announcement = $('#announcement').val();
 
-    if(!(team_name)) {flag = 0;
-         $('#erTeamName').html('Please Enter Team Name');
-    }
-    if(!(purpose)) {flag = 0;
-         $('#erPurpose').html('Please Enter Purpose');
-    }
-    if(!(skills_needed)) {flag = 0;
-         $('#erSkills').html('Please Enter Skills you are looking for');
-    }
-    if(!(criteria)) {flag = 0;
-         $('#erCriteria').html('Please Enter Criteria');
-    }
-    if(!(announcement)) {
-         announcement="Further details will be shared soon in this section.";
-    }
+            if(!(team_name)) {flag = 0;
+                 $('#erTeamName').html('Please Enter Team Name');
+            }
+            if(!(purpose)) {flag = 0;
+                 $('#erPurpose').html('Please Enter Purpose');
+            }
+            if(!(skills_needed)) {flag = 0;
+                 $('#erSkills').html('Please Enter Skills you are looking for');
+            }
+            if(!(criteria)) {flag = 0;
+                 $('#erCriteria').html('Please Enter Criteria');
+            }
+            if(!(announcement)) {
+                 announcement="Further details will be shared soon in this section.";
+            }
 
-    if(flag) {
-          $.post('myTeams_update.php', {
-              announcement: announcement,
-              team_name: team_name,
-              teamid: teamid,
-              skills_needed: skills_needed,
-              purpose: purpose,
-              criteria: criteria,
-              members_needed: members_needed
-          }, function (result){
-              $("#erTeamName").html(result);
-          })
-    }
+            if(flag) {
+                  $.post('myTeams_update.php', {
+                      announcement: announcement,
+                      team_name: team_name,
+                      teamid: teamid,
+                      skills_needed: skills_needed,
+                      purpose: purpose,
+                      criteria: criteria,
+                      members_needed: members_needed
+                  }, function (result){
+                      $("#erTeamName").html(result);
+                  })
+            }
   }
+
+  <?php
+      $ress = $con->query("SELECT * FROM report
+                           WHERE reported_on = '".$teamid."'
+                           AND status = 0;");
+      $countt = mysqli_num_rows($ress);
+  ?>
 
   function deleteTeam(){
-    var count = "<?php echo $row['members_in_team']; ?>";
-    if(count>0){
-          $('#erDelete').html('Cannot Delete this Team!!! Remove all the members to delete this team.');
-    }
-    else{
-          var teamid = "<?php echo $teamid; ?>";
-          $.post('api/deleteTeam.php', {
-              teamid: teamid,
-          }, function (result){
-              $('#erDelete').html(result);
-              console.log(status);
-          })
-    }
-  }
 
+      var countt = "<?php echo $countt; ?>";
+      var count = "<?php echo $row['members_in_team']; ?>";
+
+      if(count>0){
+            $('#erDelete').html('Cannot Delete this Team!!! Remove all the members to delete this team.');
+      }
+      else if(countt>0){
+            $('#erDelete').html('Cannot Delete this Team!!! Team is under review.');
+      }
+      else{
+            var teamid = "<?php echo $teamid; ?>";
+            $.post('api/deleteTeam.php', {
+                teamid: teamid,
+            }, function (result){
+                $('#erDelete').html(result);
+                console.log(status);
+            })
+        }
+  }
 </script>
 
 </head>

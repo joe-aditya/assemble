@@ -10,7 +10,7 @@
 	    if ($result = $con->query($query)) {
 	        $row = $result->fetch_assoc();
 	        if ($row && ($a_pwd == $row['admin_pwd'])) {
-	            $_SESSION['a_name'] = $row['admin_name'];
+	            $_SESSION['admin_id'] = $row['admin_id'];
 	            echo "<script>
 	                    window.location.href='../layerAdmin/adminpage.php';
 	                </script>";

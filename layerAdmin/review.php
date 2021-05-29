@@ -81,24 +81,10 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <p class="uname_box" style="height:31px; width:220px; margin-bottom: 12px;">
     ADMIN
   </p>
-                    <div class="flex-fill">
-        <a href="myTeams.php">
-          <li><i class="fas fa-tasks" style="font-size:24px;"> Reviewed reports</i></li>
-        </a>
-</div>
-                    <div class="flex-fill">
-        <a href="createTeam.php">
-          <li><i class="fas fa-book-dead" style="font-size:24px;"> Rejected reports</i></li>
-        </a>
-      </div>
-                          <div class="flex-fill">
-        <a href="myRequests.php">
-          <li><i class="fas fa-envelope" style="font-size:24px;"> Suspended users</i></li>
-        </a>
-      </div>
+
                           <div class="flex-fill">
         <a href="editKey.php">
-          <li><i class="fas fa-key" style="font-size:24px;"> Key Settings</i></li>
+          <li><i class="fas fa-arrow" style="font-size:24px;"> Back</i></li>
         </a>
       </div></div>
       </ul>

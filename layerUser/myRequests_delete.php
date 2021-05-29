@@ -11,7 +11,8 @@ $teamid=$con->real_escape_string($_POST["teamid"]);
 
 $query = $con->prepare("DELETE FROM team_request
 				 WHERE userid = ?
-         AND teamid = ?;");
+         AND teamid = ?
+				 AND status != 2;");/*cant unsend if accepted*/
 $query->bind_param("ii", $userid, $teamid);
 
 

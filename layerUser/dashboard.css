@@ -161,6 +161,35 @@ padding-top: 50px;
 color:#16a085;
 }
 
+.reportbox{
+    border:1px solid grey;
+    height:163px;
+    margin:30px 45px 0 45px;
+    text-align:center;
+    padding:7px;
+    background-color:#A9DDD1;
+    border-radius: 10px;
+}
+
+.reportbox:hover{
+    transform: scale(1.13, 1.13);
+}
+
+.report_btn{
+  border:2px solid #2e856e;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#f1f1f1;
+  border-radius: 10px;
+}
+
+.report_purpose{
+  border:1px solid white;
+  text-align:center;
+  padding:1px 3px;
+  background-color:#A9EED1;
+}
+
 
 .dashbox{
     border:1px solid grey;
