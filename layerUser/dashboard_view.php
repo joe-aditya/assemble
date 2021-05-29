@@ -55,7 +55,6 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           $('#joinbtn').prop('disabled',true);
 
       })
-
     }
   </script>
 
@@ -114,7 +113,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             <div class="input-group">
               <span class="input-group"></span>
             </div>
-            <p>Vacancy: <?php echo $row['members_in_team']; ?>/<?php echo $row['members_needed']; ?></p>
+            <p>Slots available: <?php echo $row['members_needed']-$row['members_in_team']; ?> | Total members needed: <?php echo $row['members_needed']; ?></p>
           </div>
 
           <div class="input-group">
@@ -133,7 +132,30 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
             </div>
 
             <p class="form-control txtscroll" style="height:60px;">
-              asdfghjkl
+<?php
+      $qry3="SELECT * FROM user U
+             INNER JOIN team_member M
+             ON U.userid = M.userid
+             WHERE M.teamid = '".$teamid."'
+             AND M.status = 1;";
+      $res3 = $con->query($qry3);
+      $count3 = mysqli_num_rows($res3);
+      if(!($count3)){
+  ?>
+          No members in Team
+  <?php
+      }
+      else{
+        while($row3 = $res3->fetch_assoc()){
+  ?>
+            @<?php echo $row3['uname']; ?><br>
+  <?php
+        }
+      }
+?>
+
+
+
             </p>
           </div>
 

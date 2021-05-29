@@ -36,6 +36,18 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
 <script>
+
+  function viewU(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/view_UserProfile.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
   function leaveTeam(){
     var teamid = "<?php echo $teamid; ?>";
     $.post('viewTeamDetails_leaveTeam.php', {
@@ -46,6 +58,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
     })
     window.location.href='teamsJoined.php';
   }
+
 </script>
 
 </head>
@@ -181,7 +194,9 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                         <div class="input-group">
                           <div class="input-group-append">
                             <span class="input-group-text">
-                              <img src="img2/<?php echo $row1['dp']; ?>" height="70px" width="70px" style="border-radius: 50%;">
+                            <a data-toggle="modal" data-target="#myModal" href="#">
+                              <img src="img2/<?php echo $row1['dp']; ?>" onclick="viewU('<?php echo $row1['uname']; ?>')" height="70px" width="70px" style="border-radius: 50%;">
+                            </a>
                             </span>
                           </div>
                           <p class="form-control txtscroll" style="display:inline; height:86px;">
@@ -219,7 +234,9 @@ while($row2 = $res2->fetch_assoc()){
                         <div class="input-group">
                           <div class="input-group-append">
                             <span class="input-group-text">
-                              <img src="img2/<?php echo $row2['dp']; ?>" height="70px" width="70px" style="border-radius: 50%;">
+                            <a data-toggle="modal" data-target="#myModal" href="#">
+                              <img src="img2/<?php echo $row2['dp']; ?>" onclick="viewU('<?php echo $row2['uname']; ?>')" height="70px" width="70px" style="border-radius: 50%;">
+                            </a>
                             </span>
                           </div>
                           <p class="form-control txtscroll" style="height:86px;">
@@ -246,6 +263,32 @@ while($row2 = $res2->fetch_assoc()){
       </div>
     </div>
   </div>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">User Profile</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="modalBody">
+
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>
