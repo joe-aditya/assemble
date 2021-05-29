@@ -11,7 +11,6 @@
 	        $row = $result->fetch_assoc();
 	        if ($row && ($a_pwd == $row['admin_pwd'])) {
 	            $_SESSION['a_name'] = $row['admin_name'];
-	            $_SESSION['a_pwd'] = $row['admin_pwd'];
 	            echo "<script>
 	                    window.location.href='../layerAdmin/adminpage.php';
 	                </script>";

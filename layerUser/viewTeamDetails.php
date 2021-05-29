@@ -38,6 +38,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 <script>
 
   function viewU(uname){
+    $('#modalTitle').html("User Profile");
     var teamid = "<?php echo $teamid; ?>";
     $.post('api/view_UserProfile.php', {
         uname: uname,
@@ -46,6 +47,37 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
         $('#modalBody').html(result);
         console.log(status);
     })
+  }
+
+  function reportT(uname){
+    $('#modalTitle').html("Report Team");
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/reportTeam.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
+  function submitReport(){
+    var report = $('#reportMsg').val();
+    $('#modalTitle').html("Report Team");
+    var teamid = "<?php echo $teamid; ?>";
+
+    if(!(report)){
+      $('#modalMsg').html("Reason must not be empty");
+    }
+    else{
+        $.post('api/submitReport.php', {
+            report: report,
+            teamid: teamid,
+        }, function (result){
+            $('#modalMsg').html(result);
+            console.log(status);
+        })
+      }
   }
 
   function leaveTeam(){
@@ -102,7 +134,10 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           <li><i class="fas fa-arrow-left" style="font-size:25px;"> Back</i></li>
         </a>
         <br>
-
+        <a data-toggle="modal" data-target="#myModal" href="#">
+          <li><i class="fas fa-bookmark" onclick="reportT('<?php echo $row1["uname"]; ?>')" style="font-size:25px;"> Report Team</i></li>
+        </a>
+        <br>
         <button onclick='document.getElementById("leaveOption").style.display= "block";' class="leave">
           <i class="fas fa-running" style="font-size:25px;"> Leave Team</i>
         </button>
@@ -271,7 +306,7 @@ while($row2 = $res2->fetch_assoc()){
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">User Profile</h4>
+          <h4 class="modal-title" id="modalTitle">User Profile</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 

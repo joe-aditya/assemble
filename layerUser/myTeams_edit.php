@@ -86,6 +86,22 @@ $(document).ready(function(){
     }
   }
 
+  function deleteTeam(){
+    var count = "<?php echo $row['members_in_team']; ?>";
+    if(count>0){
+          $('#erDelete').html('Cannot Delete this Team!!! Remove all the members to delete this team.');
+    }
+    else{
+          var teamid = "<?php echo $teamid; ?>";
+          $.post('api/deleteTeam.php', {
+              teamid: teamid,
+          }, function (result){
+              $('#erDelete').html(result);
+              console.log(status);
+          })
+    }
+  }
+
 </script>
 
 </head>
@@ -133,6 +149,19 @@ $(document).ready(function(){
         <a href="#" id="submit2">
           <li><i class="fas fa-arrow-left" style="font-size:25px;"> Back</i></li>
         </a>
+        <br>
+        <button onclick='document.getElementById("leaveOption").style.display= "block";' class="leave">
+          <i class="fas fa-users-slash" style="font-size:25px;"> Delete Team</i>
+        </button>
+
+        <div id="leaveOption" style="display:none;">
+        <button onclick='document.getElementById("leaveOption").style.display= "none";' class="halfl">
+          <i class="fas fa" style="font-size:25px;"> Cancel</i>
+        </button>
+        <button onclick="deleteTeam()" class="halfl">
+          <i class="fas fa" style="font-size:25px;"> Delete</i>
+        </button>
+
 
       </div>
 
@@ -235,6 +264,7 @@ $(document).ready(function(){
                                             <p id='erPurpose' style="color:red;"></p>
                                             <p id='erSkills' style="color:red;"></p>
                                             <p id='erCriteria' style="color:red;"></p>
+                                            <p id='erDelete' style="color:red;"></p>
                       </div>
                     </div>
                   </div>
