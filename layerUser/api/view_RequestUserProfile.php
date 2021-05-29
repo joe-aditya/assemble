@@ -6,6 +6,7 @@ if(isset($_POST['uname'])){
     $uname = $con->real_escape_string($_POST['uname']);
     $teamid = $con->real_escape_string($_POST['teamid']);
 
+
   /*  $qry = 'SELECT *
             FROM team_request R
             INNER JOIN user U
@@ -29,7 +30,7 @@ $qry = 'SELECT * FROM user WHERE uname = "'. $uname .'"; ';
       </div>
 
 
-      
+
       <!-- Modal footer -->
       <div class="modal-footer">
         <p id="modalMsg" style="align:left; font-size:25px; color:blue;"></p>

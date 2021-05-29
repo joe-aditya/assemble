@@ -10,12 +10,6 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
   $res = mysqli_query($con, "SELECT * FROM team WHERE teamid = $teamid;");
   $row = mysqli_fetch_assoc($res);
-
-  $res1 = mysqli_query($con, "SELECT * FROM user U
-                              INNER JOIN skill S
-                              ON U.userid = S.userid
-                              WHERE U.userid = '".$row["creatorid"]."';");
-  $row1 = mysqli_fetch_assoc($res1);
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +18,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>@<?php echo $uname; ?> | Team Details</title>
+  <title>@<?php echo $uname; ?> | Edit My Team Details</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,15 +30,62 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
 <script>
-  $(document).ready(function(){
-      $(function() {
-     $('#submit2').click(function(e) {
-          e.preventDefault();
-          $("#editPage").submit();
-      });
 
-  });
-  });
+$(document).ready(function(){
+    $(function() {
+       $('#submit2').click(function(e) {
+            e.preventDefault();
+            $("#editPage").submit();
+        });
+    });
+});
+
+  function updateTeamDetails(){
+    $('#erTeamName').html("");
+    $('#erPurpose').html("");
+    $('#erSkills').html("");
+    $('#erCriteria').html("");
+
+    var flag = 1;
+    var team_name = $('#team_name').val();
+    var purpose = $('#purpose').val();
+    var skills_needed = $('#skills_needed').val();
+    var criteria = $('#criteria').val();
+    var members_needed = $('#members_needed').val();
+    var teamid = "<?php echo $teamid; ?>";
+    var announcement = $('#announcement').val();
+
+    if(!(team_name)) {flag = 0;
+         $('#erTeamName').html('Please Enter Team Name');
+    }
+    if(!(purpose)) {flag = 0;
+         $('#erPurpose').html('Please Enter Purpose');
+    }
+    if(!(skills_needed)) {flag = 0;
+         $('#erSkills').html('Please Enter Skills you are looking for');
+    }
+    if(!(criteria)) {flag = 0;
+         $('#erCriteria').html('Please Enter Criteria');
+    }
+    if(!(announcement)) {
+         announcement="Further details will be shared soon in this section.";
+    }
+
+    if(flag) {
+          $.post('myTeams_update.php', {
+              announcement: announcement,
+              team_name: team_name,
+              teamid: teamid,
+              skills_needed: skills_needed,
+              purpose: purpose,
+              criteria: criteria,
+              members_needed: members_needed
+          }, function (result){
+              $("#erTeamName").html(result);
+          })
+    }
+  }
+
 </script>
 
 </head>
@@ -117,40 +158,57 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                       <div class="row">
                         <div class="txtscroll">
 
-                          <h4 style="display:inline">TEAM:</h4>
-                          <h4 style="display:inline"><?php echo $row['team_name']; ?></h4>
+                          <div class="input-group">
+                            <div class="input-group-append">
+                              <span class="input-group-text" style="width:100px;">Team Name:</span>
+                            </div>
+                            <textarea class="form-control txtscroll" id="team_name" name="team_name" placeholder="Give a name to your team" style="height:38px; width:510px;"><?php echo $row['team_name']; ?></textarea>
+                          </div>
 
                           <div class="input-group">
                             <div class="input-group-append">
                               <span class="input-group-text" style="width:100px;">Purpose:</span>
                             </div>
-                            <p class="form-control txtscroll" style="height:62px; width:510px;">
-                                <?php echo $row['purpose']; ?>
-                            </p>
+                            <textarea class="form-control txtscroll" maxlength=100 id="purpose" name="purpose" rows="4" cols="10" wrap="soft" placeholder="Reason to create this team" style="height:62px; width:510px;"><?php echo $row['purpose']; ?></textarea>
                           </div>
 
                           <div class="input-group">
                             <div class="input-group-append">
                               <span class="input-group-text" style="width:100px;">Looking for:</span>
                             </div>
-                            <p class="form-control txtscroll" style="height:86px; width:493px;">
-                                <?php echo $row['skills_needed']; ?>
-                            </p>
+                            <textarea class="form-control txtscroll" maxlength=100 id="skills_needed" name="skills_needed" rows="4" cols="10" wrap="soft" placeholder="What skillsets are you looking for!" style="height:85px; width:493px;"><?php echo $row['skills_needed']; ?></textarea>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-append">
+                              <span class="input-group-text" style="width:100px;">Criteria:</span>
+                            </div>
+                            <textarea class="form-control txtscroll" maxlength=100 id="criteria" name="criteria" rows="4" cols="10" wrap="soft" placeholder="Mention the experience level you are looking for" style="height:90px; width:493px;"><?php echo $row['criteria']; ?></textarea>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-append">
+                              <span class="input-group-text" style="width:100px;">Members <br>Needed:</span>
+                            </div>
+  <?php
+    if(!($row['members_in_team'])){
+      $min=1;
+    }
+    else{
+      $min=$row['members_in_team'];
+    }
+  ?>
+                              <input type="number" id="members_needed" name="members_needed" style="height:62px; width:510px;" min="<?php echo $min; ?>" max="999" value="<?php echo $row['members_needed']; ?>">
+                          </div>
+
+                          <div class="input-group">
+                            <input type="button" class="logbtn" onclick='updateTeamDetails()' value="Save Changes">
                           </div>
 
                         </div>
                       </div>
 
-                      <div class="row" style="margin-top: 10px;">
-                        <h4 style="text-align:center;">ANNOUNCEMENTS:</h4>
-                        <div class="input-group">
-                          <p class="form-control txtscroll" style="display:inline; height:165px;">
-                                <?php echo $row['announcement']; ?>
-                          </p>
-                        </div>
-                      </div>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -160,71 +218,24 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
             <div class="col-sm-5">
               <div class=" cardd container">
-                <h2>TEAM MEMBERS</h2>
+                <h2>ANNOUNCEMENT</h2>
                 <hr>
                 <div class="txtscroll" style="height:393px;">
                   <div class="container-fluid p-0" id="enrolledcourses">
                     <div class="container">
                       <div class="row">
 
-                        <h5 style="display:inline">CREATOR:</h5>
-                        <h5 style="display:inline">@<?php echo $row1["uname"]; ?></h5>
-
                         <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <img src="img2/<?php echo $row1['dp']; ?>" height="70px" width="70px" style="border-radius: 50%;">
-                            </span>
-                          </div>
-                          <p class="form-control txtscroll" style="display:inline; height:86px;">
-                            Bio: <br> <?php echo $row1["bio"]; ?>
-                            <br>Skills:<br> <?php echo $row1["skills"]; ?>
-                            <br>Previous Works:<br> <?php echo $row1["works"]; ?>
-                          </p>
+                          <textarea class="form-control txtscroll" maxlength=100 id="announcement" name="announcement" rows="4" cols="10" wrap="soft" placeholder="Further details will be shared soon in this section." style="height:185px; width:510px;"><?php echo $row['announcement']; ?></textarea>
                         </div>
 
-                        <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text" style="width:96px;">Contact:</span>
-                          </div>
-                          <p class="form-control txtscroll" style="height:62px;">
-                            Phone Number: <?php echo $row1["phno"]; ?>
-                            <br> Mail-ID: <?php echo $row1["mail"]; ?>
-                          </p>
                         </div>
-
+                        <br>
+                                            <p id='erTeamName' style="color:red;"></p>
+                                            <p id='erPurpose' style="color:red;"></p>
+                                            <p id='erSkills' style="color:red;"></p>
+                                            <p id='erCriteria' style="color:red;"></p>
                       </div>
-
-                      <div class="row" style="margin-top: 10px;">
-
-                        <h5 style="display:inline">MEMBERS:</h5>
-<?php
-$res2 = mysqli_query($con,"SELECT *
-                           FROM user U
-                           INNER JOIN team_member M
-                           ON U.userid = M.userid
-                           WHERE M.teamid = '".$teamid."'
-                           AND M.status = 1;");
-
-while($row2 = $res2->fetch_assoc()){
-?>
-                        <div class="input-group">
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <img src="img2/<?php echo $row2['dp']; ?>" height="70px" width="70px" style="border-radius: 50%;">
-                            </span>
-                          </div>
-                          <p class="form-control txtscroll" style="height:86px;">
-              						  	Username: @<?php echo $row2["uname"]; ?> <br>
-              						  	Phone Number: <?php echo $row2["phno"]; ?> <br>
-              						  	Mail-ID: <?php echo $row2["mail"]; ?>
-              						</p>
-                        </div>
-<?php
-}
-?>
-                      </div>
-
                     </div>
                   </div>
                 </div>

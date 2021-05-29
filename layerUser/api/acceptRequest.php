@@ -7,11 +7,11 @@ if(isset($_POST['uname'])){
     $uname = $con->real_escape_string($_POST['uname']);
     $teamid = $con->real_escape_string($_POST['teamid']);
 
-    $qry = 'SELECT members_in_team, members_needed FROM team WHERE teamid = "'. $teamid .'"; ';
+    $qry = 'SELECT * FROM team WHERE teamid = "'. $teamid .'"; ';
     $result = $con->query($qry);
     $row = $result->fetch_assoc();
 
-    if($row["members_in_team"]=$row["members_needed"]){
+    if($row['members_in_team']==$row['members_needed']){
           echo "Team is ASSEMBLED! <br>Increase \"Members Needed\" via \"Edit Details\" <br>to add new members.";
     }
     else{

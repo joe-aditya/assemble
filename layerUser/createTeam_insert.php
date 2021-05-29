@@ -1,5 +1,5 @@
 <?php
-#insert signup data in db/redirects accordingly
+
 include '../layerAuthentication/config.php';
 if(isset($_POST['team_name'])){
 session_start();
@@ -21,7 +21,7 @@ $qry = $con->prepare("INSERT INTO team (team_name, domain, creatorid, purpose, s
 $qry->bind_param("ssisssi",$team_name, $domain, $creatorid, $purpose, $skills_needed, $criteria, $members_needed);
 
 if($qry->execute()){
-	echo "Team created successfully under ".$domain." domain. ";
+	echo "Team created successfully under '".$domain."' domain. ";
 	header("Location:createTeam.php");
 }
 else{

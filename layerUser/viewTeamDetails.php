@@ -24,7 +24,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>@<?php echo $uname; ?> | Team Details</title>
+  <title>@<?php echo $uname; ?> | View Team Details</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

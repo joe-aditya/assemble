@@ -29,7 +29,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>@<?php echo $uname; ?> | Dashboard</title>
+  <title>@<?php echo $uname; ?> | Dashboard -View Team</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

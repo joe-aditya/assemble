@@ -7,13 +7,13 @@
 }
 
 .test{
-  background-color: #333333;
 
+  background-image: linear-gradient(150deg,#3498db,#03ac13);
 }
 
 body{
   min-height: 100vh;
-  background-image: linear-gradient(150deg,#3498db,#03ac13);
+  background-color: #333333;
 }
 
 

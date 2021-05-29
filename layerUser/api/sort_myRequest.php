@@ -57,19 +57,19 @@ if(isset($_POST['domain'])){
                 Purpose: <?php echo $row['purpose']; ?> <br>
                 My request message: <br> <?php echo $row['request_msg']; ?>
               </p>
-              <p style="margin-bottom: 8px;">Status:
+              <p style="margin-bottom: 8px;">Status:<span style="color:red;">
   <?php
   if($row['status']==0){
-  echo " pending";
+  echo " Pending";
   }
   if($row['status']==1){
-  echo " rejected";
+  echo " Rejected";
   }
   if($row['status']==3){
-  echo " removed from team";
+  echo " Removed from team";
   }
   ?>
-              </p>
+              </span></p>
               <input type="hidden" name="teamid" value="<?php echo $row['teamid']; ?>"/>
               <input type="submit" id="unsend_request" class="request_btn" onclick=myRequests_delete() value="Unsend">
             </form>

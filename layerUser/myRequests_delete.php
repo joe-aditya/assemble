@@ -1,6 +1,7 @@
 <?php
-include '../layerAuthentication/config.php';
 session_start();
+include '../layerAuthentication/config.php';
+
 $uname=$_SESSION['uname'];
 $userid=$_SESSION['userid'];
 

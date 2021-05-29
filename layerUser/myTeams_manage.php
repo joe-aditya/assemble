@@ -18,7 +18,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
 <head>
   <meta charset="utf-8">
-  <title>@<?php echo $uname; ?> | Team Details</title>
+  <title>@<?php echo $uname; ?> | Manage My Team</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -177,8 +177,17 @@ $res1 = mysqli_query($con,"SELECT *
                            ON R.userid = U.userid
                            WHERE R.teamid = '".$teamid."'
                            AND (R.status = 0 OR R.status = 3);");
-
-while($row1 = $res1->fetch_assoc()){
+$count = mysqli_num_rows($res1);
+if(!($count)){
+?>
+                    <div class=" col-sm-12 nothing">
+                      <img src="../layerAuthentication/img1/shrug.png">
+                      <p>No Requests</p>
+                    </div>
+<?php
+}
+else{
+      while($row1 = $res1->fetch_assoc()){
 ?>
                       <div class="row" style="margin-left:15px; margin-bottom:5px; padding:8px; border-radius:20px; background-color:#d8d8d8;">
                         <div class="input-group">
@@ -195,6 +204,7 @@ while($row1 = $res1->fetch_assoc()){
                         </div>
                       </div>
 <?php
+      }
 }
 ?>
                       </div>
@@ -223,9 +233,18 @@ $res2 = mysqli_query($con,"SELECT *
                            ON U.userid = M.userid
                            WHERE M.teamid = '".$teamid."'
                            AND M.status = 1;");
-
-while($row2 = $res2->fetch_assoc()){
-?>
+ $count2 = mysqli_num_rows($res2);
+ if(!($count2)){
+ ?>
+                     <div class=" col-sm-12 nothing">
+                       <img src="../layerAuthentication/img1/shrug.png">
+                       <p>No Members in Team</p>
+                     </div>
+ <?php
+ }
+ else{
+       while($row2 = $res2->fetch_assoc()){
+ ?>
                         <div class="row" style="margin-left:15px; margin-bottom:5px; padding:8px; border-radius:20px; background-color:#d8d8d8;">
                           <div class="input-group">
                             <div class="input-group-append">
@@ -241,6 +260,7 @@ while($row2 = $res2->fetch_assoc()){
                           </div>
                         </div>
 <?php
+      }
 }
 
 $res3 = mysqli_query($con,"SELECT *
