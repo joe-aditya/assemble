@@ -281,7 +281,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
                     <div class="flex-fill">
                       <div class="m txtb" style="padding: 0px 0px 0px 0px;">
                         Bio:
-                        <textarea maxlength=100 id="bio" name="bio" rows="3" cols="20" wrap="soft" placeholder="Tell others about yourself!"><?php echo $bio; ?></textarea>
+                        <textarea maxlength=100 id="bio" name="bio" rows="3" cols="20" wrap="hard" placeholder="Tell others about yourself!"><?php echo $bio; ?></textarea>
                       </div>
                         <p id='erBio' style="color:red;"></p>
                     </div>

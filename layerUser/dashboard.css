@@ -551,6 +551,29 @@ text-align:left;
       }
 }
 
+.imgzoomin{
+    position:static;
+    max-height:90%;
+    max-width:90%;
+    bottom:0;
+    right:130px;
+    -webkit-animation: zoomin 1s linear 1;
+    -webkit-animation-delay: 1.5s;
+    visibility: hidden;
+    -webkit-animation-fill-mode:forwards;
+}
+
+@keyframes zoomin{
+  0%{
+        transform:scale(0.5);
+        visibility:visible;
+
+    }
+  100%{
+        transform:scale(1);
+        visibility:visible;
+    }
+}
 
 .alert {
   padding: 20px;

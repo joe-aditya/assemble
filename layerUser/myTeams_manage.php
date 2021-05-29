@@ -62,6 +62,17 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
     })
   }
 
+  function viewU(uname){
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/view_UserProfile.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
   function reject(uname){
     var teamid = "<?php echo $teamid; ?>";
     $.post('api/rejectRequest.php', {
@@ -277,7 +288,7 @@ while($row3 = $res3->fetch_assoc()){
                           <div class="input-group-append">
 
                               <a data-toggle="modal" data-target="#myModal" href="#">
-                                <img src="img2/<?php echo $row3['dp']; ?>" height="75px" width="75px" style="border-radius: 50%;">
+                                <img src="img2/<?php echo $row3['dp']; ?>" onclick="viewU('<?php echo $row3['uname']; ?>')" height="75px" width="75px" style="border-radius: 50%;">
                               </a>
                           </div>
                           <p class="form-control py-1" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; height:43px; width:385px;  border-radius:15px; margin-left: 7px; margin-right: 7px; margin-top: 15px; font-size:21px;">

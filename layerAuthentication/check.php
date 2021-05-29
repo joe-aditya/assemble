@@ -16,10 +16,10 @@ $count=mysqli_num_rows($result);
 $res=mysqli_query($con, $name);
 $row=$res->fetch_row();
 
-if($count>0){
+if($count>0){/*
   echo "<script>
           alert('Hello ".$row[0] .", logged in Successfully.');
-      </script>";
+      </script>";*/
 	echo "<script>
           window.location.href='../layerUser/dashboard.php';
         </script>";

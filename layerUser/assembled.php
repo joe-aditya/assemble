@@ -1,8 +1,8 @@
 <?php
-include '../layerAuthentication/config.php';
 session_start();
+include '../layerAuthentication/config.php';
 if(!isset($_SESSION['uname'])){
-echo "<script>window.location.href='login.php';</script>";//BRO
+echo "<script>window.location.href='login.php';</script>";
 }else{
   $uname=$_SESSION['uname'];
   $userid=$_SESSION['userid'];
@@ -10,7 +10,7 @@ echo "<script>window.location.href='login.php';</script>";//BRO
 ?>
 
 <!DOCTYPE html>
-<!-- profile setup 1 | only for first time Login into acc untill the fields are filled-->
+
 <html>
 
 <head>

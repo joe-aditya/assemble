@@ -14,7 +14,8 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	  <meta charset="UTF-8">
 	  <title>ASSEMBLE</title>
 	  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 	  <link rel="stylesheet" href="css/linearicons.css">
 	  <link rel="stylesheet" href="css/font-awesome.min.css">
 	  <link rel="stylesheet" href="css/bootstrap.css">
@@ -23,6 +24,35 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	  <link rel="stylesheet" href="css/animate.min.css">
 	  <link rel="stylesheet" href="css/owl.carousel.css">
 	  <link rel="stylesheet" href="css/main.css">
+
+<style>
+
+.imgzoomin{
+		position:static;
+		max-height:90%;
+		max-width:90%;
+		bottom:0;
+		right:130px;
+		-webkit-animation: zoomin 1.5s linear 1;
+		-webkit-animation-delay: 0.2s;
+		visibility: hidden;
+		-webkit-animation-fill-mode:forwards;
+}
+
+@keyframes zoomin{
+		0%{
+					transform:scale(0.5);
+					visibility:visible;
+
+			}
+		100%{
+					transform:scale(1);
+					visibility:visible;
+			}
+}
+
+</style>
+
 	</head>
 
 	<body>
@@ -68,7 +98,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 						</h4>
 	        </div>
 	        <div class="col-lg-5 banner-right">
-	          <img class="img-fluid" src="img/logoooo.png" alt="">
+	          <img class="img-fluid imgzoomin" src="img/logoooo.png" alt="">
 	        </div>
 	      </div>
 	    </div>
@@ -244,10 +274,30 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	    <div class="container">
 	      <div class="row justify-content-center top">
 	        <div class="col-lg-12">
+						<div class="row">
+						<div class="col-lg-6" style="border-right: 5px solid white;">
 	          <h1 class="text-white text-center">Contact Us</h1>
 	          <p class="text-white text-center mt-30">
-	            It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned.
+							<a href="https://github.com/joe-aditya/assemble" target="_blank" style="color:white;">
+	            <i class="fab fa-github" style="font-size:40px; padding-right:10px;"></i></a>
+							<a href="http://cs.annauniv.edu/" target="_blank" style="color:white;">
+							<i class="fas fa-university" style="font-size:40px; padding-right:10px;"></i></a>
+							<i class="fas fa-anchor" style="font-size:40px; padding-right:10px;"></i>
+						</p>
+						</div>
+
+						<div class="col-lg-6">
+							<h1 class="text-white text-center">Created with</h1>
+		          <p class="text-white text-center mt-30">
+							<i class="fas fa-coins" style="font-size:40px; padding-right:5px;"></i>
+							<i class="fab fa-html5" style="font-size:40px; padding-right:5px;"></i>
+							<i class="fab fa-js" style="font-size:40px; padding-right:5px;"></i>
+							<i class="fab fa-css3-alt" style="font-size:40px; padding-right:5px;"></i>
+							<i class="fab fa-bootstrap" style="font-size:40px; padding-right:5px;"></i>
+							<i class="fab fa-php" style="font-size:40px; padding-right:5px;"></i>
 	          </p>
+					</div>
+					</div>
 	        </div>
 	      </div>
 	    </div>
