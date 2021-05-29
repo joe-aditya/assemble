@@ -12,14 +12,16 @@ if(isset($_POST['domain'])){
             AND domain = "'. $domain .'"
             AND members_in_team < members_needed
             AND teamid NOT IN (SELECT teamid FROM team_request
-            WHERE userid = "'.$userid.'");';
+            WHERE userid = "'.$userid.'")
+            ORDER BY teamid DESC;';
 
     if($domain=='All Teams'){
         $qry = 'SELECT * FROM team
                 WHERE creatorid != "'.$userid.'"
                 AND members_in_team < members_needed
                 AND teamid NOT IN (SELECT teamid FROM team_request
-                WHERE userid = "'.$userid.'");';
+                WHERE userid = "'.$userid.'")
+                ORDER BY teamid DESC;';
     }
     else if($domain=='Global'){
       $qry = 'SELECT * FROM team
@@ -27,7 +29,8 @@ if(isset($_POST['domain'])){
               AND members_in_team < members_needed
               AND domain NOT IN ("Music","Programming","Sports","FilmMaking","Artwork")
               AND teamid NOT IN (SELECT teamid FROM team_request
-              WHERE userid = "'.$userid.'");';
+              WHERE userid = "'.$userid.'")
+              ORDER BY teamid DESC;';
     }
 
     if($result = $con->query($qry)){

@@ -21,7 +21,7 @@ if(isset($_POST['uname'])){
 
           $res = $con->query("SELECT userid
                               FROM team_member
-                              WHERE status = 3
+                              WHERE status = 3 /*Left the team*/
       				                AND userid = '".$uid."'
                               AND teamid = '".$teamid."';");
           $count = mysqli_num_rows($res);
@@ -29,7 +29,7 @@ if(isset($_POST['uname'])){
 
           if($count>0){
             $query = "UPDATE team_member
-                      SET status = 1
+                      SET status = 1  /*Current member*/
                       WHERE userid = '".$uid."'
                       AND teamid = '".$teamid."';";
           }
@@ -40,7 +40,7 @@ if(isset($_POST['uname'])){
 
 
           $query2 = $con->prepare("UPDATE team_request SET
-                                  status = 2
+                                  status = 2 /*Accept request*/
           				                WHERE userid = ?
                                   AND teamid = ?;");
           $query2->bind_param("ii", $uid, $teamid);

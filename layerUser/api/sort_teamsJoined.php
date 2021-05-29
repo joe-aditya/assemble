@@ -12,7 +12,8 @@ if(isset($_POST['domain'])){
             ON T.teamid = M.teamid
             WHERE M.userid = "'. $userid .'"
             AND M.status = 1
-            AND T.domain = "'. $domain .'";';
+            AND T.domain = "'. $domain .'"
+            ORDER BY teamid DESC;';
 
     if($domain=='All Teams'){
       $qry = 'SELECT T.teamid, T.team_name, T.purpose
@@ -20,7 +21,8 @@ if(isset($_POST['domain'])){
               INNER JOIN team T
               ON T.teamid = M.teamid
               WHERE M.userid = "'. $userid .'"
-              AND M.status = 1';
+              AND M.status = 1
+              ORDER BY teamid DESC;';
     }
     else if($domain=='Global'){
       $qry = "SELECT T.teamid, T.team_name, T.purpose
@@ -29,7 +31,8 @@ if(isset($_POST['domain'])){
               ON T.teamid = M.teamid
               WHERE M.userid = '". $userid ."'
               AND M.status = 1
-              AND T.domain NOT IN ('Music','Programming','Sports','Filmaking','Artwork')";
+              AND T.domain NOT IN ('Music','Programming','Sports','Filmaking','Artwork')
+              ORDER BY teamid DESC;";
     }
 
     if($result = $con->query($qry)){

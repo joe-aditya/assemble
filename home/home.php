@@ -221,7 +221,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	  <section class="course-area section-gap" id="course">
 	    <div class="container">
 	      <div class="row d-flex justify-content-center">
-	        <div class="menu-content pb-60 col-lg-9">
+	        <div class="menu-content pb-8 col-lg-9">
 	          <div class="title text-center">
 	            <h1 class="mb-10">Creators of ASSEMBLE</h1>
 	            <p>Students of CEG, Computer Science Dept.<br>RED-tags (2023)</p>
@@ -231,9 +231,9 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	      <div class="row">
 	        <div class="active-course-carusel">
 	          <div class="single-course item">
-	            <!--<img class="img-fluid" src="img/c1.jpg" alt="">-->
+	            <img class="img-fluid" src="../layerUser/img2/GokulDP.jpeg" alt="">
 	            <div class="details">
-	              <a href="https://instagram.com/gokulnath__m?igshid=1usdaer40tjia">
+	              <a href="https://instagram.com/gokulnath__m?igshid=1usdaer40tjia" target="_blank">
 	                <h4>Gokulnath M <span class="price float-right">2019103522</span></h4>
 	              </a>
 	              <p>
@@ -242,9 +242,9 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	            </div>
 	          </div>
 	          <div class="single-course item">
-	            <!--<img class="img-fluid" src="img/c2.jpg" alt="">-->
+	            <img class="img-fluid" src="../layerUser/img2/ThiruDP.jpeg" alt="">
 	            <div class="details">
-	              <a href="https://instagram.com/thiruchelvan_sibi?igshid=arthwxkv8gwl">
+	              <a href="https://instagram.com/thiruchelvan_sibi?igshid=arthwxkv8gwl" target="_blank">
 	                <h4>Thiruchelvan T <span class="price float-right">2019103591</span></h4>
 	              </a>
 	              <p>
@@ -253,9 +253,9 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	            </div>
 	          </div>
 	          <div class="single-course item">
-	            <!--<img class="img-fluid" src="img/c3.jpg" alt="">-->
+	            <img class="img-fluid" src="../layerUser/img2/joe.jpg" alt="">
 	            <div class="details">
-	              <a href="https://instagram.com/ad.i.shan?igshid=wmyr7wm8jwiz">
+	              <a href="https://instagram.com/ad.i.shan?igshid=wmyr7wm8jwiz" target="_blank">
 	                <h4>Jyotir Aditya Giri A<span class="price float-right">2019103531</span></h4>
 	              </a>
 	              <p>

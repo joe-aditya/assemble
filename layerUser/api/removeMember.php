@@ -15,7 +15,7 @@ if(isset($_POST['uname'])){
     $uid = $row1["userid"];
 
     $query = $con->prepare("UPDATE team_request SET
-                            status = 3
+                            status = 3 /*Removed from team*/
     				                WHERE userid = ?
                             AND teamid = ?;");
     $query->bind_param("ii", $uid, $teamid);
