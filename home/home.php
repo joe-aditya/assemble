@@ -237,9 +237,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	              <a href="https://instagram.com/gokulnath__m?igshid=1usdaer40tjia" target="_blank">
 	                <h4>Gokulnath M <span class="price float-right">2019103522</span></h4>
 	              </a>
-	              <p>
-	                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-	              </p>
+
 	            </div>
 	          </div>
 	          <div class="single-course item">
@@ -248,9 +246,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	              <a href="https://instagram.com/thiruchelvan_sibi?igshid=arthwxkv8gwl" target="_blank">
 	                <h4>Thiruchelvan T <span class="price float-right">2019103591</span></h4>
 	              </a>
-	              <p>
-	                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-	              </p>
+
 	            </div>
 	          </div>
 	          <div class="single-course item">
@@ -259,9 +255,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	              <a href="https://instagram.com/ad.i.shan?igshid=wmyr7wm8jwiz" target="_blank">
 	                <h4>Jyotir Aditya Giri A<span class="price float-right">2019103531</span></h4>
 	              </a>
-	              <p>
-	                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-	              </p>
+
 	            </div>
 	          </div>
 	        </div>

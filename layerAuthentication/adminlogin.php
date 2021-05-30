@@ -14,7 +14,8 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
   <meta charset="utf-8">
   <title>Admin Login</title>
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="style2.css">
 
   <script>
