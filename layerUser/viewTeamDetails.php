@@ -101,7 +101,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   </div>
 
   <div class="bs-example">
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-md droop navbar-dark">
 
       <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
         <div class="navbar-nav; style:bottom">

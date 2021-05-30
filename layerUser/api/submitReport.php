@@ -7,11 +7,12 @@ if(isset($_POST['teamid'])){
       $report = $_POST['report'];
       $teamid = $con->real_escape_string($_POST['teamid']);
       $userid = $_SESSION['userid'];
+      $admin = 1989;
       $i = 0; /*Report pending*/
 
-      $qry = $con->prepare("INSERT INTO report (report_from, reported_on, reason, status)
-                VALUES (?,?,?,?);");
-      $qry->bind_param("iisi", $userid, $teamid, $report, $i);
+      $qry = $con->prepare("INSERT INTO report (report_from, reported_on, reason, status, reviewed_by)
+                VALUES (?,?,?,?,?);");
+      $qry->bind_param("iisii", $userid, $teamid, $report, $i, $admin);
 
                     if($qry->execute()){
                       $query = $con->prepare("UPDATE team_member SET

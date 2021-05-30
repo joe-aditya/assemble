@@ -60,7 +60,7 @@ if(isset($_POST['domain'])){
                 Purpose: <?php echo $row['purpose']; ?> <br>
                 My request message: <br> <?php echo $row['request_msg']; ?>
               </p>
-              <p style="margin-bottom: 8px;">Status:<span style="color:red;">
+              <p style="margin-bottom: 8px;">Status:<span style="color:white;">
   <?php
   if($row['status']==0){
   echo " Pending";

@@ -40,7 +40,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   </div>
 
   <div class="bs-example">
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-md droop navbar-dark">
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -114,7 +114,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 <?php
   $qry = "SELECT teamid, team_name, purpose FROM team
           WHERE creatorid = ?
-          AND members_needed != members_in_team
+
           ORDER BY teamid DESC;";
   $qry = $con->prepare($qry);
   $qry->bind_param("i", $userid);
@@ -142,25 +142,14 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   }
   else{
   ?>
+
                       <div class=" col-sm-12 nothing">
-                        <div class="row">
-                          <div class=" col-sm-6">
-                            <img src="../layerAuthentication/img1/sad.png">
-                            <p>Seems like you don't have any teams to manage
-                              <br>Create a team via
-                              <a href="createTeam.php"><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></a>
-                              <br>& then manage the Created Teams in this tab
-                              </p>
-                            </div>
-                            <div class=" col-sm-6">
-                              <img src="../layerAuthentication/img1/happy.png">
-                              <p>Or you might have assembled all your teams!
-                                <br>View your teams via
-                                <a href="assembled.php"><img src="../home/img/logoooo.png" height="35px" width="35px">SSEMBLED</a>
-                                <br>& manage your teams
-                                </p>
-                            </div>
-                          </div>
+                        <img src="../layerAuthentication/img1/shrug.png">
+                        <p>Seems like you don't have any teams to manage
+                          <br>Create a team via
+                          <a href="createTeam.php"><i class="fas fa-plus" style="font-size:25px;"> Create Team</i></a>
+                          <br>& then manage the Created Teams in this tab
+                          </p>
                       </div>
   <?php
   }
