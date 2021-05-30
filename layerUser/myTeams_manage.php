@@ -170,17 +170,6 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       <div class="card" style="background-color: inherit; padding: 33px 60px 12px 60px;">
         <div class="col-sm-12">
           <div class="row">
-
-            <div class="col-sm-6">
-              <div class=" cardd container">
-                <h5 style="text-align:center;"><?php echo $row['team_name']; ?></h5>
-                <h3 style="text-align:center;">JOIN REQUESTS</h3>
-                <hr style="margin-top:5px;">
-                <div class="txtscroll" style="height:373px;">
-                  <div class="container-fluid p-0" id="enrolledcourses">
-                    <div class="container">
-                      <div class="row">
-
 <?php
 $res1 = mysqli_query($con,"SELECT *
                            FROM team_request R
@@ -189,6 +178,18 @@ $res1 = mysqli_query($con,"SELECT *
                            WHERE R.teamid = '".$teamid."'
                            AND (R.status = 0 OR R.status = 3);");
 $count = mysqli_num_rows($res1);
+?>
+            <div class="col-sm-6">
+              <div class=" cardd container">
+                <h5 style="text-align:center;"><?php echo $row['team_name']; ?></h5>
+                <h3 style="text-align:center;">JOIN REQUESTS - (<?php echo $count; ?>)</h3>
+                <hr style="margin-top:5px;">
+                <div class="txtscroll" style="height:373px;">
+                  <div class="container-fluid p-0" id="enrolledcourses">
+                    <div class="container">
+                      <div class="row">
+
+<?php
 if(!($count)){
 ?>
                     <div class=" col-sm-12 nothing">
@@ -230,7 +231,7 @@ else{
             <div class="col-sm-6">
               <div class=" cardd container">
                 <h5 style="text-align:center;"><?php echo $row['team_name']; ?></h5>
-                <h3 style="text-align:center;">TEAM MEMBERS</h3>
+                <h3 style="text-align:center;">TEAM MEMBERS - (<?php echo $row['members_in_team']; ?> / <?php echo $row['members_needed']; ?>)</h3>
                 <hr style="margin-top:5px;">
                 <div class="txtscroll" style="height:373px;">
                   <div class="container-fluid p-0" id="enrolledcourses">

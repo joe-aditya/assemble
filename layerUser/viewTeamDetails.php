@@ -255,7 +255,8 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
                       <div class="row" style="margin-top: 10px;">
 
-                        <h5 style="display:inline">MEMBERS:</h5>
+                        <h5 style="display:inline">MEMBERS :  (<?php echo $row['members_in_team']; ?> / <?php echo $row['members_needed']; ?>)</h5>
+                        <p> </p>
 <?php
 $res2 = mysqli_query($con,"SELECT *
                            FROM user U

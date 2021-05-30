@@ -6,7 +6,7 @@ if(isset($_POST['domain'])){
 
     $domain = $con->real_escape_string($_POST['domain']);
 
-    $qry = 'SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status
+    $qry = 'SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status, T.members_needed, T.members_in_team
             FROM team_request R
             INNER JOIN team T
             ON T.teamid = R.teamid
@@ -16,7 +16,7 @@ if(isset($_POST['domain'])){
             ORDER BY R.requestid DESC;';
 
     if($domain=='All Requests'){
-      $qry = 'SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status
+      $qry = 'SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status, T.members_needed, T.members_in_team
               FROM team_request R
               INNER JOIN team T
               ON T.teamid = R.teamid
@@ -25,7 +25,7 @@ if(isset($_POST['domain'])){
               ORDER BY R.requestid DESC;';
     }
     else if($domain=='Global'){
-      $qry = "SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status
+      $qry = "SELECT T.teamid, T.team_name, T.purpose, T.domain, R.request_msg, R.status, T.members_needed, T.members_in_team
               FROM team_request R
               INNER JOIN team T
               ON T.teamid = R.teamid
@@ -70,6 +70,9 @@ if(isset($_POST['domain'])){
   }
   if($row['status']==3){
   echo " Removed from team";
+  }
+  if($row['members_in_team']==$row['members_needed']){
+  echo " (Team ASSEMBLED)";
   }
   ?>
               </span></p>
