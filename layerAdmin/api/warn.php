@@ -23,6 +23,7 @@ if(isset($_POST['reportid'])){
 
     if(($qry2)&&($qry3)){
       echo "Gave Warning.";
+      
     }
     else{
       echo "Couldn't take action.".mysqli_error($con);

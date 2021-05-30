@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 include '../layerAuthentication/config.php';
 if(isset($_POST['team_name'])){
-session_start();
+
 $creatorid=$_SESSION['userid'];
 
 $team_name=$con->real_escape_string($_POST["team_name"]);
@@ -22,11 +22,9 @@ $qry->bind_param("ssisssi",$team_name, $domain, $creatorid, $purpose, $skills_ne
 
 if($qry->execute()){
 	echo "Team created successfully under '".$domain."' domain. ";
-	header("Location:createTeam.php");
 }
 else{
-	echo "Error in inserting data. ".mysqli_error($con);
-	header("Location:invalidsignup.html");
+	echo "Couldn't create Team. ".mysqli_error($con);
 }
 
 mysqli_close($con);

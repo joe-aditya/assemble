@@ -19,20 +19,53 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <meta name="viewpoint" content="width=device-width;initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="dashboard.css">
+
   <script>
-    function datacheck() {
+  function dataCheck(){
+            $('#erTeamName').html("");
+            $('#erPurpose').html("");
+            $('#erSkills').html("");
+            $('#erCriteria').html("");
 
-    }
+            var flag = 1;
+            var team_name = $('#team_name').val();
+            var purpose = $('#purpose').val();
+            var skills_needed = $('#skills_needed').val();
+            var criteria = $('#criteria').val();
+            var members_needed = $('#members_needed').val();
 
-    function goBack() {
-      window.location.href = "dashboard.php";
-      //window.alert("Get youself signed up to create your account.");
-    }
+            if(!(team_name)) {flag = 0;
+                 $('#erTeamName').html('Please Enter Team Name');
+            }
+            if(!(purpose)) {flag = 0;
+                 $('#erPurpose').html('Please Enter Purpose');
+            }
+            if(!(skills_needed)) {flag = 0;
+                 $('#erSkills').html('Please Enter Skills you are looking for');
+            }
+            if(!(criteria)) {flag = 0;
+                 $('#erCriteria').html('Please Enter Criteria');
+            }
+
+            if(flag) {
+
+                  $.post('createTeam_insert.php', {
+                      team_name: team_name,
+                      skills_needed: skills_needed,
+                      purpose: purpose,
+                      criteria: criteria,
+                      members_needed: members_needed
+                  }, function (result){
+                      $("#erTeamName").html(result);
+                  })
+            }
+  }
+
   </script>
 </head>
 
@@ -81,7 +114,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
   <div>
 
-    <form action="createTeam_insert.php" style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform" method="POST">
+    <form style="padding:12px 30px 0px 30px; margin-top: 18px;  height: 540px;" class="editform">
       <h1>Create your Team</h1>
       <div class="scroll">
         <div class="txtb">Team Name:
@@ -103,7 +136,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
         </div>
       </div>
 
-      <input type="submit" class="logbtn" onclick=dataCheck() value="Create">
+      <input type="button" class="logbtn" onclick="dataCheck()" value="Create">
       <!--cancel button works if window.alert is in func orelse it works as submit which still kinda works-->
     </form>
 
@@ -117,37 +150,12 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
         <div style="padding-left: 95px; margin-top: -5px;">
           <i class="fas fa-info-circle" style="font-size:25px;"></i>
         </div>
-
-        <div class="alert info">
-          <span class="closebtn">&times;</span>
-          <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-        </div>
-
-        <div class="alert warning">
-          <span class="closebtn">&times;</span>
-          <strong>Success!</strong> Indicates a successful or positive action.
-        </div>
-
-        <div class="alert success">
-          <span class="closebtn">&times;</span>
-          <strong>Info!</strong> Indicates a neutral informative change or action.
-        </div>
-
-        <script>
-          var close = document.getElementsByClassName("closebtn");
-          var i;
-
-          for (i = 0; i < close.length; i++) {
-            close[i].onclick = function() {
-              var div = this.parentElement;
-              div.style.opacity = "0";
-              setTimeout(function() {
-                div.style.display = "none";
-              }, 600);
-              document.getElementsByClassName("cardd-r").style.height = "10px";
-            }
-          }
-        </script>
+        <div style="margin-left:25px; margin-top:30px;">
+            <p id='erTeamName' style="color:red;"></p>
+            <p id='erPurpose' style="color:red;"></p>
+            <p id='erSkills' style="color:red;"></p>
+            <p id='erCriteria' style="color:red;"></p>
+      </div>
       </div>
     </div>
   </div>

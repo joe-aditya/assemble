@@ -42,6 +42,19 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
   <link rel="stylesheet" href="dashboard.css">
 
   <script>
+
+  function viewU(uname){
+    $('#modalTitle').html("User Profile");
+    var teamid = "<?php echo $teamid; ?>";
+    $.post('api/view_UserProfile.php', {
+        uname: uname,
+        teamid: teamid,
+    }, function (result){
+        $('#modalBody').html(result);
+        console.log(status);
+    })
+  }
+
     function sendRequest(){
       var teamid = "<?php echo $teamid; ?>";
       var reqMsg = $('#request_msg').val();
@@ -121,7 +134,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
               <span class="input-group">Criteria:</span>
             </div>
 
-            <p class="form-control txtscroll" id="erre" style="height:100px;">
+            <p class="form-control txtscroll" id="erre" style="height:80px;">
               <?php echo $row['criteria']; ?>
             </p>
           </div>
@@ -131,7 +144,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
               <span class="input-group">Team members:</span>
             </div>
 
-            <p class="form-control txtscroll" style="height:60px;">
+            <div class="txtscroll" style="height:87px;">
 <?php
       $qry3="SELECT * FROM user U
              INNER JOIN team_member M
@@ -142,21 +155,41 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       $count3 = mysqli_num_rows($res3);
       if(!($count3)){
   ?>
-          No members in Team
+
+            <div class="input-group">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <img src="../layerAuthentication/img1/happy.png" height="70px" width="70px" >
+                </span>
+              </div>
+              <p class="form-control txtscroll" style="height:86px;">
+                  Be the first to join this team!
+              </p>
+            </div>
   <?php
       }
       else{
         while($row3 = $res3->fetch_assoc()){
   ?>
-            @<?php echo $row3['uname']; ?><br>
+            <div class="input-group">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                <a data-toggle="modal" data-target="#myModal" href="#">
+                  <img src="img2/<?php echo $row3['dp']; ?>" onclick="viewU('<?php echo $row3['uname']; ?>')" height="70px" width="70px" style="border-radius: 50%;">
+                </a>
+                </span>
+              </div>
+              <p class="form-control txtscroll" style="height:86px; width:170px; font-size:22px; padding-top:22px;">
+                  @<?php echo $row3["uname"]; ?><br>
+
+              </p>
+            </div>
   <?php
         }
       }
 ?>
 
-
-
-            </p>
+</div>
           </div>
 
           <div class="input-group" style="padding:10px 0px 0px 0px;">
@@ -191,9 +224,18 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
               <div class="input-group">
                 <div class="input-group-append">
+                  <span class="input-group-text" style="width:108px;">Domain:</span>
+                </div>
+                <p class="form-control txtscroll" style="height:42px;">
+                  <?php echo $row['domain']; ?>
+                </p>
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-append">
                   <span class="input-group-text" style="width:108px;">Purpose:</span>
                 </div>
-                <p class="form-control txtscroll" style="height:62px;">
+                <p class="form-control txtscroll" style="height:82px;">
                   <?php echo $row['purpose']; ?>
                 </p>
               </div>
@@ -215,26 +257,20 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
               <div class="input-group">
                 <div class="input-group-append">
                   <span class="input-group-text" style="width:108px;">
-                    <img src="img2/<?php echo $row1['dp']; ?>" height="80px" width="80px" style="border-radius: 50%;">
+                    <a data-toggle="modal" data-target="#myModal" href="#">
+                      <img src="img2/<?php echo $row1['dp']; ?>" onclick="viewU('<?php echo $row1['uname']; ?>')" height="80px" width="80px" style="border-radius: 50%;">
+                    </a>
                   </span>
                 </div>
-                <p class="form-control txtscroll" style="height:110px;">
-                  Bio: <br> <?php echo $row1["bio"]; ?>
-                  <br>Skills:<br> <?php echo $row2["skills"]; ?>
-                  <br>Previous Works:<br> <?php echo $row2["works"]; ?>
+                  <p class="form-control txtscroll" style="height:138px;">
+                    Bio: <?php echo $row1["bio"]; ?>
+                    <br> CONTACT:
+                    <br> Phone Number: <?php echo $row1["phno"]; ?>
+                    <br> Mail-ID: <?php echo $row1["mail"]; ?>
+                    <br> Social-Media: <?php echo $row1["sm_link"]; ?>
                 </p>
               </div>
 
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text" style="width:108px;">Contact:</span>
-                </div>
-                <p class="form-control txtscroll" style="height:86px;">
-                  Phone Number: <?php echo $row1["phno"]; ?>
-                  <br> Mail-ID: <?php echo $row1["mail"]; ?>
-                  <br> Social-Media: <?php echo $row1["sm_link"]; ?>
-                </p>
-              </div>
             </div>
           </div>
 
@@ -243,6 +279,32 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
       </div>
     </div>
   </div>
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="modalTitle">User Profile</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="modalBody">
+
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

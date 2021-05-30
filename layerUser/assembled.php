@@ -110,7 +110,8 @@ echo "<script>window.location.href='login.php';</script>";
 <?php
       $qry = "SELECT teamid, team_name, purpose FROM team
               WHERE creatorid = ?
-              AND members_needed = members_in_team;";
+              AND members_needed = members_in_team
+              ORDER BY teamid DESC;";
       $qry = $con->prepare($qry);
       $qry->bind_param("i", $userid);
       $qry->execute();

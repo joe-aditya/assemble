@@ -45,6 +45,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 
   <link rel="stylesheet" href="../../layerUser/dashboard.css">
   <script>
+
   $(window).on('load', function() {
       $('#myModal').modal('show');
   });
@@ -66,9 +67,6 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
         console.log(status);
     })
   }
-
-
-
 
   </script>
 
