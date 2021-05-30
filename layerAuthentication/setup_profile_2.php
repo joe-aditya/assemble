@@ -23,7 +23,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style1.css">
-  <link rel="stylesheet" href="../layerUser/dashboard.css">
+  <link rel="stylesheet" href="../layerUser/dashboardd.css">
   <script>
     function datacheck() {
 
@@ -82,11 +82,19 @@
             <select name="interest" id="interest" required>
               <option value="Programming">Programming</option>
               <option value="Music">Music</option>
-              <option value="Dance">Dance</option>
               <option value="Sports">Sports</option>
-              <option value="Arts">Artwork</option>
+              <option value="COVID-19">COVID-19</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Electronic">Electronic</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Dance">Dance</option>
+              <option value="DigitalArt">DigitalArt</option>
               <option value="Cooking">Cooking</option>
-              <option value="FilmMaking">FilmMaking</option>
+              <option value="ContentCreation">ContentCreation</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Craft">Craft</option>
+              <option value="Artwork">Artwork</option>
+
             </select>
           </div>
 
@@ -111,7 +119,7 @@
 
 <div class="container" id="sidebar-right" style="width:250px;">
   <div class="row">
-    <div class="cardd-r" style="width:213px; margin-top:75px;">
+    <div class="cardd-r" style="width:213px; margin-top:70px;">
 
       <div style="padding-left: 95px; margin-top: -5px;">
         <i class="fas fa-info-circle" style="font-size:25px;"></i>
@@ -119,17 +127,17 @@
 
       <div class="alert info">
         <span class="closebtn">&times;</span>
-        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        <strong>Skills:</strong> Detailed skill description makes it easy to form team with desired skillset.
       </div>
 
       <div class="alert warning">
         <span class="closebtn">&times;</span>
-        <strong>Success!</strong> Indicates a successful or positive action.
+        <strong>Experience:</strong> Your expertise level in each topic of your skillset.
       </div>
 
       <div class="alert success">
         <span class="closebtn">&times;</span>
-        <strong>Info!</strong> Indicates a neutral informative change or action.
+        <strong>Project Links:</strong> Helps others find your works.
       </div>
 
       <script>

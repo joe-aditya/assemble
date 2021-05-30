@@ -17,7 +17,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <link rel="stylesheet" href="style1.css">
-  <link rel="stylesheet" href="../layerUser/dashboard.css">
+  <link rel="stylesheet" href="../layerUser/dashboardd.css">
 
 <style>
   .m{

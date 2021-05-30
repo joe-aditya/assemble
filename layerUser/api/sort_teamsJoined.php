@@ -31,7 +31,7 @@ if(isset($_POST['domain'])){
               ON T.teamid = M.teamid
               WHERE M.userid = '". $userid ."'
               AND M.status = 1
-              AND T.domain NOT IN ('Music','Programming','Sports','Filmaking','Artwork')
+              AND T.domain NOT IN ('Music','Programming','Sports','FilmMaking','COVID-19')
               ORDER BY teamid DESC;";
     }
 

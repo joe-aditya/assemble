@@ -30,7 +30,7 @@ if(isset($_POST['domain'])){
               INNER JOIN team T
               ON T.teamid = R.teamid
               WHERE R.userid = '". $userid ."'
-              AND T.domain NOT IN ('Music','Programming','Sports','Filmaking','Artwork')
+              AND T.domain NOT IN ('Music','Programming','Sports','FilmMaking','COVID-19')
               AND R.status != 2
               ORDER BY R.requestid DESC;";
     }

@@ -92,9 +92,9 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
 </a>
 </div>
                           <div class="flex-fill">
-        <a href="myRequests.php">
-          <li><i class="fas fa-envelope" style="font-size:23px;"> Suspended users</i></li>
-        </a>
+                            <a href="warnedUsers.php">
+                              <li><i class="fas fa-skull-crossbones" style="font-size:23px;"> Warned Users</i></li>
+                            </a>
       </div>
                           <div class="flex-fill">
         <a href="editKey.php">

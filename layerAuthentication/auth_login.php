@@ -19,7 +19,9 @@ if(isset($_POST['uname'])) {
                 </script>";
 
         } else {
-          echo 'Incorrect Credential(s)';
+          echo "<script>
+                  window.location.href='invalidlogin.html';
+              </script>";
         }
     } else {
         echo $con->error;

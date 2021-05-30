@@ -77,23 +77,24 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 	  </header><!-- #header -->
 
 
-	  <!-- start banner Area -->
+	  <!-- start banner Area style="  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);" -->
 	  <section class="banner-area" id="home">
 	    <div class="container">
 	      <div class="row fullscreen d-flex align-items-center justify-content-start">
-	        <div class="banner-content col-lg-7">
-	          <h2 class="text-white text-uppercase">ASSEMBLE</h2>
+	        <div class="banner-content col-lg-7" >
+
 	          <h1 class="text-uppercase">
-	            Welcome Home!
+	            ASSEMBLE
 	          </h1>
 	          <h3>
 	            <p class="text-white pt-20 pb-20">
-	              A platform to assemble your team <br>
+	              Platform to Assemble your Team <br>
 	              Skill-based Team Management System.
 	            </p>
-	          </h3>
-	          <a href="../layerAuthentication/login.php" class="primary-btn text-uppercase">login</a><br><br><br><br><br><br>
-	          <h4>Dont have an account?
+	          </h3><br>
+						<h2 class="text-white text-uppercase"></h2>
+	          <a href="../layerAuthentication/login.php" class="primary-btn text-uppercase">login</a><br><br><br><br><br>
+	          <h4>Don't have an account?
 							<a href="../layerAuthentication/signup.php" class="text-white text-uppercase">signup</a>
 						</h4>
 	        </div>
@@ -195,7 +196,7 @@ echo "<script>window.location.href='../layerUser/dashboard.php';</script>";//BRO
 													<br><br>
 													Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
 													<br><br><br>
-													<h4>Artwork</h4>
+													<h4>COVID-19</h4>
 
 												</div>
 												<div class="single-testimonial item">

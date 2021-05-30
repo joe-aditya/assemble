@@ -63,7 +63,7 @@ echo "<script>window.location.href='../layerAuthentication/login.php';</script>"
           <input type="button" class="btn btn-info" value="Programming" onclick="sort(this.value)">
           <input type="button" class="btn btn-info" value="Sports" onclick="sort(this.value)">
           <input type="button" class="btn btn-info" value="FilmMaking" onclick="sort(this.value)">
-          <input type="button" class="btn btn-info" value="Artwork" onclick="sort(this.value)">
+          <input type="button" class="btn btn-info" value="COVID-19" onclick="sort(this.value)">
           <input type="button" class="btn btn-info" value="Global" onclick="sort(this.value)">
         </div>
       </div>
